@@ -1,2 +1,7 @@
-# UoM-Applied-Informatics
-My University Assignments etc
+# Πανεπιστήμιο Μακεδονίας - Σχολή Εφαρμοσμένης Πληροφορικής - Πληροφοριακά Συστήματα
+
+Στο συγκεκριμένο αποθετήριο θα βρείτε όλα τα προγράμματα και όχι μόνο, που έχω δημιουργήσει στα πλαίσια των μαθημάτων της σχολής.  
+
+Ως ξεκίνημα, δημιούργησα τις οδηγίες εγγραφής στην σχολή που θα βρείτε [εδώ](https://github.com/iosifidis/UoM-Applied-Informatics/blob/main/eggrafi-stin-efarmosmeni-pliforiki.md).  
+
+Τα έγγραφα παρουσιάσεων μαθημάτων, υπάρχουν στο [Nextcloud](https://pcloscloud.com/index.php/s/SYcdnLagAK5ZaDT) μου.
