@@ -15,7 +15,7 @@
 
 int main()
 {
-    double teli;
+    float teli;
     int dioksidio;
 
     printf("Dose gram CO2/khm: ");
@@ -33,7 +33,7 @@ int main()
         {
         teli = dioksidio * 1.7;
         }
-    printf("To poso pliromis einai %g\n",teli);
+    printf("To poso pliromis einai %.1f\n",teli);
 
     return 0;
 
