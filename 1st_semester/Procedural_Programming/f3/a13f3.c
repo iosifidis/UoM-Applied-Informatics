@@ -24,7 +24,7 @@ int main()
 
     for (i=1 ; i <= N ; i++ )
 	{
-        sum = sum + (1.0/i);
+        sum += (1.0/i);
 	}
 
     printf("%.2f\n",sum);
