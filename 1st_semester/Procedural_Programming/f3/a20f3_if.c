@@ -22,8 +22,15 @@ int main()
 
     while (ilikia != -1 )
     {
-	max = (ilikia>max) ? ilikia : max;
-	min = (ilikia<min) ? ilikia : min;
+
+    	if (ilikia >= max)
+    	{
+    		max = ilikia;
+    	}
+    	if (ilikia <=min)
+    	{
+    		min = ilikia;
+    	}
 
     	printf("Dose ilikia. Me -1 stamatas eisagwgi: ");
     	ilikia=GetInteger();
