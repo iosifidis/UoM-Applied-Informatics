@@ -34,7 +34,7 @@
 #include "simpio.h"
 #include "genlib.h"
 
-long encode(long code);
+long encode(long N);
 bool check(long encode);
 
 int main()
@@ -55,11 +55,11 @@ int main()
 
 }
 
-long encode(long code)
+long encode(long N)
 {
-    long n;
-    n = (98 - (code*100) % 97) % 97;
-    return code*100 + n;
+    long EN;
+    EN = (98 - (N*100) % 97) % 97;
+    return N*100 + EN;
 
 }
 
