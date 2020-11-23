@@ -22,6 +22,7 @@
 
 int gcd(int a, int b);
 int phi(int n);
+int coprime(int i, int x);
 
 int main()
 {
@@ -42,11 +43,15 @@ int gcd(int a, int b)
   else return gcd(b,a%b);
 }
 
+int coprime(int i, int x)
+{ return gcd(i,x);}
+
 int phi(int N)
 {
     int result = 0;
     int K;
     for(K = 1; K <= N; K++)
-        result += gcd(K, N) == 1;
+    	if (coprime(K,N) == 1)
+           result ++;
     return result;
 }
