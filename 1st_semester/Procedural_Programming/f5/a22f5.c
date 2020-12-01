@@ -18,71 +18,41 @@ int main()
 {
     long long card;
     long long CARD[digits];
-    int i, diplo, sum;
-    string validation;
+    int i, sum=0, validation=0;
 
     /* Εισαγωγή κάρτας */
     printf("Insert card number: ");
     card=GetLongLong();
-    /* Καταχώρηση της κάρτας στον πίνακα CARD */
-    card_digit(card,CARD);
+    // Έλεγχος εάν δεν εισαχθούν 16 ψηφία
+    if (count(card)!=16)
+        {validation=0;}
 
-    if (count(card)!=16) // Έλεγχος εάν δεν εισαχθούν 16 ψηφία
-        {validation="invalid";}
-    else
-    {
+    /* Καταχώρηση της κάρτας στον πίνακα CARD */
+    else{
+        card_digit(card,CARD);
         if (CARD[0]<4 || CARD[0]>7) // Έλεγχος εάν το 1ο ψηφείο είναι μικρότερο από 4 και μεγ από 7
-        {
-            validation="invalid";
-        }
+            {validation=0;}
         else
         {
             for (i=0;i<digits;i+=2)
                 {
-                diplo=CARD[i]*2;
-                //if (count(diplo)==1) {CARD[i]=diplo;}
-                //if (count(diplo)==2) {CARD[i]=diplo/10+diplo%10;}
-                CARD[i]=(count(diplo)==1? diplo: (diplo/10+diplo%10));
+                CARD[i]*=2;
+                CARD[i]=(count(CARD[i])==1? CARD[i]: (CARD[i]/10+CARD[i]%10));
                 }
              sum=0;
              for (i=0;i<digits;i++)
              {
                 sum+=CARD[i];
              }
-             if (sum%10==0)
-                {validation="VALID";}
-             else
-                {validation="invalid";}
+            if (sum%10==0) {validation=1;}
+            else  {validation=0;}
         }
     }
     /* Εκτύπωση αποτελέσματος */
-    printf("%lld is %s\n",card,validation);
+    printf("%lld is %s\n", card, (validation==1) ? "VALID" : "invalid");
 
    return 0;
 
-}
-
-long long GetLongLong(void)
-{
-	string line;
-	long long value;
-	char termch;
-	while (TRUE) {
-		line = GetLine();
-		switch (sscanf(line, " %lld %c", &value, &termch)) {
-			case 1:
-				FreeBlock(line);
-				return (value);
-			case 2:
-				printf("Unexpected character: '%c'\n", termch);
-				break;
-			default:
-				printf("Please enter an integer\n");
-				break;
-		}
-		FreeBlock(line);
-		printf("Retry: ");
-	}
 }
 
 /* Συνάρτηση καταχώρησης κάθε ψηφίου σε διαφορετική θέση του πίνακα */
@@ -107,4 +77,27 @@ int count(long long card)
         count++; // Μέτρα την επανάληψη. Πόσα ψηφία είναι
     }
     return count;
+}
+
+long long GetLongLong(void)
+{
+	string line;
+	long long value;
+	char termch;
+	while (TRUE) {
+		line = GetLine();
+		switch (sscanf(line, " %lld %c", &value, &termch)) {
+			case 1:
+				FreeBlock(line);
+				return (value);
+			case 2:
+				printf("Unexpected character: '%c'\n", termch);
+				break;
+			default:
+				printf("Please enter an integer\n");
+				break;
+		}
+		FreeBlock(line);
+		printf("Retry: ");
+	}
 }
