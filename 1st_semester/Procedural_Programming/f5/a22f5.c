@@ -24,7 +24,7 @@ int main()
     printf("Insert card number: ");
     card=GetLongLong();
     // Έλεγχος εάν δεν εισαχθούν 16 ψηφία
-    if (count(card)!=16)
+    if (count(card)!=digits)
         {validation=0;}
 
     /* Καταχώρηση της κάρτας στον πίνακα CARD */
