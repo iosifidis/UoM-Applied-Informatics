@@ -11,7 +11,7 @@
 #define digits 16
 
 long long GetLongLong(void);
-void card_digit(long long card, long long CARD[digits]);
+void card_digit(long long card, long long CARD[]);
 int count(long long card);
 
 int main()
@@ -27,24 +27,23 @@ int main()
     if (count(card)!=digits)
         {validation=0;}
 
-    /* Καταχώρηση της κάρτας στον πίνακα CARD */
     else{
-        card_digit(card,CARD);
-        if (CARD[0]<4 || CARD[0]>7) // Έλεγχος εάν το 1ο ψηφείο είναι μικρότερο από 4 και μεγ από 7
+        card_digit(card,CARD); // Καταχώρηση της κάρτας στον πίνακα CARD
+        if (CARD[0]<4 || CARD[0]>7) // Έλεγχος εάν το 1ο ψηφίο είναι μικρότερο από 4 και μεγ από 7
             {validation=0;}
         else
         {
             for (i=0;i<digits;i+=2)
                 {
-                CARD[i]*=2;
-                CARD[i]=(count(CARD[i])==1? CARD[i]: (CARD[i]/10+CARD[i]%10));
+                CARD[i]*=2; // Διπλασιασμός του ψηφίου
+                CARD[i]=(count(CARD[i])==1? CARD[i]: (CARD[i]/10+CARD[i]%10)); // Έλεγχος αν το ψηφίο είναι 2ψήφιο, πρόσθεση των δυο ψηφίων και καταχώρηση
                 }
              sum=0;
              for (i=0;i<digits;i++)
              {
-                sum+=CARD[i];
+                sum+=CARD[i]; // Άθροισμα ψηφίων
              }
-            if (sum%10==0) {validation=1;}
+            if (sum%10==0) {validation=1;} // Έλεγχος αν άθροισμα είναι πολλαπλάσιο του 10
             else  {validation=0;}
         }
     }
@@ -56,7 +55,7 @@ int main()
 }
 
 /* Συνάρτηση καταχώρησης κάθε ψηφίου σε διαφορετική θέση του πίνακα */
-void card_digit(long long card, long long CARD[digits])
+void card_digit(long long card, long long CARD[])
 {
     int i = 1; // Μετρητής
     while (card!=0)
