@@ -30,7 +30,7 @@ int checkTable(int N, int a[], int thesia[]);
 int main()
 {
     int a[r], thesia[r];
-    int N;
+    int N, counter;
 
 	/* Create the table a */
 	populate(a);
@@ -42,13 +42,14 @@ int main()
     /*Read Data*/
     printf("Dwse arithmo apo to 0 ews to 9: ");
     N=GetInteger();
+    counter=checkTable(N, a, thesia);
 
     /*Print results*/
     printf("\n");
-    printf("o Arithmos %d emfanizetai %d fores.\n",N,checkTable(N, a, thesia));
+    printf("o Arithmos %d emfanizetai %d fores.\n",N,counter);
 
    	printf("Stis theseis:\n");
-  	printArr(checkTable(N, a, thesia), thesia);
+  	printArr(counter, thesia);
 
     return 0;
 }
