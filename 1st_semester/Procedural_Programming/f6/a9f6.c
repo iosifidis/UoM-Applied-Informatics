@@ -7,7 +7,6 @@
 */
 
 #include <stdio.h>
-#include "genlib.h"
 #include "simpio.h"
 
 #define SALESMEN 4
