@@ -4,4 +4,4 @@
 
 Ως ξεκίνημα, δημιούργησα τις οδηγίες εγγραφής στην σχολή που θα βρείτε [εδώ](https://github.com/iosifidis/UoM-Applied-Informatics/blob/main/eggrafi-stin-efarmosmeni-pliforiki.md).  
 
-Τα έγγραφα παρουσιάσεων μαθημάτων, υπάρχουν στο [Nextcloud](https://pcloscloud.com/index.php/s/SYcdnLagAK5ZaDT) μου.
+Τα έγγραφα παρουσιάσεων μαθημάτων, υπάρχουν στο [Nextcloud](https://cutt.ly/pamak) μου.
