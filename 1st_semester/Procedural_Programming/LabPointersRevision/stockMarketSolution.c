@@ -76,12 +76,13 @@ int main(){
    /* CDS ASSESMENT*/
    printf("CDS ASSESMENT\n");
    for (i=0;i<11;i++)
-       {printf("cds assesment: cds %4.2f risk %d value %4.2f\n",cds_prices[i],risk[i],assess_cds(cds_prices[i],risk[i]));}
+       {printf("CDS assesment: cds %4.2f risk %d value %4.2f\n",cds_prices[i],risk[i],assess_cds(cds_prices[i],risk[i]));}
    separator(30);
+   printf("Devirative Low High\n");
    for (i=0;i<5;i++)
    {
        high_low(&high,&low,i,5,10,deriv_day_data);
-       printf("Derivatice %d, high %d, / low %d values. \n", i ,high ,low);
+       printf("Devirative %d, high %d, / low %d values. \n", i ,high ,low);
    }
 
    return 0;
@@ -147,12 +148,12 @@ float assess_cds(float el_cds,int el_risk)
 
 void high_low(int *low , int *high , int row ,int r , int c , float table[r][c])
 {
-    int j;
+    int i;
     *high=0;
     *low=0;
-    for (j=0;j<c;j++)
+    for (i=0;i<c;i++)
     {
-        if (table[row][j]<table[row][c-1]) (*high)++;
-        if (table[row][j]>table[row][c-1]) (*low)++;
+        if (table[row][i]<table[row][c-1]) (*high)++;
+        if (table[row][i]>table[row][c-1]) (*low)++;
     }
 }
