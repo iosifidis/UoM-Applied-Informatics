@@ -1,6 +1,8 @@
 /*  Αρχείο: a4f1.c
     Φοιτητής: Ευστάθιος Ιωσηφίδης
     ΑΜ: iis21027
+    
+    Άδεια χρήσης: GNU General Public License v3.0
 
     Ένας έμπορος αγόρασε σε τιμή χονδρικής εμπορεύματα αξίας purchaseAmount € και τα πούλησε saleAmount €.
     Αν το ποσό saleAmount προκύπτει από την καθαρή αξία purchaseAmount και το ποσοστό κέρδους rate
@@ -18,14 +20,19 @@
 
 int main()
 {
+
+/* Δήλωση-Αρχικοποίηση μεταβλητών */
     int rate;
     double profit, saleAmount;
     long purchaseAmount;
 
+/* Εισαγωγή δεδομένων */
     printf("Dose kathari aksia: ");
     purchaseAmount = GetLong();
     printf("Dose to pososto kerdous: ");
     rate = GetInteger();
+
+/* Υπολογισμός και εκτύπωση αποτελέσματος */
     profit = (double) rate / 100 * purchaseAmount;
     printf("To kerdos einai %g\n", profit);
     saleAmount = purchaseAmount + profit;

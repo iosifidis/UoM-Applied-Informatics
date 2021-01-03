@@ -32,7 +32,7 @@ int main()
    printf("Dose c: ");
    c=GetInteger();
    // Υπολογισμός
-   y = (2* max(a,b) + 3*gr(a,b,c)) / 4;
+   y = (2* max(a,b) + 3*gr(a,b,c)) / 4.0;
     // Έξοδος
     printf("y = %.2f\n",y);
 
@@ -48,11 +48,7 @@ int max(int a, int b)
 
 int gr(int a, int b, int c)
 {
-  int max;
-  max =a;
-  if (b>a)
-  { max=b;  }
-  if (c>a)
-  { max = c; }
-  return max;
+  int megisto;
+  megisto = max(a,b);
+  return max(megisto,c);
 }
