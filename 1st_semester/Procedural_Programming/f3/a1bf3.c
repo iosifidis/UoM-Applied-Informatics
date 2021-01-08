@@ -20,9 +20,11 @@
 
 int main()
 {
+/* Δήλωση και αρχικοποίηση μεταβλητών */
     long xronia, Arithmo_Aytok, Orio;
     double Rythmos;
 
+/* Εισαγωγή δεδομένων */
     printf("Dose ton arxiko arithmo autokiniton: ");
     Arithmo_Aytok=GetLong();
     printf("Dose ton etisio ruthmo ayxisis: ");
@@ -31,12 +33,15 @@ int main()
     Orio=GetLong();
 
     xronia = 0;
-
+    
+/* Υπολογισμοί*/
     while (Arithmo_Aytok <= Orio)
     {
-        Arithmo_Aytok= ceil(Arithmo_Aytok * (1+ Rythmos));
+        Arithmo_Aytok= ceil(Arithmo_Aytok * (1+ Rythmos)); /* Χρήση της math.h με την εντολή ceil -> ταβάνι */
         xronia +=1;
     }
+    
+/* Εκτύπωση αποτελεσμάτων */
     printf("%ld\n",xronia);
     printf("%ld\n",Arithmo_Aytok);
     return 0;

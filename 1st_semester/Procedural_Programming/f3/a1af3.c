@@ -24,16 +24,20 @@
 
 int main()
 {
+/* Δήλωση και αρχικοποίηση μεταβλητών */
     long xronia, autokinita;
 
     xronia = 0;
     autokinita=Arithmo_Aytok;
 
+/* Υπολογισμοί*/
     while (autokinita <= Orio)
     {
-        autokinita= ceil(autokinita * (1+ Rythmos));
+        autokinita= ceil(autokinita * (1+ Rythmos)); /* Χρήση της math.h με την εντολή ceil -> ταβάνι */
         xronia +=1;
     }
+    
+/* Εκτύπωση αποτελεσμάτων */
     printf("%ld\n",xronia);
     printf("%ld\n",autokinita);
     return 0;

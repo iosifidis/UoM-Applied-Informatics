@@ -13,13 +13,16 @@
 
 int main()
 {
+/* Δήλωση και αρχικοποίηση μεταβλητών */
     int ilikia, min, max;
 
+/* Εισαγωγή δεδομένων */
     printf("Dose ilikia: ");
     ilikia=GetInteger();
-    min = ilikia;
-    max = ilikia;
+    min = ilikia; /* Θέτουμε ως ελάχιστη ηλικία, τον αριθμό που εισήχθη από τον χρήστη */
+    max = ilikia; /* Θέτουμε ως μέγιστη ηλικία, τον αριθμό που εισήχθη από τον χρήστη */
 
+/* Υπολογισμοί*/
     while (ilikia != -1 )
     {
 	max = (ilikia>max) ? ilikia : max;
@@ -28,6 +31,8 @@ int main()
     	printf("Dose ilikia. Me -1 stamatas eisagwgi: ");
     	ilikia=GetInteger();
     }
+    
+/* Εκτύπωση αποτελεσμάτων */
     printf("H megaliteri ilikia einai: %d\n",max);
     printf("H mikroteri ilikia einai: %d\n",min);
     return 0;

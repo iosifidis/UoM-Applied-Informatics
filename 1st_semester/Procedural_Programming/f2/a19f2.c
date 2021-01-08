@@ -42,7 +42,7 @@ int main()
         }
         
 /* Εκτύπωση αποτελεσμάτων */
-    printf("To poso pliromis einai %.1f\n",teli);
+    printf("To poso pliromis einai %.1f\n",teli);  /* Εκτύπωση με 1 δεκαδικό ψηφίο */
 
     return 0;
 
