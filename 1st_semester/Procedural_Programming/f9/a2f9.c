@@ -29,7 +29,7 @@
 
 /* Δημιουργία δομών */
 typedef struct {
-    char name[31];
+    char name[30];
     int apousies;
 } studentT;
 
