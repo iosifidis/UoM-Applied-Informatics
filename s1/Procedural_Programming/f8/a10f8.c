@@ -81,7 +81,7 @@ void ReadWorkpackages(int ergasies, TaskT tasks[])
         	printf("WP Start Month: ");
         	tasks[i].month=GetInteger();
 	        printf("WP Duration: ");
-	        tasks[i].duration=GetReal();
+	        tasks[i].duration=GetInteger();
 	}
 }
 
