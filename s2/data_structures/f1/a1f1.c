@@ -28,9 +28,8 @@
 #include <stdlib.h>
 #include <ctype.h>
 
-#define megisto_plithos 199
-#define low 2
-#define up 200
+#define megisto_plithos 201
+
 
 typedef enum {
     FALSE, TRUE
@@ -56,16 +55,16 @@ int main()
 
         do{
         printf("\n");
-        printf("DOSTE ARXIKH TIMH (METAKSI 2-200 KAI PREPEI NA EINAI MIKROTERH THS TELIKHS TIMHS): ");
+        printf("DOSTE ARXIKH TIMH (METAKSI 2-200 KAI PREPEI NA EINAI MIKROTERH THS TELIKHS TIMHS POY THA EISAGEIS META): ");
     	scanf("%d",&first);
-    }while(first < low || first > up);
+    }while(first < 2 || first > 199);
 
 
     do{
         printf("\n");
-        printf("DOSTE TELIKH TIMH (METAKSI 2-200 KAI NA EINAI MEGALYTEROS THS ARXIKHS TIMHS): ");
+        printf("DOSTE TELIKH TIMH (METAKSI 2-200 KAI NA EINAI MEGALYTERH THS ARXIKHS TIMHS): ");
     	scanf("%d",&last);
-    }while(last < low || last > up || last < first);
+    }while(last < 2 || last > 200 || last < first);
 
 
     createPrimeSet(first,last,S);
