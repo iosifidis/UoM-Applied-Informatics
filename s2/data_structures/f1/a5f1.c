@@ -81,7 +81,7 @@ boolean isFibonacci(stoixeio_synolou f, typos_synolou fibonacci)
 
 void createFibonacciSet(stoixeio_synolou threshold, typos_synolou fibonacci)
 {
-    stoixeio_synolou i,next=1,n1=0,n2=1;
+    stoixeio_synolou next=1,n1=0,n2=1;
     while(next<threshold)
     {
         Eisagogi(next,fibonacci);
