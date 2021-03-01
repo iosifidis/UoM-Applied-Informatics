@@ -43,31 +43,38 @@ boolean Melos(stoixeio_synolou stoixeio, typos_synolou synolo);
 
 int main()
 {
-    stoixeio_synolou max, number;
+    stoixeio_synolou max, tmp;
     typos_synolou fibonacci;
     Dimiourgia(fibonacci);
     Eisagogi(0,fibonacci);
     Eisagogi(1,fibonacci);
 
-    while(TRUE){
+     do{
+     printf("Dwse to megisto arithmo. ");
+     scanf("%d", &max);
+    }while(max < 2 || max > 1000);
+
+/* ΕΝΑΛΛΑΚΤΙΚΟ ΣΕΝΑΡΙΟ
+        while(TRUE){
         printf("Dwse to megisto arithmo. ");
         scanf("%d", &max);
         if(max>=2 && max<=1000) {break;}
         printf("O megistos arithmos prepei na anhkei sto diasthma [2...1000]\n");}
+
+*/
 
     createFibonacciSet(max, fibonacci);
     displayset(fibonacci);
 
     while(TRUE){
         printf("Enter number to check: ");
-        scanf("%d", &number);
-        if(number<0) {break;}
-        if(Melos(number, fibonacci))
+        scanf("%d", &tmp);
+        if(tmp<0) {break;}
+        if(Melos(tmp, fibonacci))
             {printf("Fibonacci!\n");}
         else
             {printf("Not Fibonacci...\n");}
     }
-
 
     return 0;
 }
