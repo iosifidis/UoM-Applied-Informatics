@@ -23,7 +23,7 @@
 
 #include <stdio.h>
 
-#define megisto_plithos 1000
+#define megisto_plithos 1001
 
 typedef enum {
     FALSE, TRUE
