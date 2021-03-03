@@ -26,7 +26,6 @@
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <ctype.h>
 
 #define megisto_plithos 201
 #define low 2
@@ -52,9 +51,7 @@ int main()
     stoixeio_synolou first,last;
     typos_synolou S;
 
-    printf("PARAKATO THA SAS ZHTHTHEI NA DOSETE MIA ARXIKH KAI MIA TELIKH TIMH.\nPREPEI NA EINAI META3I 2 EOS KAI 200.\nEPISHS PREPEI H ARXIKH TIMH NA EINAI MIKROTERH APO THN TELIKH.\n");
-
-        do{
+    do{
         printf("\n");
         printf("DOSTE ARXIKH TIMH (APO 2 EOS 199 KAI PREPEI NA EINAI MIKROTERH THS TELIKHS TIMHS POY THA EISAGEIS META): ");
     	scanf("%d",&first);
@@ -79,7 +76,7 @@ boolean isPrime(stoixeio_synolou n)
 {
     stoixeio_synolou i;
     boolean prime;
-    for (i = 2; i <= n / 2; ++i) {
+    for (i = 2; i <= n / 2; i++) {
         prime=TRUE;
         if (n % i == 0) {
             prime=FALSE;

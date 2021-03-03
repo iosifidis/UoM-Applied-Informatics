@@ -22,6 +22,7 @@
 */
 
 #include <stdio.h>
+#include <stdlib.h>
 
 #define megisto_plithos 1001
 
@@ -45,9 +46,6 @@ int main()
 {
     stoixeio_synolou max, tmp;
     typos_synolou fibonacci;
-    Dimiourgia(fibonacci);
-    Eisagogi(0,fibonacci);
-    Eisagogi(1,fibonacci);
 
      do{
      printf("Dwse to megisto arithmo. ");
@@ -89,6 +87,9 @@ boolean isFibonacci(stoixeio_synolou f, typos_synolou fibonacci)
 void createFibonacciSet(stoixeio_synolou threshold, typos_synolou fibonacci)
 {
     stoixeio_synolou next=1,n1=0,n2=1;
+    Dimiourgia(fibonacci);
+    Eisagogi(0,fibonacci);
+    Eisagogi(1,fibonacci);
     while(next<threshold)
     {
         Eisagogi(next,fibonacci);
