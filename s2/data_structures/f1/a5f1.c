@@ -47,6 +47,7 @@ int main()
     stoixeio_synolou max, tmp;
     typos_synolou fibonacci;
 
+/* Ερώτηση τουλάχιστον μια φορά με την do, μέχρι ποιο όρο fibonacci θέλουμε */
      do{
      printf("Dwse to megisto arithmo. ");
      scanf("%d", &max);
@@ -61,14 +62,15 @@ int main()
 
 */
 
-    createFibonacciSet(max, fibonacci);
-    displayset(fibonacci);
+    createFibonacciSet(max, fibonacci); // Δημιουργεί το σύνολο με όρους fibonacci μέχρι τον όρο max που έχει δοθεί
+    displayset(fibonacci); // Εμφανίζει όλους τους όρους του συνόλου
 
+/* Έλεγχος εάν ο αριθμός που εισάγουμε είναι όρος fibonacci ή όχι */
     while(TRUE){
         printf("Enter number to check: ");
         scanf("%d", &tmp);
         if(tmp<0) {break;}
-        if(Melos(tmp, fibonacci))
+        if(Melos(tmp, fibonacci)) // Ελέγχει με την συνάρτηση Melos εάν ανήκει στο σύνολο που έχει δημιουργηθεί
             {printf("Fibonacci!\n");}
         else
             {printf("Not Fibonacci...\n");}
@@ -77,9 +79,11 @@ int main()
     return 0;
 }
 
+/* ΣΥΝΑΡΤΗΣΕΙΣ */
+
 boolean isFibonacci(stoixeio_synolou f, typos_synolou fibonacci)
 {
-        if(Melos(f,fibonacci))
+        if(Melos(f,fibonacci)) // Ελέγχει εάν ανήκει στο σύνολο των όρων fibonacci που έχουμε δημιουργήσει με την createFibonacciSet
         	{return TRUE;}
     return FALSE;
 }
@@ -87,15 +91,15 @@ boolean isFibonacci(stoixeio_synolou f, typos_synolou fibonacci)
 void createFibonacciSet(stoixeio_synolou threshold, typos_synolou fibonacci)
 {
     stoixeio_synolou next=1,n1=0,n2=1;
-    Dimiourgia(fibonacci);
-    Eisagogi(0,fibonacci);
-    Eisagogi(1,fibonacci);
+    Dimiourgia(fibonacci); // Δημιουργία συνόλου
+    Eisagogi(0,fibonacci); // Εισάγει τον πρώτο όρο
+    Eisagogi(1,fibonacci); // Εισάγει τον δεύτερο όρο
     while(next<threshold)
     {
-        Eisagogi(next,fibonacci);
-        n1=n2;
-        n2=next;
-        next=n1+n2;
+        Eisagogi(next,fibonacci); // Εισάγει τον επόμενο όρο
+        n1=n2; // Αλλάζει τον πρώτο όρο στον δεύτερο
+        n2=next; // Αλλάζει τον δεύτερο όρο ως το άρθοισμα των δυο προηγούμενων όρων
+        next=n1+n2; // Προσθέτει τους δυο όρους που είναι προς εισαγωγή
     }
 
 }

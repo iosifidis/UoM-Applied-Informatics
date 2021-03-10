@@ -48,16 +48,21 @@ void Eisagogi(stoixeio_synolou stoixeio, typos_synolou synolo);
 
 int main()
 {
-    stoixeio_synolou first,last;
-    typos_synolou S;
+    stoixeio_synolou first,last; //Ορισμός πρώτου και τελευταίου θετικού ακεραίου αριθμού
+    typos_synolou S; // Ορισμός συνόλου
 
+/* Εισαγωγή πρώτου ακεραίου αριθμού. Εκτέλεση τουλάχιστον μια φορά με το do, και έλεγχος να είναι μεγαλύτερο ή ίσο από το ελάχιστο που ορίσαμε (2) και να είναι first < last.
+
+*/
     do{
         printf("\n");
         printf("DOSTE ARXIKH TIMH (APO 2 EOS 199 KAI PREPEI NA EINAI MIKROTERH THS TELIKHS TIMHS POY THA EISAGEIS META): ");
     	scanf("%d",&first);
     }while(!(first >= low && first < up));
 
+/* Εισαγωγή δεύτερου ακεραίου αριθμού. Εκτέλεση τουλάχιστον μια φορά με το do, και έλεγχος να είναι μεγαλύτερο ή ίσο από το ελάχιστο που ορίσαμε (2) και να είναι μικρότερο ή ίσο από το ανώτερο όριο που ορίσαμε (200).
 
+*/
     do{
         printf("\n");
         printf("DOSTE TELIKH TIMH (APO 2 EOS 200 KAI NA EINAI MEGALYTERH TOY %d): ",first);
@@ -65,36 +70,42 @@ int main()
     }while(!(last >= low && last <= up) || !(first<last));
 
     printf("\n");
-    createPrimeSet(first,last,S);
-    displaySet(first,last,S);
+    createPrimeSet(first,last,S); // Δημιουργείται το σύνολο πρώτων αριθμών με όρια από τον first μέχρι τον last
+    displaySet(first,last,S); // Εμφάνιση του συνόλου
 
     return 0;
 }
 
 
-boolean isPrime(stoixeio_synolou n)
+/* ΣΥΝΑΡΤΗΣΕΙΣ */
+
+// Ελέγχει αν ένας αριθμός είναι πρώτος ή όχι. Ένας θετικός ακέραιος n είναι πρώτος (prime) αν έχει ακριβώς δύο θετικούς διαιρέτες, τον εαυτό του και το 1.
+
+boolean isPrime(stoixeio_synolou n)  
 {
-    stoixeio_synolou i;
-    boolean prime;
+    stoixeio_synolou i; 
+    boolean prime; // Boolean παίρνει τιμές TRUE,FALSE
     for (i = 2; i <= n / 2; i++) {
-        prime=TRUE;
-        if (n % i == 0) {
+        prime=TRUE; // Υποθέτω ότι είναι πρώτος
+        if (n % i == 0) {  // Εάν η πράξη mod του αριθμού με το i που αυξάνει κατά 1, είναι αληθής, τότε είναι πρώτος.
             prime=FALSE;
             break;
         }
     }
-    return prime;
+    return prime; // Επέστρεψε το True ή False
 }
+
+// Δημιουργεί το σύνολο με τους πρώτους αριθμούς
 
 void createPrimeSet(stoixeio_synolou first, stoixeio_synolou last,typos_synolou S)
 {
-    Dimiourgia(S);
+    Dimiourgia(S); // Δημιουργία συνόλου
     stoixeio_synolou i;
     for (i=first;i<=last;i++)
     {
-        if (isPrime(i))
+        if (isPrime(i)) // Κάνει τον έλεγχο αν ο αριθμός είναι πρώτος ή όχι
         {
-            Eisagogi(i, S);
+            Eisagogi(i, S); // Τον τοποθετεί μέσα στο σύνολο
         }
     }
 
