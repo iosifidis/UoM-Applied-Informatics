@@ -53,7 +53,6 @@ boolean EmptyStack(StackType Stack);
 boolean FullStack(StackType Stack);
 void Push(StackType *Stack, StackElementType Item);
 void Pop(StackType *Stack, StackElementType *Item);
-void CopyStack(StackType *MyStack,StackType *MyOtherStack);
 
 int main()
 {
