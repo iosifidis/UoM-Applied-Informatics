@@ -1,0 +1,38 @@
+1.
+select name
+from country 
+where exists (select * from countrylanguage where code = countrycode and language = 'Spanish' and isofficial = 'T');
+
+select name
+from country
+where code in (select countrycode and language = 'Spanish'
+ and isofficial = 'T');
+
+2. 
+select name
+from country 
+where exists (select * from countrylanguage where code = countrycode and language = 'English' and percentage > 80);
+
+select name from country where code in (select countrycode from countrylanguage where language='English' and percentage>80);
+
+3.
+
+select c.name, ci.name, ci.population from country c join city ci on (c.code = ci.countrycode) where Continent = 'North America' and ci.population>2000000; 
+
+-- Το ερώτημα δεν μπορεί να υλοποιηθεί με εμφώλευση, διότι απαιτείται η προβολή πεδίων και από τους δύο
+-- πίνακες. Στο select (το εξωτερικό) δεν μπορώ να έχω πεδία από το εμφωλευμένο ερώτημα. Οπότε θα έπρεπε
+-- να συνδυάσω και τους δύο πίνακες στο from του εξωτερικού ερωτήματος. Άρα λύνεται μόνο με σύζευξη.
+
+4.
+select name
+from country
+where popylation <= all (select population from country);
+
+5.
+select language
+from country join countrylanguage on code=countrycode
+where continent='Africa'
+except
+select language
+from country join countrylanguage on code=countrycode
+where continent<>'Africa'

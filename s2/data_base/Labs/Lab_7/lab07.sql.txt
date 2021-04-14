@@ -1,0 +1,38 @@
+-- Lab07.pdf Λύσεις
+-- Τα ερωτήματα υλοποιήθηκαν σε PostgreSQL
+
+
+-- A1. Οι πόλεις που αρχίζουν από 'S' και βρίσκονται στην περιοχή 'California' (District = 'California').
+select name
+from city
+where name like 'S%' and District='California';
+
+
+-- A2. Οι γλώσσες που ομιλούνται στις ΗΠΑ (CountryCode = 'USA').
+select language
+from countrylanguage
+where countrycode='USA';
+
+
+-- A3. Οι πόλεις της Ελλάδας (CountryCode = 'GRC').
+select name
+from city
+where countrycode='GRC';
+
+
+-- Α4. Οι χώρες στις οποίες τα ισπανικά (spanish) είναι επίσημη γλώσσα.
+select name 
+from country join countrylanguage on code=countrycode
+where language='Spanish' and isofficial='T';
+
+
+-- Α5. Οι χώρες στις οποίες τα αγγλικά (english) ομιλούνται σε ποσοστό άνω του 80%.
+select name 
+from country join countrylanguage on code=countrycode
+where language='English' and percentage>80;
+
+
+-- Α6. Οι χώρες της Βορείου Αμερικής (Continent = 'North America') που έχουν πόλεις με πληθυσμό > 2.000.000 (να φαίνονται η χώρα, η πόλη και ο πληθυσμός).
+select country.name, city.name, city.population
+from country join city on code=countrycode
+where continent='North America' and city.population>2000000;

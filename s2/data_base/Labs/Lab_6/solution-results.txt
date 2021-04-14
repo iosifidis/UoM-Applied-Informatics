@@ -1,0 +1,42 @@
+1. πpizzeria Serves (ΣΩΣΤΟ) πpizzeria Frequents (Λόγω ολοκής συμμετοχής)
+
+2. πpizzeria σname='Dan' Frequents 
+
+3. πpizzeria Serves - πpizzeria σname='Fay' Frequents 
+
+4. πpizzeria σ gender='female' (Person⨝Frequents)
+
+5. πpizza σname='Fay' (Serves⨝Frequents)
+
+6. Στις πιτσαρίες όπου συχνάζει η Fay, ποιοί άλλοι/ες συχνάζουν;
+Frequents.name
+Hil
+Ian
+
+
+7. Ποιές πιτσαρίες σερβίρουν πίτσα που προτιμά/παραγγέλνει ο Dan;
+Serves.pizzeria
+Pizza Hut
+Little Caesars
+Straw Hat
+New York Pizza
+Dominos
+Chicago Pizza
+
+
+8. Ποιές πιτσαρίες σερβίρουν πίτσα που τρώει ο Dan αλλά ο τελευταίος δεν συχνάζει σε αυτές;
+Serves.pizzeria
+Pizza Hut
+Little Caesars
+Dominos
+Chicago Pizza
+
+
+9. Σε ποιές πιτσαρίες συχνάζουν ΚΑΙ ο Ben ΚΑΙ η Eli;
+Frequents.pizzeria
+Chicago Pizza
+
+
+10. Ποιές πιτσαρίες σερβίρουν ΟΛΑ τα είδη πίτσας που παραγγέλνει η Amy;
+Serves.pizzeria
+Little Caesars
