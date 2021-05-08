@@ -55,25 +55,29 @@ int SpellingCheck(BinTreePointer Root, FILE *fp);
 
 int main () 
 {
+    // Δήλωση μεταβλητών
     BinTreePointer ARoot;
 
     FILE *fp1;
     FILE *fp2;
 
+    // Άνοιγμα αρχείων
     fp1 = fopen("i112f5.txt","r");
     fp2 = fopen("i111f5.txt","r");
 
-    CreateBST(&ARoot);
-    CreateDictionary(&ARoot,fp1);
+    CreateBST(&ARoot); // Δημιουργία κενού ΔΔΑ
+    CreateDictionary(&ARoot,fp1); // Κατασκευή λεξικού
 
+    // Εμφάνιση του λεξικού
     printf("**********Dictionary**********\n");
     InorderTraversal(ARoot);
     printf("\n");
 
-
+    // Εμφάνιση των λέξεων που δεν είναι στο λεξικό (δηλαδή στο ΔΔΑ)
     printf("**********Not in Dictionary**********\n");
     printf("Number of words not in Dictionary: %d\n",SpellingCheck(ARoot, fp2));
 
+    // Κλείσιμο αρχείων
     fclose(fp1);
     fclose(fp2);
 
@@ -174,32 +178,36 @@ void InorderTraversal(BinTreePointer Root)
 
 void CreateDictionary(BinTreePointer *Root, FILE *fp)
 {
-    BinTreeElementType Item;
+    BinTreeElementType Item; // Δήλωση μεταβλητών
 
-    while(!feof(fp)){
+    while(!feof(fp)){ // Όσο το αρχείο δεν τελείωσε
 
-        fscanf(fp,"%s", Item);
-        BSTInsert(&(*Root), Item);
+        fscanf(fp,"%s", Item); // Διάβασε την λέξη από το αρχείο
+        BSTInsert(&(*Root), Item); // Εισήγαγε την λέξη στο ΔΔΑ-λεξικό
     }
 }
 
 int SpellingCheck(BinTreePointer Root, FILE *fp)
 {
+    // Δήλωση μεταβλητών
     boolean Found;
     BinTreePointer LocPtr;
     BinTreeElementType Item;
-    int count = 0;
+    int count = 0; // Αρχικοποίηση μετρητή λέξεων
 
-    while(!feof(fp)){
+    // διαβάζω 1-1 λέξη του αρχείου και αναζητώ στο ΔΔΑ-λεξικό
+    // αν δεν υπάρχει στο ΔΔΑ-λεξικό τότε την εμφανίζω
 
-        fscanf(fp,"%s", Item);
-        BSTSearch(Root, Item, &Found, &LocPtr);
+    while(!feof(fp)){ // Όσο το αρχείο δεν τελείωσε
 
-        if(!Found){
-            printf("%s \n",Item);
-            count++;
+        fscanf(fp,"%s", Item); // Διάβασε την λέξη από το αρχείο
+        BSTSearch(Root, Item, &Found, &LocPtr); // Αναζήτησε τη λέξη στο ΔΔΑ-λεξικό
+
+        if(!Found){ // Αν η λέξη δεν βρέθηκε στο ΔΔΑ-λεξικό
+            printf("%s \n",Item); // Εμφάνισε την λέξη
+            count++; // Αύξησε τον μετρητή
         }
     }
 
-    return count;
+    return count; // Επέστρεψε τον μετρητή
 }

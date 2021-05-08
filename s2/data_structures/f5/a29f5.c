@@ -54,72 +54,73 @@ void InorderTraversal(BinTreePointer Root);
 
 int main()
 {
+    // Δήλωση μεταβλητών
     BinTreePointer Root1, Root2, LocPtr;
     BinTreeElementType person;
     boolean found;
     char ch;
     int i;
 
-    CreateBST(&Root1);
-    CreateBST(&Root2);
+    CreateBST(&Root1); // Δημιουργία ΔΔΑ για τον κατάλογο <=60
+    CreateBST(&Root2); // Δημιουργία ΔΔΑ για τον κατάλογο >60
 
-    do
+    do // Επαναληπτικά
     {
      printf("Give AMKA? ");
-     scanf("%d", &person.AMKA);
+     scanf("%d", &person.AMKA); // Διάβασε το ΑΜΚΑ του ατόμου
      printf("Give AFM? ");
-     scanf("%d", &person.afm);
+     scanf("%d", &person.afm); // Διάβασε το ΑΦΜ του ατόμου
      printf("Give age? ");
-     scanf("%d", &person.age);
+     scanf("%d", &person.age); // Διάβασε την ηλικία του ατόμου
     
-     if(person.AMKA<=60){
-        BSTInsert(&Root1, person);
+     if(person.AMKA<=60){ // Αν η ηλικία του ατόμου είναι μικρότερη ή ίση του 60
+        BSTInsert(&Root1, person); // Εισαγωγή του ατόμου στο ΔΔΑ με τους <=60
      }
-     else{
-        BSTInsert(&Root2, person);
+     else{ // Αλλιώς
+        BSTInsert(&Root2, person); // Εισαγωγή του ατόμου στο ΔΔΑ με τους >60
      }
      printf("\nContinue Y/N: ");
      
-     do
+     do // Επαναληπτικά
        {
-       scanf("%c", &ch);
-       } while (toupper(ch)!= 'N' && toupper(ch)!= 'Y');
+       scanf("%c", &ch); // Διάβασε τον χαρακτήρα ch
+       } while (toupper(ch)!= 'N' && toupper(ch)!= 'Y'); // όσο ο χαρακτήρας δεν είναι N ή Υ
        
-       } while (toupper(ch)!='N');
+       } while (toupper(ch)!='N'); // όσο ο χαρακτήρας δεν είναι Ν
 
     printf("\nPeople with age less-equal 60\n");
-    InorderTraversal(Root1);
+    InorderTraversal(Root1); // Εμφάνισε το ΔΔΑ με τα άτομα <=60
     printf("\n");
     printf("\nPeople with age greater than 60\n");
-    InorderTraversal(Root2);
+    InorderTraversal(Root2); // Εμφάνισε το ΔΔΑ με τα άτομα > 60
     printf("\n");
     for(i=0;i<3;i++)
     {
      printf("Give AMKA: ");
-     scanf("%d", &person.AMKA);
+     scanf("%d", &person.AMKA); // Διάβασε το ΑΜΚΑ του ατόμου
      printf("Give age: ");
-     scanf("%d", &person.age);
+     scanf("%d", &person.age); // Διάβασε την ηλικία του ατόμου
 
-    if(person.age<=60)
+    if(person.age<=60) // Αν η ηλικία του ατόμου είναι μικρότερη ή ίση του 60
     {
-        BSTSearch(Root1, person, &found, &LocPtr);
+        BSTSearch(Root1, person, &found, &LocPtr); // Αναζήτηση του ατόμου στο ΔΔΑ των <=60
     }
-    else
+    else // Αλλιώς
     {
-        BSTSearch(Root2, person, &found, &LocPtr);
+        BSTSearch(Root2, person, &found, &LocPtr); // Αναζήτηση του ατόμου στο ΔΔΑ των > 60
     }
-    if(found)
+    if(found) // Αν το άτομο βρέθηκε
     {
-        if(person.age==LocPtr->Data.age)
-        {
+        if(person.age==LocPtr->Data.age) // Αν η ηλικία του ατόμου είναι ίση με τη δοσμένη από το χρήστη ηλικία
+        {   // Εμφάνισε ότι το άτομο βρέθηκε
             printf("The person with AMKA %d, AFM %d and age %d is in the catalogue\n",LocPtr->Data.AMKA,LocPtr->Data.afm,LocPtr->Data.age);
         }
-        else{
+        else{ // Αλλιώς Εμφάνισε ότι το άτομο βρέθηκε αλλά με άλλη ηλικία
             printf("The person with AMKA %d has age %d different from the person you are looking for\n",LocPtr->Data.AMKA,LocPtr->Data.age);
         }
     }
 
-    else{
+    else{ // Αλλιώς Εμφάνισε ότι το άτομο δεν βρέθηκε
         printf("The person with AMKA %d and age %d is Unknown\n",person.AMKA,person.age);
     }
     }
