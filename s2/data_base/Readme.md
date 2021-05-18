@@ -683,7 +683,7 @@ SELECT cid, CONCAT(name,' ', surname) FROM Customer;
 Εμφανίζει έναν πίνακα με τις εξής δύο στήλες: cid και CONCAT(name,' ',surname).
 
 ```
-SELECTcid, CONCAT(name,' ', surname) AS fullName FROM Customer;
+SELECT cid, CONCAT (name,' ', surname) AS fullName FROM Customer;
 ```
 
 Εμφανίζει τα ίδια αποτελέσματα με πριν σε έναν πίνακα με τις εξής δύο στήλες: cid και fullName.
