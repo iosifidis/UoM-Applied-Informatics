@@ -936,3 +936,7 @@ SELECT * FROM Customer FULL JOIN Phones USING(cid);
 Επιστρέφει:
 
 ![ΠΙΝΑΚΑΣ FULL](./pictures_skonaki/pinakas-full-2.png "πίνακας full")
+
+# ΟΠΤΙΚΗ ΑΝΑΠΑΡΑΣΤΑΣΗ JOIN 
+
+![SQL Joins](./pictures_skonaki/SQL_joins.jpeg "SQL Joins")
