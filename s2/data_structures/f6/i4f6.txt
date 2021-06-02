@@ -1,0 +1,7 @@
+nikos,dimitriou,6911111112,1
+maya,satratzemi,6933333332,20
+marios,nikolaou,6910001112,15
+maria,giannou,6914441112,1
+dimitra,totsika,6911555111,14
+giannis,pappas,6911111222,16
+nikos,ploskas,6911111662,20

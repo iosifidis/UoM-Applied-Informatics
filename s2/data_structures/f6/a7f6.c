@@ -99,7 +99,7 @@ void PrintListOfSynonyms(HashListType HList, KeyType key);
 
 int main()
 {
-	// Δήλωση μεταβήτών
+	// Δήλωση μεταβλητών
     char ch;
     HashListType HList;
     ListElm AnItem;
