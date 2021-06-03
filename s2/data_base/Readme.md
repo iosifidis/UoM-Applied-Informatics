@@ -883,7 +883,18 @@ Customer.cid=Phones.cid AND Phones.pnum LIKE '6%';
 
 _Παραδείγματα_
 
+### **FULL JOIN**
+
+![FULL JOIN](./pictures_skonaki/fulljoin.jpg "full join")
+
+Επιστρέφει εγγραφές που έχουν αντίστοιχες τιμές και στους δύο πίνακες.
+
 ### **LEFT JOIN**
+
+![LEFT JOIN](./pictures_skonaki/leftjoin.jpg "left join")
+
+Επιστρέφει όλες τις εγγραφές από τον αριστερό πίνακα και τις αντίστοιχες εγγραφές από τον δεξιό πίνακα.
+
 i. 
 ```
 SELECT * FROM Customer LEFT JOIN Phones ON Customer.cid=Phones.cid;
@@ -904,6 +915,10 @@ SELECT * FROM Customer LEFT JOIN Phones USING(cid);
 
 ## **RIGHT JOIN**
 
+![RIGHT JOIN](./pictures_skonaki/rightjoin.jpg "right join")
+
+Επιστρέφει όλες τις εγγραφές από το δεξί πίνακα και τις αντίστοιχες εγγραφές από τον αριστερό πίνακα.
+
 i. 
 ```
 SELECT * FROM Customer RIGHT JOIN Phones ON Customer.cid=Phones.cid;
@@ -921,6 +936,10 @@ SELECT * FROM Customer RIGHT JOIN Phones USING(cid);
 ![ΠΙΝΑΚΑΣ RIGHT](./pictures_skonaki/pinakas-right-2.png "πίνακας right")
 
 ## **FULL JOIN**
+
+![FULL JOIN](./pictures_skonaki/fulljoin.jpg "full join")
+
+Επιστρέφει όλες τις εγγραφές που ταιριάζουν είτε στον αριστερό είτε στον δεξί πίνακα.
 
 i. 
 ```
