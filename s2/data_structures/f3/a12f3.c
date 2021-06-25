@@ -65,11 +65,11 @@ int main()
    int i;
 
    CreateQ(&WaitingQueue); // Δημιουργία ουράς αναμονής
-   CreateQ(&ServiceQueue); // Δήλωση ουράς εξυπηρέτησης
+   CreateQ(&ServiceQueue); // Δημιουργία ουράς εξυπηρέτησης
    
    // Εισαγωγή δεδομένων στην ουρά αναμονής. Χρήση συνάρτησης ReadCustomer
    for(i=1;i<QueueLimit;i++){
-      printf("Give: arival time,stay time for client %d: ",i);
+      printf("Give: arival time, stay time for client %d: ",i);
       ReadCustomer(&WaitingQueue);
    }
 
