@@ -443,8 +443,6 @@ WHERE λογική_συνθήκη
 
 ![Ανατομία μιας SELECT](./pictures_skonaki/anatomia-SELECT.jpg "Ανατομία μιας SELECT")
 
-![Σειρά εκτέλεσης ερωτήματος](./pictures_skonaki/query.jpeg "Σειρά εκτέλεσς QUERY")
-
 Οι λογικοί τελεστές που υποστηρίζονται είναι οι γνωστοί μας από την άλγεβρα Βool και τις γλώσσες προγραμματισμού και έχουν ως εξής:
 
 **OR ή ||** : Λογικό Ή
@@ -723,6 +721,8 @@ SELECT * FROM Customer;
 ```
 SELECT cid, afm, address, name, sname, dateOfBirth FROM Customer;
 ```
+
+![Σειρά εκτέλεσης ερωτήματος](./pictures_skonaki/query.jpeg "Σειρά εκτέλεσς QUERY")
 
 ## **Βασικές πράξεις συνόλων**
 
