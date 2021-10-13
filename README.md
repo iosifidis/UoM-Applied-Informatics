@@ -4,4 +4,4 @@
 
 Ως ξεκίνημα, δημιούργησα τις οδηγίες εγγραφής στην σχολή που θα βρείτε [εδώ](https://github.com/iosifidis/UoM-Applied-Informatics/blob/main/eggrafi-stin-efarmosmeni-pliforiki.md).  
 
-Μπορείτε να βρείτε τα αγγλικά βιβλία (σε όλα μαθήματα υπάρχουν), στο [drive εδώ](http://tiny.cc/pamakdai).
+Μπορείτε να βρείτε τα αγγλικά βιβλία (σε όλα μαθήματα υπάρχουν), στο [drive εδώ](http://tiny.cc/pamak).
