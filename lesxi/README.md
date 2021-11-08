@@ -1,6 +1,8 @@
 # Μενού λέσχης
 
-![Menu](menu.jpg "Menu")
+![Menu](gevma.jpg "Menu")
+
+![Menu](dipno.jpg "Menu")
 
 # Ωράριο λέσχης
 
