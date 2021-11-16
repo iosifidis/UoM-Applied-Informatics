@@ -6,4 +6,4 @@
 
 Μπορείτε να βρείτε τα αγγλικά βιβλία (σε όλα μαθήματα υπάρχουν), στο [drive εδώ](http://tiny.cc/pamak).
 
-[![Dev.to](https://github-readme-stats.vercel.app/api/pin/?username=iosifidis&repo=UoM-Applied-Informatics)](https://github.com/iosifidis/UoM-Applied-Informatic)
+![Iosifdis GitHub stats](https://github-readme-stats.vercel.app/api?username=iosifidis&repo=UoM-Applied-Informatics&show_icons=true&theme=dark)
