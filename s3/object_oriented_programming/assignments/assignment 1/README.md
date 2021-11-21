@@ -15,9 +15,9 @@
 
 Εδώ θα βρείτε 3 αρχεία:
 
-- Main.java  
-- Player.java  
-- Dealer.java  
+- [Main.java](./src/Main.java)  
+- [Player.java](./src/Player.java)  
+- [Dealer.java](./src/Dealer.java)  
 
 Μπορείτε να τα τοποθετήσετε στον ίδιο φάκελο και να εκτελέσετε το project.
-Εναλλακτικά μπορείτε να αποσυμπιέσετε το αρχείο Iosifidis_Efstathios_1.zip και να κάνετε εισαγωγή στο eclipse ως project. 
+Εναλλακτικά μπορείτε να αποσυμπιέσετε το αρχείο [Iosifidis_Efstathios_1.zip](./Iosifidis_Efstathios_1.zip) και να κάνετε εισαγωγή στο eclipse ως project. 
