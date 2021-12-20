@@ -7,15 +7,16 @@ public class Ship {
 	// Το αμπάρι του πλοίου. Δείχνει σε ένα αντικείμενο container (αρχή υποκατάστασης, λαμβάνει και τους δυο τύπους)
 	private ArrayList<Container> containers = new ArrayList<>();
 	
-	// Για να πάρω τα ονόματα των πλοίων
-	public String getName(){
-		return name;
-	}
 	
-	
+	// Κατασκευαστής
 	public Ship(String name, int capacity) {
 		this.name = name;
 		this.capacity = capacity;
+	}
+	
+	// Για να πάρω τα ονόματα των πλοίων
+	public String getName(){
+		return name;
 	}
 	
 	// Μέθοδος προσθήκης container αν χωράει στο πλοίο
