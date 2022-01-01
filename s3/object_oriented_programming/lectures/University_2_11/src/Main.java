@@ -23,9 +23,11 @@ public class Main {
 		s2.printInfo();
 		s3.printInfo();
 		
+		// Θέτω το όνομα σε ένα αντικείμενο Student
 		s3.setName("Takis");
 		s3.printInfo();
 		
+		// Εκτυπώνω ΜΟΝΟ το όνομα του φοιτητή s1 λαμβάνοντάς το με την μέθοδο get
 		System.out.println(s1.getName());
 		
 	}
