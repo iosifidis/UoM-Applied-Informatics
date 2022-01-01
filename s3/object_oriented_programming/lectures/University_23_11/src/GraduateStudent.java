@@ -8,14 +8,12 @@ public class GraduateStudent extends Student {
 		this.supervisor = supervisor;
 	}
 
-	
-
 	// Επικάλυψη / επαναορισμός μεθόδου
 	public void printInfo(){
 		super.printInfo();
 		System.out.println("Supervisor: " + supervisor);
 		
-	//Αρχή υποκατάστασης: Τα αντικείμενα μιας υποκλάσης είναι και αντικείμενο της επερκλάσης
+	//Αρχή υποκατάστασης: Τα αντικείμενα μιας υποκλάσης είναι και αντικείμενο της υπερκλάσης
 	}
 
 	public void printType(){

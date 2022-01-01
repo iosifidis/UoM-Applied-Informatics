@@ -10,11 +10,13 @@ public class UnderGradStudent extends Student {
 		this.year = year;
 	}
 	
+	// Επικάλυψη / επαναορισμός μεθόδου
 	public void printInfo(){
 		super.printInfo();
 		System.out.println("year: " + year);
 	}
 	
+	//Αρχή υποκατάστασης: Τα αντικείμενα μιας υποκλάσης είναι και αντικείμενο της υπερκλάσης
 	public void printType(){
 		System.out.println("Hello I am an undergraduate student");
 	}
