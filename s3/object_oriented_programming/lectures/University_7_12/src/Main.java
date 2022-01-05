@@ -11,8 +11,10 @@ public class Main {
 		System.out.println(s1);
 		System.out.println(s2);
 		
+		// Σύγκριση των αντικειμένων με ==
 //		// Εκτυπώνει την else (the two object are different) γιατί συγκρίνει αντικείμενα. 
-//		// Οι διευθύνσεις είναι διαφορετικές. Είναι αυτές που συγκρίνονται με ==. Τα αντικείμενα μόνο με μέθοδο equals
+//		// Οι διευθύνσεις είναι διαφορετικές. Είναι αυτές που συγκρίνονται με ==. 
+//		// Συγκρίνω τα αντικείμενα ΜΟΝΟ με μέθοδο equals
 //		if(s1==s2)
 //			System.out.println("The two objects refer to the same student");
 //		else

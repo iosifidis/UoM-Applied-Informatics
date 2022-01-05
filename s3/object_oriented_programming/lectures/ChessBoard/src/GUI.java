@@ -8,13 +8,14 @@ public class GUI extends JFrame {
 
 	public GUI(){
 		
+		//2. Δημιουργία του board
 		Board board = new Board();
 		
-		// Προσθήκη του Board στο παράθυρο
+		//3. Προσθήκη του Board στο παράθυρο
 		this.setContentPane(board);
 		
 		
-		// Δημιουργία παραθύρου
+		//1.  Δημιουργία παραθύρου
 		this.setVisible(true);
 		this.setSize(500,500);
 		this.setTitle("ChessBoard");
@@ -73,14 +74,9 @@ public class GUI extends JFrame {
 					else{
 						g.setColor(Color.BLUE);
 						g.fillRect(x, y, sqSize, sqSize);
-					}
-						
-						
+					}		
 				}
-			}
-
-			
-			
+			}			
 		}
 	}
 	

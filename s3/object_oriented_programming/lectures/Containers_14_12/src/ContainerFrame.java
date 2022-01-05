@@ -11,16 +11,19 @@ import javax.swing.JTextField;
 
 public class ContainerFrame extends JFrame {
 
-	//1. Δημιουργία του panel
+	//2. GUI:  Δημιουργία του panel
 	private JPanel panel = new JPanel();
 	
-	//2. Δημιουργία γραφικών συστατικών
+	//2. GUI:  Δημιουργία γραφικών συστατικών
+	// Συστατικά τύπου κειμένου
 	private JTextField codeField = new JTextField("Enter code");
 	private JTextField destinationField = new JTextField("Enter destination");
 	private JTextField weightField = new JTextField("Enter weight");
 	private JTextField powerField = new JTextField("Enter power");
+	// Συστατικό τύπου κουμπί
 	private JButton createBulkButton = new JButton("Create Βulk");
 	private JButton createRefrField = new JButton("Create Refr");
+	// Συστατικό τύπου λίστα
 	private JList list = new JList();
 	
 	//Δηλώνω ιδιότητα που δεν δείχνει πουθενά. Θέλω να δείχνει σε όλα τα πλοία. Θα το συνδέσω στον κατασκευαστή
@@ -36,15 +39,15 @@ public class ContainerFrame extends JFrame {
 		//Γεφύρωσα το χάσμα της γραφικής διασύνδεσης με τα αντικείμενα της main 
 		allShips = ships;
 		
-		// Εισαγωγή κειμένου επιλογών στην λίστα
+		// Εισαγωγή κειμένου επιλογών στην λίστα (πρόσθεση όων των πλοίων)
 		// Διατρέχω όλα τα πλοία
 		for(Ship ship: allShips)
-			model.addElement(ship.getName());
+			model.addElement(ship.getName()); // Προσθήκη πλοίου στην δομή δεδομένων (λίστα) model
 		
-		// Εισαγωγή του model στην λίστα
+		// Εισαγωγή του model στο συστατικό τύπου λίστα
 		list.setModel(model);
 		
-		//3. Εισαγωγή γραφικών συστατικών στο panel
+		//3. GUI:  Εισαγωγή γραφικών συστατικών στο panel
 		panel.add(codeField);
 		panel.add(destinationField);
 		panel.add(weightField);
@@ -53,10 +56,7 @@ public class ContainerFrame extends JFrame {
 		panel.add(createRefrField);
 		panel.add(list);
 		
-		//Προσθήκη στοιχείων στην λίστα
-		
-		
-		//4. Προσαρμογή του panel πάνω στο παράθυρο
+		//4. GUI:  Προσαρμογή του panel πάνω στο παράθυρο
 		this.setContentPane(panel);
 		
 		// Δημιουργώ ακροατή (βήμα 3ο)
@@ -65,26 +65,19 @@ public class ContainerFrame extends JFrame {
 		//Σύνδεση με τον ακροατή συμβάντων (βήμα 4)
 		createBulkButton.addActionListener(listener);
 		createRefrField.addActionListener(listener);
-		
-		
-		//Δημιουργία παραθύρου
+				
+		//1. GUI: Δημιουργία παραθύρου
 		this.setVisible(true);
 		this.setSize(200,400);
 		this.setTitle("Create and Load Containers");
 		this.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		
-		
-		
 	}
-
 	
 	// Δημιουργία κλάσης Ακροατή (βήμα 1)
-	class ButtonListener implements ActionListener{
-
+	class ButtonListener implements ActionListener{	
 		
-		
-		
-		//2. Μέθοδος που θα εκτελείται όταν πατάμε το πλήκτρο
+		//Μέθοδος που θα εκτελείται όταν πατάμε το πλήκτρο (βήμα 2)
 		@Override
 		public void actionPerformed(ActionEvent arg0) {
 			
@@ -127,12 +120,6 @@ public class ContainerFrame extends JFrame {
 			selectedShip.addContainer(container); // Πρέπει να δηλώσω το container πριν το if/else
 			// Εκτυπώνω 
 			System.out.println("Total charge of ship " + selectedShipName + " is: " + selectedShip.calculateTotalCharge());
-		}
-		
-		
-		
-	}
-	
-	
-	
+		}	
+	}	
 }
