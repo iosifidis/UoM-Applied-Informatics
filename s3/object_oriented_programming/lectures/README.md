@@ -26,3 +26,5 @@
 * [DataStructures6_TreeSetComparable](./DataStructures6_TreeSetComparable): Καταχωρώ σε ένα TreeSet αντικείμενα. Όμως βγάζει σφάλμα διότι δεν ξέρει πως να τα ταξινομήσει. Οπότε φτιάχνω μια διασύνδεση Comparable και υλοποιώ την compareTo για να γίνει η ταξινόμηση των αντικειμένων. Υλοποίηση εσωτερικών συγκριτών.    
 * [DataStructures7_TreeSetComparator](./DataStructures7_TreeSetComparator): Καταχώρηση σε ένα TreeSet αντικειμένων. Υλοποίηση 2 εξωτερικών συγκριτών.  
 * [DataStructures8_HashSet](./DataStructures8_HashSet): Καταχώρηση σε ένα HashSet 2 ίδιων αντικειμένων. Πρέπει να επικαλύψω την hashcode και equals για να μην καταχωρεί τα 2 ίδια αντικείμενα (πρέπει να ορίσω πχ να καταχωρούνται βάση του id).  
+* [DataStructures9_Algorithms](./DataStructures9_Algorithms): Δημιουργία ενός Collection ArrayList. Εύκολος τρόπος για ταξινόμηση, αντίστροφη ταξινόμηση, τυχαίο ανακάτεμα, εναλλαγή σειράς εύρεση συχνότητας ευμφάνισης και ελάχιστου-μέγιστου επί της ArrayList.  
+ 
