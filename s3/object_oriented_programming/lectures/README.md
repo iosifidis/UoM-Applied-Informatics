@@ -27,4 +27,6 @@
 * [DataStructures7_TreeSetComparator](./DataStructures7_TreeSetComparator): Καταχώρηση σε ένα TreeSet αντικειμένων. Υλοποίηση 2 εξωτερικών συγκριτών.  
 * [DataStructures8_HashSet](./DataStructures8_HashSet): Καταχώρηση σε ένα HashSet 2 ίδιων αντικειμένων. Πρέπει να επικαλύψω την hashcode και equals για να μην καταχωρεί τα 2 ίδια αντικείμενα (πρέπει να ορίσω πχ να καταχωρούνται βάση του id).  
 * [DataStructures9_Algorithms](./DataStructures9_Algorithms): Δημιουργία ενός Collection ArrayList. Εύκολος τρόπος για ταξινόμηση, αντίστροφη ταξινόμηση, τυχαίο ανακάτεμα, εναλλαγή σειράς εύρεση συχνότητας ευμφάνισης και ελάχιστου-μέγιστου επί της ArrayList.  
- 
+* [DataStructures10_GUI](./DataStructures10_GUI): Γραφική διεπαφή με μοντέλο λίστας στην οποία προτίθεται ένα γραφικό συστατικό μπάρα κύλισης. Ο χειρισμός συμβάντων των κουμπιών υλοποιειται μέσα στην main, κάνοντας σύμπτυξη των 4 βημάτων.  
+* [DataStructures12_HashMap](./DataStructures12_HashMap): Εισαγωγή στα hashmaps.  
+* [LibraryMaps](./LibraryMaps)Q: Απλή υλοποίηση προγράμματος βιβλιοθήκης με την χρήση των hashmaps.  
