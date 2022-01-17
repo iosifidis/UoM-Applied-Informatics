@@ -30,3 +30,5 @@
 * [DataStructures10_GUI](./DataStructures10_GUI): Γραφική διεπαφή με μοντέλο λίστας στην οποία προτίθεται ένα γραφικό συστατικό μπάρα κύλισης. Ο χειρισμός συμβάντων των κουμπιών υλοποιειται μέσα στην main, κάνοντας σύμπτυξη των 4 βημάτων.  
 * [DataStructures12_HashMap](./DataStructures12_HashMap): Εισαγωγή στα hashmaps.  
 * [LibraryMaps](./LibraryMaps)Q: Απλή υλοποίηση προγράμματος βιβλιοθήκης με την χρήση των hashmaps.  
+* [Charts](./Charts]: Εισαγωγή εξωτερικών βιβλιοθηκών (Properties>Java build path>Libraries>Add external jars). Κατασκευή παραθύρου με διαγράμματα.  
+* [Chess](./Chess): Συμπλήρωση της σκακιέρας με ένα πιόνι που μετακινείται με κλικ του ποντικιού.  
