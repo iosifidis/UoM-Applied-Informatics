@@ -1,4 +1,3 @@
-//23 Νοεμβρίου 2021, Θέση 7
 
 import java.util.ArrayList;
 
