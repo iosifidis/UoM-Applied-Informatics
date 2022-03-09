@@ -22,7 +22,7 @@
 
 * **Χρηματοοικονομική διοίκηση**: ([Κωδικός 68389105](https://service.eudoxus.gr/search/#a/id:68389105/0)): Χρηματοοικονομική διαχείριση, Titman S., Martin J, Keown A. (Κόστος 148,40 €)
 
-* **Ψηφιακή οικονομική**:  
+* **Ψηφιακή οικονομική**: ([Κωδικός 50659169](https://service.eudoxus.gr/search/#a/id:50659169/0)): [Η Ψηφιακή Οικονομία](https://bookpath.gr/p/i-psifiaki-oikonomia-yposcheseis-kai-kindynoi-stin-epochi-tis-diktyakis-effyias), Tapscott Don (Κόστος 26,80 €)
 
 
 Εάν βιάζεστε, μπορείτε να βρείτε μερικά βιβλία στα αγγλικά στο [drive εδώ](http://tiny.cc/evdo3os).
