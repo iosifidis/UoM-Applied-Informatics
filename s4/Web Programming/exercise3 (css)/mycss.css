@@ -1,0 +1,45 @@
+body {
+	background-color: lightblue;
+}
+
+h1, h2 {
+	text-align: center;
+	font-family: "Noto Serif", serif;
+	font-weight: normal;
+	background-color: darkslateblue;
+	color: yellow;
+}
+
+h1 {
+	font-size: 50px;
+}
+
+h2 {
+	font-size: 32px;
+}
+
+hr {
+	color: white;
+}
+
+p {
+	font-family: "Open Sans", sans-serif;
+	font-size: 24px;
+	text-align: justify;
+}
+
+ul {
+	background-color: darkorange;
+	font-size: 32px;
+    line-height: 40px;
+    color: lightblue;
+	list-style-type: none;
+}
+
+li:hover {
+	background-color: darkslateblue;
+}
+
+.kitrino {
+	color: yellow;
+}
