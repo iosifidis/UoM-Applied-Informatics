@@ -1,0 +1,38 @@
+<!doctype html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>Πράξεις με JavaScript</title>
+		<style>
+			input {
+				margin: 10px;
+			}
+			#calculate {
+				width: 200px;
+				padding: 10px;
+				border: 1px solid black;
+				text-align: center;
+				background-color: lightgrey;
+			}
+			#calculate:hover {
+				cursor: pointer;
+			}
+			span {
+				font-weight: bold;
+			}
+		</style>
+	</head>
+	<body>
+		<input type="text">
+		<select>
+			<option value="+">+</option>
+			<option value="-">-</option>
+			<option value="*">*</option>
+			<option value="/">/</option>
+		</select>
+		<input type="text"><br>
+		<button id="calculate">Calculate...</button>
+		<p>Result: <span></span></p>
+		<script src="ex_01.js"></script>
+	</body>
+</html>
