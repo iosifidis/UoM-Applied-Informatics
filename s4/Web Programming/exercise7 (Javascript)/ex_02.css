@@ -1,0 +1,33 @@
+@font-face {
+  font-family: RobotoLight;
+  font-style: normal;
+  font-weight: 300;
+  src: local('Roboto Light'), url(http://fonts.gstatic.com/s/roboto/v14/I3S1wsgSg9YCurV6PUkTOT8E0i7KZn-EPnyo3HZu7kw.woff) format('woff');
+}
+
+body {
+    font-family: RobotoLight;
+    font-size: 14px;
+}
+
+p {
+    width: 300px;
+    padding: 10px;
+    border: 1px solid black;
+    background-color: rgb(240,240,240);
+}
+
+div.out {
+    position: relative;
+}
+
+div.circle {
+    border: 1px solid black;
+    border-radius: 50%;
+    background-color: rgba(255,255,0,0.5);
+    width: 30px;
+    height: 30px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+}
