@@ -31,22 +31,3 @@ for(const elem of inputs) {
         result.innerHTML = message;
     })
 };
-
-/*document.getElementsByTagName('input').addEventListener('click', function (ev) {
-    let message = 'Nothing has been chosen...';
-
-    for(var i =0; i <food_radios.length; i++) {
-
-        if(food_radios[i].checked){
-            message = "Κυρίος Πιάτο: " + food_radios[i].value + ""; 
-        }
-    }
-
-    for(var i =0; i <food_radios.length; i++) {
-        if(salad_radios[i].checked){
-            message += "Σαλάτα: " + salad_radios[i].value +""; 
-        }
-    }
-
-    result.innerHTML = message;
-});*/
