@@ -1,0 +1,112 @@
+@font-face {
+    font-family: "Fira Sans";
+    src: url("http://fonts.gstatic.com/s/firasans/v5/5jAMGMsBXS6xUYEytGcZdD8E0i7KZn-EPnyo3HZu7kw.woff");
+}
+
+.navigation {
+    list-style: none;
+    margin: 0;
+    background: orange;
+    display: flex;
+    justify-content: flex-end;
+    font-family: "Fira Sans", sans-serif;
+    font-size: 15px;
+}
+
+.navigation a {
+    text-decoration: none;
+    display: block;
+    padding: 1em;
+    color: white;
+}
+
+.navigation a:hover {
+    background: #00b7f5;
+}
+
+@media all and (max-width: 800px) {
+    .navigation {
+        justify-content: space-around;
+    }
+}
+@media all and (max-width: 600px) {
+    .navigation {
+        flex-direction: column;
+        flex-wrap: wrap;
+        padding: 0;
+    }
+
+    .navigation a {
+        text-align: center;
+        padding: 10px;
+        border-top: 1px solid rgba(255, 255, 255, 0.3);
+        border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    }
+
+    .navigation li:last-of-type a {
+        border-bottom: none;
+    }
+}
+
+.wrapper {
+    margin-top: 30px;
+    border: 2px solid black;
+    display: flex;
+    flex-direction: row;
+    flex-flow: wrap;
+    text-align: center;
+}
+
+.wrapper > * {
+    padding: 10px;
+    flex: 1 100%;
+}
+
+header {
+    text-align: left;
+    background-color: tomato;
+    color: #ffffff;
+    padding: 15px;
+}
+
+footer {
+    background-color: lightgreen;
+    text-align: left;
+}
+
+.main {
+    text-align: left;
+    background-color: deepskyblue;
+}
+
+.aside-1 {
+    background-color: gold;
+    text-align: left;
+}
+
+
+
+@media all and (min-width: 600px) {
+    .aside {
+        flex: 1;
+    }
+}
+
+@media all and (min-width: 800px) {
+    .main {
+        flex: 3;
+        order: 2;
+    }
+
+    .aside-1 {
+        order: 1;
+    }
+
+    .aside-2 {
+        order: 3;
+    }
+
+    footer {
+        order: 4;
+    }
+}

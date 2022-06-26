@@ -1,0 +1,16 @@
+/* Create two columns/boxes that floats next to each other */
+nav {
+    float: right;
+    width: 30%;
+    background: rgb(158, 102, 102);
+    padding: 20px;
+    padding-bottom: 15%;
+    /* height: 300px; */
+  }
+  
+  /* Style the list inside the menu */
+  nav ul {
+    float: right;
+    list-style-type: none;
+    padding: 0;
+  }
