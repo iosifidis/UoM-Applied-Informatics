@@ -1,0 +1,29 @@
+div {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
+}
+
+.player {
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	align-items: center;
+	margin: 20px;
+}
+
+button {
+	display: block;
+	padding: 10px;
+	margin: 15px;
+	font-weight: bold;
+}
+
+#winner {
+	display: flex;
+	justify-content: center;
+}
+
+h2 {
+	color:red;
+}
