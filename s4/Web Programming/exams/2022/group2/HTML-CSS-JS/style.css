@@ -1,0 +1,49 @@
+* {
+    font-family: 'Courier New', Courier, monospace;
+}
+
+h1 {
+    font-size: 40pt;
+}
+
+h3 {
+    font-size: 20pt;
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+p {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+    background-color: lightgrey;
+    border: 5px solid black;
+    height: 60px;
+    width: 450px;
+    font-size: 30pt;
+    font-weight: bold;
+}
+
+.digits {
+    padding: 0;
+    list-style: none;
+    display: inline-flex;
+    justify-content: space-between;
+    width: 250px;
+}
+
+#zero, #one {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: yellow;
+    border: 5px solid red;
+    width: 100px;
+    height: 50px;
+    font-size: 25pt;
+    cursor: pointer;
+}
