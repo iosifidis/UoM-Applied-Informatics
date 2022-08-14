@@ -3,7 +3,30 @@ const upDown = document.getElementById('upDown');
 const leftRight = document.getElementById('leftRight');
 const p = document.getElementById('box');
 
+upDown.addEventListener('click', function (ev) {  
+    if(p.style.borderTop == "solid" && p.style.borderBottom == "solid"){
+        p.style.borderTop = 'none';
+        p.style.borderBottom = 'none';
+    }
+    else{
+         p.style.borderTop = 'solid';
+         p.style.borderBottom = 'solid';
+     }
+}
+);
 
+leftRight.addEventListener('click', function (ev) {
+    if(p.style.borderLeft == "solid" && p.style.borderRight == "solid"){
+        p.style.borderLeft = 'none';
+        p.style.borderRight = 'none';
+    }
+    else{
+        p.style.borderLeft = 'solid';
+        p.style.borderRight = 'solid';
+     }
+
+/*
+ΕΝΑΛΛΑΚΤΙΚΟΣ ΜΕ hidden
 upDown.addEventListener('click', function (ev) {  
     if(p.style.borderTopStyle == "solid" && p.style.borderBottomStyle == "solid"){
         p.style.borderTopStyle = 'hidden';
@@ -25,6 +48,7 @@ leftRight.addEventListener('click', function (ev) {
         p.style.borderLeftStyle = 'solid';
         p.style.borderRightStyle = 'solid';
      }
+*/
 
 });
 
