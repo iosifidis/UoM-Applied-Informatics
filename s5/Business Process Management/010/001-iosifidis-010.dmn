@@ -1,0 +1,417 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<definitions xmlns="https://www.omg.org/spec/DMN/20191111/MODEL/" xmlns:dmndi="https://www.omg.org/spec/DMN/20191111/DMNDI/" xmlns:dc="http://www.omg.org/spec/DMN/20180521/DC/" xmlns:modeler="http://camunda.org/schema/modeler/1.0" xmlns:biodi="http://bpmn.io/schema/dmn/biodi/2.0" xmlns:di="http://www.omg.org/spec/DMN/20180521/DI/" id="Definitions_1bbvjzx" name="DRD" namespace="http://camunda.org/schema/1.0/dmn" exporter="Camunda Modeler" exporterVersion="5.5.0" modeler:executionPlatform="Camunda Cloud" modeler:executionPlatformVersion="8.1.0">
+  <decision id="Issue_1vditoa" name="Έκδοση Ευρωπαϊκής Κάρτας Ασφάλισης">
+    <informationRequirement id="InformationRequirement_1sfgzo6">
+      <requiredInput href="#InputData_0jsj8mv" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1qxotwz">
+      <requiredInput href="#InputData_1lp1hgg" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0tggpgj">
+      <requiredInput href="#InputData_1bmhut5" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0s7urjf">
+      <requiredDecision href="#AMKA_0jz51t4" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_0jn30e4">
+      <requiredDecision href="#Credentials_0wmgsyc" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_120pndn">
+      <requiredInput href="#InputData_0jftyi7" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_13zxy6j">
+      <requiredAuthority href="#KnowledgeSource_1rtztrk" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_1szywi3">
+      <input id="Input_1" label="Αυθεντικοποίηση χρήστη">
+        <inputExpression id="InputExpression_1" typeRef="boolean">
+          <text>login</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0xbc59c" label="Ύπαρξη ασφαλιστικών προϋποθέσεων">
+        <inputExpression id="LiteralExpression_1182a4q" typeRef="boolean">
+          <text>asfalistikesProipotheseis</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1x0k1t4" label="Δημογραφικά στοιχεία">
+        <inputExpression id="LiteralExpression_0x2lqmb" typeRef="string">
+          <text>demographics</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_04jxvy3" label="Ημερομηνία έναρξης ισχύος κάρτας">
+        <inputExpression id="LiteralExpression_1kjja89" typeRef="date">
+          <text>date</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_0ehmlg2" label="Στοιχεία επικοινωνίας" biodi:width="192">
+        <inputExpression id="LiteralExpression_1ex5hvj" typeRef="integer">
+          <text>contact</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1bjoy42" label="Διεύθυνση κατοικίας">
+        <inputExpression id="LiteralExpression_13q4544" typeRef="string">
+          <text>address</text>
+        </inputExpression>
+      </input>
+      <output id="Output_1" label="Εκδοση κάρτας" name="issue" typeRef="string" biodi:width="192" />
+      <rule id="DecisionRule_1ms4rxq">
+        <description>"Έκδοση της κάρτας"</description>
+        <inputEntry id="UnaryTests_153fgjv">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_105p3wj">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_18uc72k">
+          <text>"John","Doe"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1bjemce">
+          <text>&gt; date("2022-12-13")</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0kit010">
+          <text>699999999</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08zhsu9">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0md7y5e">
+          <text>"ΕΚΔΟΣΗ ΚΑΡΤΑΣ"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1okluri">
+        <description>"Απόρριψη έκδοσης"</description>
+        <inputEntry id="UnaryTests_0ihl3xl">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1mhw88r">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1btk5dn">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1oi5x2h">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0i69qsj">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_02jt1uc">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_1lisde3">
+          <text>"ΑΠΟΡΡΙΨΗ ΑΙΤΗΜΑΤΟΣ"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_1mq39kx">
+        <description>"Απόρριψη έκδοσης"</description>
+        <inputEntry id="UnaryTests_0oqvafx">
+          <text>true</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ipolln">
+          <text>false</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0ido290">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0cxyxgs">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1ckg5k6">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_137pxug">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ys3zov">
+          <text>"ΑΠΟΡΡΙΨΗ ΑΙΤΗΜΑΤΟΣ"</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_005uc7d">
+        <description>"Απόρριψη έκδοσης"</description>
+        <inputEntry id="UnaryTests_1occscj">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_07gq1iy">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0zi6lkd">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1sqgdb1">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_0n0zopw">
+          <text>-</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1dmnmfz">
+          <text>-</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_103lgnf">
+          <text>"ΔΕΝ ΣΥΜΠΛΗΡΩΣΕΣ ΣΤΟΙΧΕΙΑ ΚΑΙ ΘΕΣ ΚΑΙ ΚΑΡΤΑ;"</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0jsj8mv" name="Δημογραφικά στοιχεία" />
+  <inputData id="InputData_1lp1hgg" name="Ημερομηνία έναρξης ισχύος κάρτας" />
+  <inputData id="InputData_1bmhut5" name="Στοιχεία επικοινωνίας" />
+  <decision id="Credentials_0wmgsyc" name="Αυθεντικοποίηση χρήστη">
+    <informationRequirement id="InformationRequirement_1abekl5">
+      <requiredInput href="#InputData_0tsuihj" />
+    </informationRequirement>
+    <informationRequirement id="InformationRequirement_1gttawq">
+      <requiredInput href="#InputData_1xdnl9f" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_0j98trc">
+      <requiredAuthority href="#KnowledgeSource_1n30i0f" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_1ituj8w">
+      <input id="InputClause_0wler7n" label="Όνομα χρήστη">
+        <inputExpression id="LiteralExpression_0kx8bjc" typeRef="string">
+          <text>username</text>
+        </inputExpression>
+      </input>
+      <input id="InputClause_1tips3g" label="Συνθηματικό">
+        <inputExpression id="LiteralExpression_10cvdxw" typeRef="string">
+          <text>password</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0uunchn" label="Είσοδος" name="login" typeRef="boolean" biodi:width="192" />
+      <rule id="DecisionRule_1xmy1y8">
+        <description>"Είσοδος στο σύστημα"</description>
+        <inputEntry id="UnaryTests_09g7fhe">
+          <text>"user"</text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_1yull4o">
+          <text>"password"</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0ztpay3">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_139nf5e">
+        <description>"Άρνηση εισόδου στο σύστημα"</description>
+        <inputEntry id="UnaryTests_0vllgvz">
+          <text></text>
+        </inputEntry>
+        <inputEntry id="UnaryTests_08fqddj">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0478u72">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <decision id="AMKA_0jz51t4" name="Ύπαρξη ασφαλιστικών προϋποθέσεων">
+    <informationRequirement id="InformationRequirement_1c7tyx5">
+      <requiredInput href="#InputData_1gkz16i" />
+    </informationRequirement>
+    <authorityRequirement id="AuthorityRequirement_15r5bao">
+      <requiredAuthority href="#KnowledgeSource_0zbq0oa" />
+    </authorityRequirement>
+    <decisionTable id="DecisionTable_0erwuhy">
+      <input id="InputClause_02cbbmg" label="ΑΜΚΑ" biodi:width="192">
+        <inputExpression id="LiteralExpression_0u9m5nl" typeRef="integer">
+          <text>amka</text>
+        </inputExpression>
+      </input>
+      <output id="OutputClause_0uqh8zq" label="ΑΣΦΑΛΙΣΤΙΚΕΣ ΠΡΟΫΠΟΘΕΣΕΙΣ" name="asfalistikesProipotheseis" typeRef="string" />
+      <rule id="DecisionRule_09r49xi">
+        <description>"Ύπαρξη ασφαλιστικών προϋποθέσεων"</description>
+        <inputEntry id="UnaryTests_0eif99h">
+          <text>123456</text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_0aa3c89">
+          <text>true</text>
+        </outputEntry>
+      </rule>
+      <rule id="DecisionRule_17rvdk6">
+        <description>"Δεν υπάρχουν ασφαλιστικές προϋποθέσεις"</description>
+        <inputEntry id="UnaryTests_11d3bjt">
+          <text></text>
+        </inputEntry>
+        <outputEntry id="LiteralExpression_01d4zkz">
+          <text>false</text>
+        </outputEntry>
+      </rule>
+    </decisionTable>
+  </decision>
+  <inputData id="InputData_0tsuihj" name="Όνομα χρήστη" />
+  <inputData id="InputData_1xdnl9f" name="Συνθηματικό" />
+  <inputData id="InputData_1gkz16i" name="AMKA" />
+  <inputData id="InputData_0jftyi7" name="Διεύθυνση κατοικίας" />
+  <knowledgeSource id="KnowledgeSource_1rtztrk" name="ΝΟΜΟΘΕΣΙΑ" />
+  <knowledgeSource id="KnowledgeSource_0zbq0oa" name="ΝΟΜΟΘΕΣΙΑ ΕΦΚΑ" />
+  <knowledgeSource id="KnowledgeSource_1n30i0f" name="ΑΑΔΕ" />
+  <textAnnotation id="TextAnnotation_0ckk28l">
+    <text>επιθυμητή ημερομηνία έναρξης ισχύος της κάρτας</text>
+  </textAnnotation>
+  <association id="Association_1rmnuf0">
+    <sourceRef href="#TextAnnotation_0ckk28l" />
+    <targetRef href="#InputData_1lp1hgg" />
+  </association>
+  <textAnnotation id="TextAnnotation_0u0rcra">
+    <text>στοιχεία διεύθυνσης κατοικίας</text>
+  </textAnnotation>
+  <association id="Association_0drg7g9">
+    <sourceRef href="#TextAnnotation_0u0rcra" />
+    <targetRef href="#InputData_0jftyi7" />
+  </association>
+  <textAnnotation id="TextAnnotation_1hj35o3">
+    <text>Τα στοιχεία επικοινωνίας ( εφόσον απαιτείται, επικαιροποιεί τη διεύθυνση ηλεκτρονικού ταχυδρομείου ή/και τον αριθμό τηλεφώνου του).</text>
+  </textAnnotation>
+  <association id="Association_0nu9vcl">
+    <sourceRef href="#TextAnnotation_1hj35o3" />
+    <targetRef href="#InputData_1bmhut5" />
+  </association>
+  <textAnnotation id="TextAnnotation_1wzaga2">
+    <text>Τα ονοματεπωνυμικά του στοιχεία, με λατινικούς χαρακτήρες (αν η αυτόματη αποτύπωσή τους δεν είναι σύμφωνη με τα λατινικά στοιχεία της ταυτότητας ή του διαβατηρίου του)</text>
+  </textAnnotation>
+  <association id="Association_1wt56q2">
+    <sourceRef href="#TextAnnotation_1wzaga2" />
+    <targetRef href="#InputData_0jsj8mv" />
+  </association>
+  <textAnnotation id="TextAnnotation_07giqn4">
+    <text>Ο χρήστης εισάγει τον ΑΜΚΑ του στο σχετικό πεδίο. Ο έλεγχος πληρότητας των ασφαλιστικών προϋποθέσεων πραγματοποιείται μέσω διαλειτουργικότητας με το μητρώο ΑΜΚΑ-ΕΜΑΕΣ.</text>
+  </textAnnotation>
+  <association id="Association_1k72cu9">
+    <sourceRef href="#TextAnnotation_07giqn4" />
+    <targetRef href="#InputData_1gkz16i" />
+  </association>
+  <dmndi:DMNDI>
+    <dmndi:DMNDiagram>
+      <dmndi:DMNShape dmnElementRef="Issue_1vditoa">
+        <dc:Bounds height="80" width="180" x="570" y="100" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_15vje4n" dmnElementRef="InputData_0jsj8mv">
+        <dc:Bounds height="45" width="125" x="927" y="227" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_11hv5q0" dmnElementRef="InformationRequirement_1sfgzo6">
+        <di:waypoint x="990" y="227" />
+        <di:waypoint x="724" y="200" />
+        <di:waypoint x="724" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0kux5fc" dmnElementRef="InputData_1lp1hgg">
+        <dc:Bounds height="45" width="125" x="907" y="327" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0aq7c3x" dmnElementRef="InformationRequirement_1qxotwz">
+        <di:waypoint x="970" y="327" />
+        <di:waypoint x="699" y="200" />
+        <di:waypoint x="699" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1nr6mgw" dmnElementRef="InputData_1bmhut5">
+        <dc:Bounds height="45" width="125" x="661" y="327" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0kydaqq" dmnElementRef="InformationRequirement_0tggpgj">
+        <di:waypoint x="724" y="327" />
+        <di:waypoint x="647" y="200" />
+        <di:waypoint x="647" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0whlchg" dmnElementRef="InformationRequirement_0s7urjf">
+        <di:waypoint x="610" y="501" />
+        <di:waypoint x="621" y="200" />
+        <di:waypoint x="621" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNEdge id="DMNEdge_0q937kr" dmnElementRef="InformationRequirement_0jn30e4">
+        <di:waypoint x="410" y="270" />
+        <di:waypoint x="596" y="200" />
+        <di:waypoint x="596" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_10lhqc0" dmnElementRef="Credentials_0wmgsyc">
+        <dc:Bounds height="80" width="180" x="320" y="270" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_07hdhis" dmnElementRef="AMKA_0jz51t4">
+        <dc:Bounds height="80" width="180" x="520" y="501" />
+      </dmndi:DMNShape>
+      <dmndi:DMNShape id="DMNShape_1caba50" dmnElementRef="InputData_0tsuihj">
+        <dc:Bounds height="45" width="125" x="207" y="407" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_18wd783" dmnElementRef="InformationRequirement_1abekl5">
+        <di:waypoint x="270" y="407" />
+        <di:waypoint x="380" y="370" />
+        <di:waypoint x="380" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_03mc2yn" dmnElementRef="InputData_1xdnl9f">
+        <dc:Bounds height="45" width="125" x="347" y="407" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0w3suhy" dmnElementRef="InformationRequirement_1gttawq">
+        <di:waypoint x="410" y="407" />
+        <di:waypoint x="440" y="370" />
+        <di:waypoint x="440" y="350" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0hjzl8f" dmnElementRef="InputData_1gkz16i">
+        <dc:Bounds height="45" width="125" x="547" y="637" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0zmm86m" dmnElementRef="InformationRequirement_1c7tyx5">
+        <di:waypoint x="610" y="637" />
+        <di:waypoint x="610" y="601" />
+        <di:waypoint x="610" y="581" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_00vc5di" dmnElementRef="InputData_0jftyi7">
+        <dc:Bounds height="45" width="125" x="807" y="377" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1m2m92t" dmnElementRef="InformationRequirement_120pndn">
+        <di:waypoint x="870" y="377" />
+        <di:waypoint x="673" y="200" />
+        <di:waypoint x="673" y="180" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_09qd9hg" dmnElementRef="KnowledgeSource_1rtztrk">
+        <dc:Bounds height="63" width="100" x="380" y="109" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0i02v0g" dmnElementRef="AuthorityRequirement_13zxy6j">
+        <di:waypoint x="480" y="141" />
+        <di:waypoint x="570" y="140" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_03w39cv" dmnElementRef="TextAnnotation_0ckk28l">
+        <dc:Bounds height="80" width="100" x="1080" y="290" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_04t81bz" dmnElementRef="Association_1rmnuf0">
+        <di:waypoint x="1080" y="336" />
+        <di:waypoint x="1032" y="342" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0zzp1ix" dmnElementRef="TextAnnotation_0u0rcra">
+        <dc:Bounds height="80" width="100" x="970" y="400" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0phw3vh" dmnElementRef="Association_0drg7g9">
+        <di:waypoint x="970" y="427" />
+        <di:waypoint x="932" y="417" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_12metyg" dmnElementRef="TextAnnotation_1hj35o3">
+        <dc:Bounds height="80" width="120" x="770" y="440" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_0est6be" dmnElementRef="Association_0nu9vcl">
+        <di:waypoint x="790" y="440" />
+        <di:waypoint x="740" y="372" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_16y8253" dmnElementRef="TextAnnotation_1wzaga2">
+        <dc:Bounds height="80" width="198" x="1061" y="140" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_15swgz9" dmnElementRef="Association_1wt56q2">
+        <di:waypoint x="1061" y="209" />
+        <di:waypoint x="1030" y="227" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_1kv9364" dmnElementRef="TextAnnotation_07giqn4">
+        <dc:Bounds height="140" width="160" x="710" y="680" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_11sx4h3" dmnElementRef="Association_1k72cu9">
+        <di:waypoint x="710" y="685" />
+        <di:waypoint x="641" y="682" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0l8imge" dmnElementRef="KnowledgeSource_0zbq0oa">
+        <dc:Bounds height="63" width="100" x="360" y="509" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_09fjn8i" dmnElementRef="AuthorityRequirement_15r5bao">
+        <di:waypoint x="460" y="541" />
+        <di:waypoint x="520" y="540" />
+      </dmndi:DMNEdge>
+      <dmndi:DMNShape id="DMNShape_0bjzds9" dmnElementRef="KnowledgeSource_1n30i0f">
+        <dc:Bounds height="63" width="100" x="160" y="279" />
+      </dmndi:DMNShape>
+      <dmndi:DMNEdge id="DMNEdge_1tpq7qs" dmnElementRef="AuthorityRequirement_0j98trc">
+        <di:waypoint x="260" y="311" />
+        <di:waypoint x="320" y="310" />
+      </dmndi:DMNEdge>
+    </dmndi:DMNDiagram>
+  </dmndi:DMNDI>
+</definitions>
