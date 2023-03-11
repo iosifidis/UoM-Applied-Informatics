@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">RandomGenerator2</string>
+    <string name="action_settings">Settings</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">Random Generator</string>
+    <string name="second_fragment_label">Second Fragment</string>
+
+    <!-- Φτιάχνω τα κουμπιά και τα μετονομάζω. Μετά πρέπει να τα αλλάξω και στο fragment_first.xml -->
+    <string name="toast">Toast</string>
+    <string name="count">Count</string>
+    <string name="random">Random</string>
+
+    <string name="previous">Previous</string>
+
+    <!-- Μετονομασία σε zero και το όνομα σε 0. Μετά στο fragment_first.xml αλλαγή στο κείμενο στο κέντρο -->
+    <string name="zero">0</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+</resources>
