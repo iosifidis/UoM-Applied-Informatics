@@ -1,0 +1,12 @@
+<resources>
+    <string name="app_name">CarPicker</string>
+    <!-- Προσθέτω το κουμπί -->
+    <string name="brandBtn"> Pick a brand </string>
+
+    <!-- Προσθέτω μια λίστα με τις μάρκες -->
+    <string-array name="brands">
+        <item> Toyota </item>
+        <item> VW </item>
+        <item> Nissan </item>
+    </string-array>
+</resources>
