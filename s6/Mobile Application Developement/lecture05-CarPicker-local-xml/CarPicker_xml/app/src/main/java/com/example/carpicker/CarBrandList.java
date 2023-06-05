@@ -76,27 +76,46 @@ public class CarBrandList {
         }
     }*/
 
+    // η μέθοδος getAllModelsAsString αναζητά μια συγκεκριμένη μάρκα αυτοκινήτου στη λίστα cbList
+    // και ανακτά τα μοντέλα που σχετίζονται με αυτήν τη μάρκα ως συμβολοσειρά.
     public String getAllModelsAsString(String b) {
         String s = "";
         for (int i=0; i<cbList.size(); i++) {
+            // Ελέγχει εάν το τρέχον αντικείμενο CarBrand (cbList.get(i)) έχει το ίδιο όνομα
+            // με την παράμετρο εισόδου b καλώντας τη μέθοδο hasName της κλάσης CarBrand.
             if (cbList.get(i).hasName(b)) {
+                // Εάν το τρέχον αντικείμενο CarBrand έχει το καθορισμένο όνομα,
+                // ενημερώνει τη μεταβλητή s καλώντας τη μέθοδο getAllModelsAsString
+                // της κλάσης CarBrand για να ανακτήσει τα μοντέλα που σχετίζονται
+                // με αυτήν την επωνυμία ως συμβολοσειρά.
                 s = cbList.get(i).getAllModelsAsString();
             }
         }
         return s;
     }
 
+    // η μέθοδος getAllBrands εξάγει τα ονόματα όλων των επωνυμιών αυτοκινήτων
+    // από τη λίστα cbList και τα επιστρέφει ως ξεχωριστή λίστα συμβολοσειρών.
     public List<String> getAllBrands() {
         List<String> temp = new ArrayList<String>();
         for (int i=0; i<cbList.size(); i++) {
+            // ανακτά το όνομα του τρέχοντος αντικειμένου CarBrand (cbList.get(i))
+            // καλώντας τη μέθοδο getName της κλάσης CarBrand και την προσθέτει στην temp.
             temp.add(cbList.get(i).getName());
         }
         return temp;
     }
 
+    // η μέθοδος getAllModels αναζητά μια συγκεκριμένη μάρκα αυτοκινήτου στη λίστα cbList
+    // και ανακτά τα μοντέλα που σχετίζονται με αυτήν τη μάρκα ως λίστα συμβολοσειρών
     public List<String> getAllModels(String b) {
         List<String> temp = new ArrayList<String>();
         for (int i=0; i<cbList.size(); i++) {
+            // Ελέγχει εάν το τρέχον αντικείμενο CarBrand (cbList.get(i)) έχει το ίδιο όνομα
+            // με την παράμετρο εισόδου b καλώντας τη μέθοδο hasName της κλάσης CarBrand.
+            // Εάν το τρέχον αντικείμενο CarBrand έχει το καθορισμένο όνομα,
+            // ενημερώνει τη μεταβλητή temp καλώντας τη μέθοδο getAllModels της κλάσης CarBrand
+            // για να ανακτήσει τα μοντέλα που σχετίζονται με αυτήν την επωνυμία ως λίστα συμβολοσειρών.
             if (cbList.get(i).hasName(b)) {
                 temp = cbList.get(i).getAllModels();
             }
