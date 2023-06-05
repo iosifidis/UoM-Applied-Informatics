@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">Car Picker</string>
+    <string name="button_label"> Pick a Brand </string>
+</resources>
