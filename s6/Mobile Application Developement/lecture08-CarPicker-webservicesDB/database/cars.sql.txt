@@ -1,0 +1,65 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Εξυπηρετητής: 127.0.0.1
+-- Χρόνος δημιουργίας: 09 Μάη 2022 στις 10:51:53
+-- Έκδοση διακομιστή: 10.4.24-MariaDB
+-- Έκδοση PHP: 8.1.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Βάση δεδομένων: `cars`
+--
+CREATE DATABASE IF NOT EXISTS `cars` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `cars`;
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `history`
+--
+
+CREATE TABLE `history` (
+  `brand` varchar(32) COLLATE utf8_bin NOT NULL,
+  `model` varchar(32) COLLATE utf8_bin NOT NULL,
+  `timestamp` varchar(32) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `models`
+--
+
+CREATE TABLE `models` (
+  `brand` varchar(32) COLLATE utf8_bin NOT NULL,
+  `model` varchar(32) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `models`
+--
+
+INSERT INTO `models` (`brand`, `model`) VALUES
+('Nissan', 'Sunny'),
+('Toyota', 'Auris'),
+('Toyota', 'Aygo'),
+('Toyota', 'Corolla'),
+('Toyota', 'Yaris'),
+('VW', 'Golf'),
+('VW', 'Polo');
+
+--
+-- Ευρετήρια για άχρηστους πίνακες
+--
+
+--
+-- Ευρετήρια για πίνακα `models`
+--
+ALTER TABLE `models`
+  ADD PRIMARY KEY (`brand`,`model`);
+COMMIT;
