@@ -15,4 +15,5 @@
 * **CarPicker** (διάλεξη 5 - τοπική αποθήκευση xml): Εισαγωγή ενός spinner και ενός RadioGroup. Το γέμισμα του RadioGroup γίνεται με χρήση ενός αρχείου xml που είναι αποθηκευμένο στο φάκελο assets.  Χρήση DocumentBuilderFactory και DocumentBuilder. Γίνεται και χρήση NodeList και Node.   
 * **CarPicker** (διάλεξη 8 - webservices PHP): Εισαγωγή ενός spinner και ενός RadioGroup. Το γέμισμα του RadioGroup γίνεται με χρήση PHP και βάσης δεδομένων. Γίνεται η χρήση της OKHttpHandler.   
 * **CarPicker** (διάλεξη 10 - multimedia): ισαγωγή ενός spinner και ενός RadioGroup. Το γέμισμα του RadioGroup γίνεται με χρήση PHP και βάσης δεδομένων. Επιλέγοντας από το RadioGroup ένα αμάξι, το δείχνει ως εικόνα.   
+* **WeatherAPIActivity** (διάλεξη 11 - χρήση API): Fragment, Activity και εξωτερικό API.   
 
