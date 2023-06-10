@@ -62,8 +62,8 @@ public class FetchWeatherTask implements Runnable{
     @Override
     public void run() {
         // Κατασκευάζει τη διεύθυνση URL για το αίτημα API, συμπεριλαμβανομένης της επιθυμητής τοποθεσίας,
-        // της μορφής απόκρισης (JSON), των μονάδων θερμοκρασίας (μετρική) και του κλειδιού API.
-        String url= "https://api.openweathermap.org/data/2.5/weather?q="+location+"&mode=json&units=metric&APPID=f04ce723e4421a3a129a57a4450d429f";
+        // της μορφής απόκρισης (JSON), των μονάδων θερμοκρασίας (μετρική) και του κλειδιού API (πχ f04ce723e4421a3a129a57a4450d429f).
+        String url= "https://api.openweathermap.org/data/2.5/weather?q="+location+"&mode=json&units=metric&APPID=<YOUR_API_KEY_HERE>";
 
         // Δημιουργεί μια παρουσία της κλάσης OkHttpClient, η οποία είναι υπεύθυνη για την εκτέλεση αιτημάτων HTTP.
         OkHttpClient client = new OkHttpClient().newBuilder().build();
