@@ -64,7 +64,7 @@ public class MainActivity extends AppCompatActivity {
                     // η οποία φαίνεται να χειρίζεται αιτήματα HTTP χρησιμοποιώντας τη βιβλιοθήκη OkHttp.
                     OkHttpHandler okHttpHandler = new OkHttpHandler();
 
-                    // Επικαλείται τη μέθοδο logHistory της παρουσίας OkHttpHandler,
+                    // Επικαλείται τη μέθοδο logHistory του αντικειμένου OkHttpHandler,
                     // περνώντας τη συμβολοσειρά URL που δημιουργήθηκε ως παράμετρο.
                     // Αυτό υποδηλώνει ότι η μέθοδος logHistory είναι υπεύθυνη για την αποστολή ενός αιτήματος
                     // HTTP στην καθορισμένη διεύθυνση URL, πιθανόν για την καταγραφή της επιλεγμένης
