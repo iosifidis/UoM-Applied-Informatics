@@ -1,0 +1,52 @@
+-- phpMyAdmin SQL Dump
+-- version 5.1.3
+-- https://www.phpmyadmin.net/
+--
+-- Εξυπηρετητής: 127.0.0.1
+-- Χρόνος δημιουργίας: 16 Μάη 2022 στις 00:47:05
+-- Έκδοση διακομιστή: 10.4.24-MariaDB
+-- Έκδοση PHP: 8.1.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+--
+-- Βάση δεδομένων: `cars`
+--
+CREATE DATABASE IF NOT EXISTS `Animals` DEFAULT CHARACTER SET utf8 COLLATE utf8_bin;
+USE `Animals`;
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `animals`
+--
+
+CREATE TABLE `animals` (
+  `name` varchar(32) COLLATE utf8_bin NOT NULL,
+  `type` varchar(32) COLLATE utf8_bin NOT NULL,
+  `voice` varchar(32) COLLATE utf8_bin NOT NULL, 
+  `image` varchar(1024) COLLATE utf8_bin NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `models`
+--
+
+INSERT INTO `animals` (`name`, `type`, `voice`, `image`) VALUES
+('Rex', 'Dog','Bark', 'https://www.autogreeknews.gr/wp-content/uploads/2020/09/Nissan-Sunny-1981-B11-1.jpg'),
+('Malco', 'Cat','Meow', 'https://upload.wikimedia.org/wikipedia/commons/6/6d/Toyota_Auris_5dr._front.jpg'),
+('Karotosalata', 'Parrot','Tsiou?', 'https://www.stock-center.gr/sites/default/files/styles/car_listing/public/car/2021-06/AYGO%20AUTO%201.jpg?itok=llS6-EvV'),
+('Stathis', 'human','giati eimai edw?', 'https://s1.cdn.autoevolution.com/images/gallery/TOYOTACorolla-5doors--623_5.jpg');
+
+--
+-- Ευρετήρια για άχρηστους πίνακες
+--
+
+--
+-- Ευρετήρια για πίνακα `animals`
+--
+ALTER TABLE `animals`
+  ADD PRIMARY KEY (`name`,`type`);
+COMMIT;
