@@ -16,20 +16,20 @@
 
 * Εισαγωγή νέου Activity:
 
-- Ανοίξτε το Android Studio και το έργο (project) σας.   
-- Κάντε δεξί κλικ πάνω στον φάκελο "app" στο "Project" παράθυρο.  
-- Επιλέξτε "New" και στη συνέχεια "Activity".  
-- Επιλέξτε τον τύπο της activity που θέλετε να δημιουργήσετε (π.χ. Empty Activity, Basic Activity, etc.).   
-- Δώστε ένα όνομα στο νέο activity και πατήστε "Finish".  
-- Θα δημιουργηθεί το νέο activity και τα απαραίτητα αρχεία κώδικα και διεπαφής θα προστεθούν στο έργο σας.
+1. Ανοίξτε το Android Studio και το έργο (project) σας.   
+2. Κάντε δεξί κλικ πάνω στον φάκελο "app" στο "Project" παράθυρο.  
+3. Επιλέξτε "New" και στη συνέχεια "Activity".  
+4. Επιλέξτε τον τύπο της activity που θέλετε να δημιουργήσετε (π.χ. Empty Activity, Basic Activity, etc.).   
+5. Δώστε ένα όνομα στο νέο activity και πατήστε "Finish".  
+6. Θα δημιουργηθεί το νέο activity και τα απαραίτητα αρχεία κώδικα και διεπαφής θα προστεθούν στο έργο σας.
 
 * Εισαγωγή νέου Fragment στο Android Studio:
 
-- Ακολουθήστε τα βήματα 1 και 2 όπως παραπάνω.  
-- Επιλέξτε "New" και στη συνέχεια "Fragment".  
-- Επιλέξτε τον τύπο του fragment που θέλετε να δημιουργήσετε (π.χ. Fragment (Blank), Fragment (List), etc.).  
-- Δώστε ένα όνομα στο νέο fragment και πατήστε "Finish".  
-- Θα δημιουργηθούν τα απαραίτητα αρχεία κώδικα και διεπαφής για το νέο fragment στο έργο σας.  
+1. Ακολουθήστε τα βήματα 1 και 2 όπως παραπάνω.  
+2. Επιλέξτε "New" και στη συνέχεια "Fragment".  
+3. Επιλέξτε τον τύπο του fragment που θέλετε να δημιουργήσετε (π.χ. Fragment (Blank), Fragment (List), etc.).  
+4. Δώστε ένα όνομα στο νέο fragment και πατήστε "Finish".  
+5. Θα δημιουργηθούν τα απαραίτητα αρχεία κώδικα και διεπαφής για το νέο fragment στο έργο σας.  
 
 ## Πως ενώνω το fragment στο activity;
 
@@ -177,3 +177,144 @@ public class SecondActivity extends AppCompatActivity {
 Σε αυτό το παράδειγμα, το πρώτο Activity περιέχει ένα κουμπί. Όταν πατηθεί το κουμπί, δημιουργείται ένα Intent που έχει ως στόχο το δεύτερο Activity. Επίσης, μεταφέρει ένα String δεδομένο με το κλειδί "data_key". Στο δεύτερο Activity, το String δεδομένο ανακτάται από το Intent και εμφανίζεται σε ένα TextView.
 
 Αυτό το παράδειγμα δείχνει πώς μπορείτε να χρησιμοποιήσετε το Intent για τη μεταφορά δεδομένων και την εναλλαγή μεταξύ διαφορετικών συνιστωσών ενός Android εφαρμογής.
+
+## Ένα παράδειγμα πως παίρνω τιμή από ένα πεδίο.
+
+Αν υποθέσουμε ότι έχετε ένα EditText πεδίο στο layout του Activity και θέλετε να πάρετε την τιμή που έχει εισαχθεί σε αυτό, μπορείτε να το πετύχετε ως εξής:
+
+1. Layout (activity_main.xml):   
+Στο XML layout αρχείο του Activity, θα πρέπει να έχετε ένα EditText πεδίο στο οποίο ο χρήστης μπορεί να εισάγει δεδομένα.
+
+```
+<EditText
+    android:id="@+id/editText"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:hint="Enter something" />
+```
+
+2. Java Code (MainActivity.java):   
+Στην κλάση του Activity, μπορείτε να ανακτήσετε την τιμή που έχει εισαχθεί στο πεδίο με τη χρήση της μεθόδου getText() του EditText.
+
+```
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText editText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editText = findViewById(R.id.editText);
+
+        // Παράδειγμα: Πάρτε την τιμή από το πεδίο όταν πατηθεί ένα κουμπί
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String enteredText = editText.getText().toString();
+                // Κάντε κάτι με την enteredText, όπως εμφανίστε τη σε ένα TextView
+            }
+        });
+    }
+}
+```
+
+Στο παράδειγμα αυτό, το **editText.getText().toString()** χρησιμοποιείται για να ανακτήσει το κείμενο που έχει εισαχθεί στο EditText πεδίο. Αυτό το κείμενο στη συνέχεια μετατρέπεται σε String με τη χρήση της μεθόδου toString(), και μπορείτε να το χρησιμοποιήσετε όπως επιθυμείτε (π.χ. εμφανίστε το σε ένα TextView ή εκτελέστε άλλες ενέργειες με αυτό).
+
+## Πως εμφανίζω το μήνυμα που πήρα παραπάνω σε ένα Toast μήνυμα;
+
+Εδώ είναι ο κώδικας για να εμφανίσετε το κείμενο που πήρατε από το πεδίο εισαγωγής σε ένα Toast μήνυμα:
+
+```
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.Toast;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText editText;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        editText = findViewById(R.id.editText);
+
+        Button button = findViewById(R.id.button);
+        button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String enteredText = editText.getText().toString();
+
+                // Εμφάνιση του μηνύματος με Toast
+                Toast.makeText(MainActivity.this, "Entered Text: " + enteredText, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+```
+
+Στον κώδικα αυτό, η μέθοδος **makeText()** του Toast χρησιμοποιείται για να δημιουργήσει και να εμφανίσει ένα Toast μήνυμα. Ο πρώτος παράμετρος είναι η κλάση που καλεί το Toast (συνήθως το τρέχον Activity), η δεύτερη παράμετρος είναι το κείμενο που θέλετε να εμφανίσετε, και η τρίτη παράμετρος είναι η διάρκεια εμφάνισης του Toast (μπορεί να είναι **Toast.LENGTH_SHORT** ή **Toast.LENGTH_LONG**).
+
+Όταν πατηθεί το κουμπί, το κείμενο που έχει εισαχθεί στο πεδίο εισαγωγής θα εμφανίζεται σε ένα Toast μήνυμα.
+
+## Ένα παράδειγμα κώδικα για το πως παίρνω την εισαγωγή του χρήστη από ένα πεδίο και μετά το υψώνω στην 3 και το εμφανίζω στην οθόνη.
+
+Εδώ έχετε ένα παράδειγμα κώδικα που δείχνει πώς να πάρετε την είσοδο του χρήστη από ένα πεδίο, να την υψώσετε στην τρίτη δύναμη και να την εμφανίσετε στην οθόνη:
+
+```
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.EditText;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity {
+
+    private EditText inputEditText;
+    private TextView resultTextView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        inputEditText = findViewById(R.id.inputEditText);
+        resultTextView = findViewById(R.id.resultTextView);
+
+        Button calculateButton = findViewById(R.id.calculateButton);
+        calculateButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Πάρτε την είσοδο του χρήστη από το πεδίο
+                String userInput = inputEditText.getText().toString();
+
+                if (!userInput.isEmpty()) {
+                    // Μετατροπή της εισόδου σε αριθμό
+                    double number = Double.parseDouble(userInput);
+
+                    // Υψώστε τον αριθμό στην τρίτη δύναμη
+                    double result = Math.pow(number, 3);
+
+                    // Εμφανίστε το αποτέλεσμα στην οθόνη
+                    resultTextView.setText("Result: " + result);
+                }
+            }
+        });
+    }
+}
+```
+
+Στο παραπάνω παράδειγμα, το πεδίο εισαγωγής (EditText) χρησιμοποιείται για την είσοδο του χρήστη, και το αποτέλεσμα εμφανίζεται σε ένα TextView μετά τον υπολογισμό. Ο κώδικας επιβεβαιώνει εάν η είσοδος δεν είναι κενή πριν προσπαθήσει να τη μετατρέψει σε αριθμό. Εάν η μετατροπή είναι επιτυχής, υπολογίζεται η τρίτη δύναμη του αριθμού και το αποτέλεσμα εμφανίζεται στην οθόνη.
