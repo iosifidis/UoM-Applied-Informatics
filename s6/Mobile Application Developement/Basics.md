@@ -111,7 +111,7 @@ public class FirstActivity extends AppCompatActivity {
 
 Αυτό είναι ένα απλό παράδειγμα για να δείτε πώς λειτουργεί η χρήση ενός Bundle για τη μεταφορά δεδομένων μεταξύ διαφορετικών συνιστωσών ενός Android εφαρμογής.
 
-## Ένα μικρό παράδειγμα για Intenet
+## Ένα μικρό παράδειγμα για Intenet (μεταφορά τιμής από πρώτο activity στο δεύτερο activity)
 
 Εδώ έχετε ένα απλό παράδειγμα κώδικα που δείχνει πώς να χρησιμοποιήσετε ένα Intent για να μεταφέρετε δεδομένα από ένα Activity σε ένα άλλο:
 
@@ -269,7 +269,7 @@ public class MainActivity extends AppCompatActivity {
 
 Όταν πατηθεί το κουμπί, το κείμενο που έχει εισαχθεί στο πεδίο εισαγωγής θα εμφανίζεται σε ένα Toast μήνυμα.
 
-## Ένα παράδειγμα κώδικα για το πως παίρνω την εισαγωγή του χρήστη από ένα πεδίο και μετά το υψώνω στην 3 και το εμφανίζω στην οθόνη.
+## Ένα παράδειγμα κώδικα για το πως παίρνω την εισαγωγή του χρήστη από ένα πεδίο και μετά το υψώνω στην 3 και το εμφανίζω στην οθόνη (με πάτημα κουμπιού).
 
 Εδώ έχετε ένα παράδειγμα κώδικα που δείχνει πώς να πάρετε την είσοδο του χρήστη από ένα πεδίο, να την υψώσετε στην τρίτη δύναμη και να την εμφανίσετε στην οθόνη:
 
@@ -318,3 +318,265 @@ public class MainActivity extends AppCompatActivity {
 ```
 
 Στο παραπάνω παράδειγμα, το πεδίο εισαγωγής (EditText) χρησιμοποιείται για την είσοδο του χρήστη, και το αποτέλεσμα εμφανίζεται σε ένα TextView μετά τον υπολογισμό. Ο κώδικας επιβεβαιώνει εάν η είσοδος δεν είναι κενή πριν προσπαθήσει να τη μετατρέψει σε αριθμό. Εάν η μετατροπή είναι επιτυχής, υπολογίζεται η τρίτη δύναμη του αριθμού και το αποτέλεσμα εμφανίζεται στην οθόνη.
+
+## Βασικές αλλαγές-προσθήκες για να έχω λήψη στοιχείων από μια εξωτερική υπηρεσία - βάση δεδομένων.
+
+Για να κάνετε λήψη δεδομένων από μια εξωτερική υπηρεσία στο Android με χρήση τη βιβλιοθήκη OkHttp, πρέπει να ενημερώσετε το Android Manifest και να δημιουργήσετε ένα αρχείο network_security_config.xml. Εδώ είναι ένα βήμα προς βήμα παράδειγμα:
+
+1. Ενημέρωση του Android Manifest:  
+Προσθέστε την άδεια INTERNET στο αρχείο AndroidManifest.xml στο σημείο πριν το **application**:
+
+```
+<uses-permission android:name="android.permission.INTERNET" />
+
+<application
+        android:allowBackup="true"
+```
+
+ενώ τελευταία γραμμή πριν το activity να εμφανίζονται οι γραμμές:
+
+```
+android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/network_security_config" />
+            
+        <activity            
+```
+
+2. Δημιουργία του αρχείου **network_security_config.xml**:
+
+Δημιουργήστε ένα νέο φάκελο με όνομα res/xml στον φάκελο του προγράμματος (New-→ Folder → XML Resources Folder). Εν συνεχεία, δημιουργήστε ένα αρχείο network_security_config.xml μέσα σε αυτόν τον φάκελο. Το περιεχόμενο του αρχείου θα είναι κάτι παρόμοιο με αυτό (η IP θα είναι αυτή που έχετε στον υπολογιστή σας):
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">192.168.1.104</domain>
+    </domain-config>
+</network-security-config>
+```
+
+Αυτό το αρχείο ρυθμίζει την πολιτική ασφαλείας του δικτύου για την εφαρμογή σας.
+
+3. Παράδειγμα με το OkHttp:
+
+Εδώ είναι ένα παράδειγμα κώδικα που χρησιμοποιεί τη βιβλιοθήκη OkHttp για να κάνει ένα απλό GET αίτημα:
+
+```
+package com.example.carpicker;
+
+import android.os.*;
+import org.json.*;
+import java.util.*;
+import okhttp3.*;
+
+public class OkHttpHandler {
+
+    public OkHttpHandler() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+    }
+
+    ArrayList<CarBrand> populateDropDown(String url) throws Exception {
+        ArrayList<CarBrand> cbList = new ArrayList<>();
+
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url(url).method("POST", body).build();
+        Response response = client.newCall(request).execute();
+
+        String data = response.body().string();
+        try {
+            // Δημιουργεί ένα JSONObject αναλύοντας τα δεδομένα απόκρισης που ανακτήθηκαν.
+            JSONObject json = new JSONObject(data);
+
+            // Ανακτά έναν επαναλήπτη πάνω από τα κλειδιά του JSONObject.
+            Iterator<String> keys = json.keys();
+
+            // Επαναλαμβάνεται πάνω από κάθε κλειδί στο JSONObject.
+            while(keys.hasNext()) {
+                // Ανακτά το επόμενο κλειδί από τον επαναλήπτη, που αντιπροσωπεύει την επωνυμία.
+                String brand = keys.next();
+
+                // Ανακτά την αντίστοιχη τιμή για το κλειδί επωνυμίας από το JSONObject και τη μετατρέπει σε συμβολοσειρά.
+                String models = json.get(brand).toString();
+
+                // Δημιουργεί ένα νέο αντικείμενο CarBrand χρησιμοποιώντας την επωνυμία και μοντελοποιεί τιμές και το προσθέτει στη cbList.
+                cbList.add(new CarBrand(brand, models));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Επιστρέφει τη συμπληρωμένη ArrayList<CarBrand> που περιέχει τα δεδομένα επωνυμίας και μοντέλων που ανακτήθηκαν.
+        return cbList;
+    }
+
+
+    public void logHistory(String url) throws Exception {
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url(url).method("POST", body).build();
+
+        Response response = client.newCall(request).execute();
+
+    }
+}
+```
+
+4. Βεβαιωθείτε ότι έχετε προσθέσει τις απαραίτητες εξαρτήσεις στο αρχείο **build.gradle ((Module App))** για να χρησιμοποιήσετε τη βιβλιοθήκη OkHttp.
+
+```
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    ...
+}
+```
+
+Δεν ξεχνάμε να επιλέξουμε Sync Now.
+
+## Ένα παράδειγμα ενός spinner το οποίο γεμίζει από μια απομακρυσμένη υπηρεσία (πχ http://IP/cities/getCities.php) η οποία επιστρέφει σε μορφή JSON αρχείο τα περιεχόμενα ενός πίνακα Cities (name, monument, country, image). Αφού γεμίσει, επιλέγω και πατάω ένα κουμπί. Μετά από αυτό εμφανίζει τι επέλεξα στην οθόνη.
+
+Παρακάτω είναι ένα παράδειγμα κώδικα που χρησιμοποιεί έναν Spinner για να γεμίσει επιλογές από μια απομακρυσμένη υπηρεσία που επιστρέφει δεδομένα σε μορφή JSON. Όταν επιλέγετε μια επιλογή και πατάτε το κουμπί, εμφανίζεται η επιλεγμένη επιλογή στην οθόνη:
+
+1. Layout (activity_main.xml):
+
+```
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/showResultButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Result" />
+
+    <TextView
+        android:id="@+id/resultTextView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:text="Selected Item: " />
+
+</LinearLayout>
+```
+
+2. Java Code (MainActivity.java):   
+Για αυτό το παράδειγμα, θα χρησιμοποιήσουμε τη βιβλιοθήκη OkHttp για να κάνουμε το αίτημα HTTP και τη βιβλιοθήκη Gson για να αναλύσουμε τα δεδομένα JSON.   
+
+```
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.TextView;
+import com.google.gson.Gson;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+import okhttp3.Call;
+import okhttp3.Callback;
+import okhttp3.OkHttpClient;
+import okhttp3.Request;
+import okhttp3.Response;
+
+public class MainActivity extends AppCompatActivity {
+
+    private Spinner spinner;
+    private Button showResultButton;
+    private TextView resultTextView;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        spinner = findViewById(R.id.spinner);
+        showResultButton = findViewById(R.id.showResultButton);
+        resultTextView = findViewById(R.id.resultTextView);
+
+        // Κάλεσε τη μέθοδο για να ανακτήσεις τα δεδομένα JSON από την απομακρυσμένη υπηρεσία
+        fetchDataFromRemoteService();
+
+        // Ενέργεια κλικ κουμπιού
+        showResultButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String selectedOption = spinner.getSelectedItem().toString();
+                resultTextView.setText("Selected Item: " + selectedOption);
+            }
+        });
+    }
+
+    // Υποθετική μέθοδος για ανάκτηση δεδομένων JSON από την απομακρυσμένη υπηρεσία
+    private void fetchDataFromRemoteService() {
+        OkHttpClient client = new OkHttpClient();
+        Request request = new Request.Builder()
+                .url("http://195.251.211.64/cities/getCities.php")
+                .build();
+
+        client.newCall(request).enqueue(new Callback() {
+            @Override
+            public void onFailure(Call call, IOException e) {
+                e.printStackTrace();
+            }
+
+            @Override
+            public void onResponse(Call call, Response response) throws IOException {
+                if (response.isSuccessful()) {
+                    String responseData = response.body().string();
+                    processJsonData(responseData);
+                }
+            }
+        });
+    }
+
+    // Υποθετική μέθοδος για επεξεργασία των δεδομένων JSON και γέμισμα του Spinner
+    private void processJsonData(String jsonData) {
+        Gson gson = new Gson();
+        City[] cities = gson.fromJson(jsonData, City[].class);
+
+        List<String> cityNames = new ArrayList<>();
+        for (City city : cities) {
+            cityNames.add(city.name);
+        }
+
+        runOnUiThread(new Runnable() {
+            @Override
+            public void run() {
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, cityNames);
+                spinner.setAdapter(adapter);
+            }
+        });
+    }
+
+    // Υποκλάση για αναπαράσταση των δεδομένων JSON
+    private static class City {
+        String name;
+        String monument;
+        String country;
+        String image;
+    }
+}
+```
+
+Σε αυτό το παράδειγμα, η μέθοδος **fetchDataFromRemoteService()** καλείται για να ανακτήσει τα δεδομένα JSON από την απομακρυσμένη υπηρεσία. Τα δεδομένα JSON αναλύονται με τη βοήθεια της βιβλιοθήκης Gson, και η λίστα των ονομάτων των πόλεων γεμίζει στον Spinner.
+
+Θυμηθείτε ότι πρέπει να προσθέσετε τις απαραίτητες εξαρτήσεις στο αρχείο build.gradle για τη χρήση του OkHttp και του Gson.
+
