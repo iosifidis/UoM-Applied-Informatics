@@ -89,7 +89,7 @@ pubic void ChangeFragment(View view){
 
 ## Τι είναι το binding, που χρησιμοποιείται και ένα παράδειγμα χρήσης του
 
-Το "binding" σε σχέση με το Android αναφέρεται στο "View Binding", μια τεχνική που επιτρέπει τη σύνδεση (binding) των στοιχείων του διεπαφής χρήστη (UI elements) με τον κώδικα Java/Kotlin της εφαρμογής σας. Αυτό γίνεται μέσω του αυτόματου δημιουργίας ενός binding class που αντιπροσωπεύει το XML layout της διεπαφής σας.
+Το "binding" σε σχέση με το Android αναφέρεται στο "View Binding", μια τεχνική που επιτρέπει τη σύνδεση (binding) των στοιχείων του διεπαφής χρήστη (UI elements) με τον κώδικα Java της εφαρμογής σας. Αυτό γίνεται μέσω του αυτόματου δημιουργίας ενός binding class που αντιπροσωπεύει το XML layout της διεπαφής σας.
 
 Ο View Binding αντικαθιστά τον παλαιότερο τρόπο χρήσης του findViewById() για την εύρεση και τη σύνδεση των στοιχείων του UI στον κώδικα. Χρησιμοποιώντας το View Binding, μπορείτε να αποφύγετε τα null pointers που μπορούν να προκύψουν από λάθη στην αναζήτηση στοιχείων UI και να έχετε πιο ασφαλή και αποτελεσματική πρόσβαση σε αυτά.
 
@@ -446,6 +446,215 @@ public class MainActivity extends AppCompatActivity {
 
 Στο παραπάνω παράδειγμα, το πεδίο εισαγωγής (EditText) χρησιμοποιείται για την είσοδο του χρήστη, και το αποτέλεσμα εμφανίζεται σε ένα TextView μετά τον υπολογισμό. Ο κώδικας επιβεβαιώνει εάν η είσοδος δεν είναι κενή πριν προσπαθήσει να τη μετατρέψει σε αριθμό. Εάν η μετατροπή είναι επιτυχής, υπολογίζεται η τρίτη δύναμη του αριθμού και το αποτέλεσμα εμφανίζεται στην οθόνη.
 
+## Παράδειγμα επιλογής από ένα Radio Button
+
+Έστω το activity_main.xml
+
+```
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/rg_animals">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dog"
+            android:id="@+id/radioButton_dog"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cat"
+            android:id="@+id/radioButton_cat"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cow"
+            android:id="@+id/radioButton_cow"
+            android:checked="false" />
+
+    </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/button"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
+```
+Τώρα πρέπει να φτιάξουμε το MainActivity.java
+
+```
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity {
+     private static  RadioGroup radio_g;
+     private static  RadioButton radio_b;
+    private static Button button_sbm;
+    
+     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+         onClickListenerButton();
+    }
+
+    public void onClickListenerButton() {
+        radio_g = (RadioGroup)findViewById(R.id.rg_animals); // Φτιάχνω το RadioGroup
+        button_sbm = (Button)findViewById(R.id.button); // Φτιάχνω και το πλήκτρο
+
+        button_sbm.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int selected_id = radio_g.getCheckedRadioButtonId(); // Παίρνει το id του επιλεγμένου radiobutton
+                        radio_b = (RadioButton)findViewById(selected_id); // Bρίσκει το αντικείμενο του επιλεγμένου radiobutton
+                        
+                        Toast.makeText(MainActivity.this,
+                                radio_b.getText().toString(),Toast.LENGTH_SHORT ).show(); // Την μετατρέπει σε string και την εμφανίζει στην οθόνη
+                    }
+                }
+        );
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}
+```
+
+## Παράδειγμα κώδικα πως γεμίζει ένα **spinner**, επιλέγεται κάτι και το δείχνει στην οθόνη σε Toast μήνυμα
+
+Εδώ είναι ένα παράδειγμα κώδικα που δείχνει πώς μπορείτε να γεμίσετε ένα Spinner, να επιλέξετε κάτι και να το εμφανίσετε σε ένα Toast μήνυμα:
+
+1. Layout (activity_main.xml):   
+Ένα παράδειγμα απλού Spinner στο XML layout:
+
+```
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
+    <Button
+        android:id="@+id/showResultButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Show Result" />
+
+</LinearLayout>
+
+```
+
+2. Java Code (MainActivity.java):
+
+```
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.Button;
+import android.widget.Spinner;
+import android.widget.Toast;
+
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    private Spinner spinner;
+    private Button showResultButton;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        spinner = findViewById(R.id.spinner);
+        showResultButton = findViewById(R.id.showResultButton);
+
+        // Δημιουργία λίστας με δεδομένα για το Spinner
+        List<String> items = new ArrayList<>();
+        items.add("Option 1");
+        items.add("Option 2");
+        items.add("Option 3");
+
+        // Δημιουργία του ArrayAdapter και σύνδεση του με τον Spinner
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        spinner.setAdapter(adapter);
+
+        // Ενέργεια επιλογής αντικειμένου από τον Spinner
+        spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+            @Override
+            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+                // Τίποτα εδώ, η λειτουργία αυτή έχει μετακινηθεί στο κουμπί
+            }
+
+            @Override
+            public void onNothingSelected(AdapterView<?> adapterView) {
+                // Τίποτα εδώ
+            }
+        });
+
+        showResultButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                String selectedOption = spinner.getSelectedItem().toString();
+                Toast.makeText(MainActivity.this, "Selected: " + selectedOption, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+}
+```
+
+Σε αυτό το παράδειγμα, ο Spinner γεμίζει με επιλογές "Option 1", "Option 2" και "Option 3". Όταν επιλέγετε μια επιλογή από τον Spinner, εμφανίζεται ένα Toast μήνυμα που δείχνει την επιλεγμένη επιλογή.
+
 ## Βασικές αλλαγές-προσθήκες για να έχω λήψη στοιχείων από μια εξωτερική υπηρεσία - βάση δεδομένων.
 
 Για να κάνετε λήψη δεδομένων από μια εξωτερική υπηρεσία στο Android με χρήση τη βιβλιοθήκη OkHttp, πρέπει να ενημερώσετε το Android Manifest και να δημιουργήσετε ένα αρχείο network_security_config.xml. Εδώ είναι ένα βήμα προς βήμα παράδειγμα:
@@ -454,7 +663,7 @@ public class MainActivity extends AppCompatActivity {
 Προσθέστε την άδεια INTERNET στο αρχείο AndroidManifest.xml στο σημείο πριν το **application**:
 
 ```
-**<uses-permission android:name="android.permission.INTERNET" />**
+  <uses-permission android:name="android.permission.INTERNET" />
 
 <application
         android:allowBackup="true"
@@ -565,123 +774,6 @@ dependencies {
 ```
 
 Δεν ξεχνάμε να επιλέξουμε Sync Now.
-
-## Παράδειγμα επιλογής από ένα Radio Button
-
-Έστω το activity_main.xml
-
-```
-
-
-    <RadioGroup
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="36dp"
-        android:layout_below="@+id/button"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:id="@+id/rg_animals">
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Dog"
-            android:id="@+id/radioButton_dog"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cat"
-            android:id="@+id/radioButton_cat"
-            android:checked="false" />
-
-        <RadioButton
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Cow"
-            android:id="@+id/radioButton_cow"
-            android:checked="false" />
-
-    </RadioGroup>
-
-    <Button
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Submit"
-        android:id="@+id/button"
-        android:layout_marginTop="25dp"
-        android:layout_alignParentTop="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
-</RelativeLayout>
-```
-Τώρα πρέπει να φτιάξουμε το MainActivity.java
-
-```
-import android.support.v7.app.ActionBarActivity;
-import android.os.Bundle;
-import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.Button;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
-
-public class MainActivity extends ActionBarActivity {
-     private static  RadioGroup radio_g;
-     private static  RadioButton radio_b;
-    private static Button button_sbm;
-    
-     @Override
-    protected void onCreate(Bundle savedInstanceState) {
-        super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-         onClickListenerButton();
-    }
-
-    public void onClickListenerButton() {
-        radio_g = (RadioGroup)findViewById(R.id.rg_animals); // Φτιάχνω το RadioGroup
-        button_sbm = (Button)findViewById(R.id.button); // Φτιάχνω και το πλήκτρο
-
-        button_sbm.setOnClickListener(
-                new View.OnClickListener() {
-                    @Override
-                    public void onClick(View v) {
-                        int selected_id = radio_g.getCheckedRadioButtonId(); // Παίρνει το id του επιλεγμένου radiobutton
-                        radio_b = (RadioButton)findViewById(selected_id); // Bρίσκει το αντικείμενο του επιλεγμένου radiobutton
-                        
-                        Toast.makeText(MainActivity.this,
-                                radio_b.getText().toString(),Toast.LENGTH_SHORT ).show(); // Την μετατρέπει σε string και την εμφανίζει στην οθόνη
-                    }
-                }
-        );
-    }
-
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        // Inflate the menu; this adds items to the action bar if it is present.
-        getMenuInflater().inflate(R.menu.menu_main, menu);
-        return true;
-    }
-
-    @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-}
-```
 
 ## Ένα παράδειγμα ενός spinner το οποίο γεμίζει από μια απομακρυσμένη υπηρεσία (πχ http://IP/cities/getCities.php) η οποία επιστρέφει σε μορφή JSON αρχείο τα περιεχόμενα ενός πίνακα Cities (name, monument, country, image). Αφού γεμίσει, επιλέγω και πατάω ένα κουμπί. Μετά από αυτό εμφανίζει τι επέλεξα στην οθόνη.
 
@@ -823,4 +915,3 @@ public class MainActivity extends AppCompatActivity {
 Σε αυτό το παράδειγμα, η μέθοδος **fetchDataFromRemoteService()** καλείται για να ανακτήσει τα δεδομένα JSON από την απομακρυσμένη υπηρεσία. Τα δεδομένα JSON αναλύονται με τη βοήθεια της βιβλιοθήκης Gson, και η λίστα των ονομάτων των πόλεων γεμίζει στον Spinner.
 
 Θυμηθείτε ότι πρέπει να προσθέσετε τις απαραίτητες εξαρτήσεις στο αρχείο build.gradle για τη χρήση του OkHttp και του Gson.
-
