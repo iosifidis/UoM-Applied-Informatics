@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="4dp"
+    tools:context=".TeamDetails">
+
+    <LinearLayout
+        android:id="@+id/homeLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/awayLayout"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textHome"></LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/awayLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="300dp"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
+        app:layout_constraintStart_toEndOf="@+id/homeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/textAway"></LinearLayout>
+
+    <ImageView
+        android:id="@+id/imageHome"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/textHome"
+        app:layout_constraintEnd_toEndOf="@+id/textHome"
+        app:layout_constraintStart_toStartOf="@+id/textHome"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/textHome"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/homeLayout"
+        app:layout_constraintEnd_toEndOf="@+id/homeLayout"
+        app:layout_constraintStart_toStartOf="@+id/homeLayout"
+        app:layout_constraintTop_toBottomOf="@+id/imageHome" />
+
+    <ImageView
+        android:id="@+id/imageAway"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:scaleType="centerCrop"
+        app:layout_constraintBottom_toTopOf="@+id/textAway"
+        app:layout_constraintEnd_toEndOf="@+id/textAway"
+        app:layout_constraintStart_toStartOf="@+id/textAway"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:srcCompat="@tools:sample/backgrounds/scenic" />
+
+    <TextView
+        android:id="@+id/textAway"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="TextView"
+        app:layout_constraintBottom_toTopOf="@+id/awayLayout"
+        app:layout_constraintEnd_toEndOf="@+id/awayLayout"
+        app:layout_constraintStart_toStartOf="@+id/awayLayout"
+        app:layout_constraintTop_toBottomOf="@+id/imageAway" />
+</androidx.constraintlayout.widget.ConstraintLayout>

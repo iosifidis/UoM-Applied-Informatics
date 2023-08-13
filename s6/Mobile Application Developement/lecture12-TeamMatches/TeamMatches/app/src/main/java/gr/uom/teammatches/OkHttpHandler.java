@@ -45,10 +45,10 @@ public class OkHttpHandler {
 
 
     ArrayList<String> populateMatches(String url) {
+        ArrayList<String> fixtures = new ArrayList<>();
+
         OkHttpClient client = new OkHttpClient().newBuilder()
                 .build();
-
-        ArrayList<String> fixtures = new ArrayList<>();
         MediaType mediaType = MediaType.parse("text/plain");
         RequestBody body = RequestBody.create("",mediaType);
         Request request = new Request.Builder()
