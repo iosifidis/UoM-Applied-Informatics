@@ -5,7 +5,7 @@
 Στο πλαίσιο της ανάπτυξης εφαρμογών για το Android με τη χρήση του Android Studio, τα "activity" και "fragment" είναι δύο βασικά στοιχεία που χρησιμοποιούνται για την δομή και την παρουσίαση της διεπαφής των εφαρμογών.
 
 **Activity:**  
-Ένα "activity" αντιπροσωπεύει μια μονάδα εργασίας μιας εφαρμογής. Σε απλά λόγια, είναι μια οθόνη με την οποία ο χρήστης αλληλεπιδρά. Κάθε φορά που ο χρήστης εκτελεί μια ενέργεια που απαιτεί να αλλάξει την οθόνη ή την κατάσταση της εφαρμογής, δημιουργείται μια νέα activity. Οι activities μπορούν να περιέχουν τον κώδικα για τη λογική της εφαρμογής, την παρουσίαση των δεδομένων και την αλληλεπίδραση με τον χρήστη.
+Ένα "activity" αντιπροσωπεύει μια μονάδα εργασίας μιας εφαρμογής. Σε απλά λόγια, είναι μια οθόνη με την οποία ο χρήστης αλληλεπιδρά. Κάθε φορά που ο χρήστης εκτελεί μια ενέργεια που απαιτεί να αλλάξει την οθόνη ή την κατάσταση της εφαρμογής, δημιουργείται ένα νέο activity. Τα activities μπορούν να περιέχουν τον κώδικα για τη λογική της εφαρμογής, την παρουσίαση των δεδομένων και την αλληλεπίδραση με τον χρήστη.
 
 **Fragment:**  
 Ένα "fragment" είναι ένα μικρό κομμάτι της διεπαφής χρήστη που μπορεί να είναι μέρος μιας activity. Η χρήση των fragments επιτρέπει τη δημιουργία ευέλικτων διεπαφών που μπορούν να προσαρμοστούν σε διάφορα μεγέθη οθονών και συσκευών. Τα fragments μπορούν να αντικατασταθούν ή να συνδυαστούν για να δημιουργήσουν πολύπλοκες διεπαφές. Μια activity μπορεί να περιέχει ένα ή περισσότερα fragments και να τα εναλλάσσει ανάλογα με την αλληλεπίδραση του χρήστη.
@@ -62,6 +62,74 @@ fragmentTransaction.commit();
 ```
 
 Αυτό θα ενσωματώσει το Fragment στο Activity και θα το εμφανίσει στον καθορισμένο χώρο στο layout του Activity. Είναι σημαντικό να προσέξετε ότι πρέπει να χρησιμοποιήσετε το σωστό όνομα πακέτου και τη σωστή κλάση για το Fragment στον κώδικά σας.
+
+## Παράδειγμα πως μπορώ να αλλάζω fragment μέσα σε activity με το πάτημα κουμπιών
+
+Αφού φτιάξω στο layout το activity_main.xml, fragment_fragment_one.xml, fragment_fragment_two.xml, στον κώδικα java προσθέτω το εξής:
+
+```
+pubic void ChangeFragment(View view){
+    Fragment fragment;
+    if(view == fragmentById(R.id.button)){
+        fragment = new FragmentOne();
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.FragmentManager();
+        ft.replace(R.id.fragment_place, fragment); // To id του fragment είναι fragment_place.
+        ft.commit();
+     }
+     if(view == fragmentById(R.id.button2)){
+        fragment = new FragmentTwo();
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.FragmentManager();
+        ft.replace(R.id.fragment_place, fragment); // To id του fragment είναι fragment_place.
+        ft.commit();
+```
+
+Στο activity_main.xml στις ιδιότητες των κουμπιών βάζω στο onClick την μέθοδο ChangeFragment.
+
+## Τι είναι το binding, που χρησιμοποιείται και ένα παράδειγμα χρήσης του
+
+Το "binding" σε σχέση με το Android αναφέρεται στο "View Binding", μια τεχνική που επιτρέπει τη σύνδεση (binding) των στοιχείων του διεπαφής χρήστη (UI elements) με τον κώδικα Java/Kotlin της εφαρμογής σας. Αυτό γίνεται μέσω του αυτόματου δημιουργίας ενός binding class που αντιπροσωπεύει το XML layout της διεπαφής σας.
+
+Ο View Binding αντικαθιστά τον παλαιότερο τρόπο χρήσης του findViewById() για την εύρεση και τη σύνδεση των στοιχείων του UI στον κώδικα. Χρησιμοποιώντας το View Binding, μπορείτε να αποφύγετε τα null pointers που μπορούν να προκύψουν από λάθη στην αναζήτηση στοιχείων UI και να έχετε πιο ασφαλή και αποτελεσματική πρόσβαση σε αυτά.
+
+Εδώ είναι ένα απλό παράδειγμα χρήσης του View Binding:
+
+1. Layout (activity_main.xml):   
+Ας υποθέσουμε ότι έχουμε ένα απλό TextView στο XML layout:
+
+```
+<TextView
+    android:id="@+id/helloTextView"
+    android:layout_width="wrap_content"
+    android:layout_height="wrap_content"
+    android:text="Hello, View Binding!" />
+```
+
+2. Java Code (MainActivity.java):   
+Στη συνέχεια, μπορούμε να χρησιμοποιήσουμε το View Binding για να συνδέσουμε το TextView στον κώδικα:
+
+```
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import com.example.myapp.databinding.ActivityMainBinding;
+
+public class MainActivity extends AppCompatActivity {
+
+    private ActivityMainBinding binding;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        binding = ActivityMainBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+
+        // Τώρα μπορούμε να χρησιμοποιήσουμε το binding για πρόσβαση στα στοιχεία UI
+        binding.helloTextView.setText("Hello from View Binding!");
+    }
+}
+```
+Στο παραπάνω παράδειγμα, το ActivityMainBinding είναι το binding class που δημιουργείται αυτόματα από το View Binding για το XML layout activity_main.xml. Το binding αντιπροσωπεύει τον ολόκληρο πίνακα UI που έχετε ορίσει στο XML, και μπορείτε να προσπελάσετε τα στοιχεία του UI με τη χρήση του binding.
 
 ## Τι είναι ένα Bundle και τι Intent;
 
@@ -178,6 +246,50 @@ public class SecondActivity extends AppCompatActivity {
 
 Αυτό το παράδειγμα δείχνει πώς μπορείτε να χρησιμοποιήσετε το Intent για τη μεταφορά δεδομένων και την εναλλαγή μεταξύ διαφορετικών συνιστωσών ενός Android εφαρμογής.
 
+## Απλό παράδειγμα κώδικα πως μεταφέρομαι από το MainActivity στο SecondActivity
+
+Αρχικά βεβαιωθείτε ότι στο AndroidManifest.xml υπάρχει η εγγραφή (μετά το .FirstActivity):
+
+```
+        <activity
+            android:name=".SecondActivity"
+            android:label="@string/title_activity_second" >
+            <intent-filter>
+                <action android:name="gr.uom.myApp.SecondActivity" />
+
+                <category android:name="android.intent.category.DEFAULT" />
+            </intent-filter>
+        </activity>
+```
+
+Στην συνέχεια στο MainActivity.java να έχετε την εγγραφή:
+
+```
+public class MainActivity extends ActionBarActivity {
+      private static  Button button_sbm;
+      @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+          OnClickButtonListener();
+    }
+
+    public void OnClickButtonListener() {
+        button_sbm = (Button)findViewById(R.id.button); // Φτιάχνω το αντικείμενο κουμπιού
+        
+        // Του ορίζω έναν Listener
+        button_sbm.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        Intent intent = new Intent("gr.uom.myApp.SecondActivity"); // Εδώ του ορίζω ποιο Activity να ξεκινήσει. Παραπάνω του περάσαμε και τιμές.
+                        startActivity(intent);
+                    }
+                }
+        );
+}        
+```
+
 ## Ένα παράδειγμα πως παίρνω τιμή από ένα πεδίο.
 
 Αν υποθέσουμε ότι έχετε ένα EditText πεδίο στο layout του Activity και θέλετε να πάρετε την τιμή που έχει εισαχθεί σε αυτό, μπορείτε να το πετύχετε ως εξής:
@@ -269,7 +381,7 @@ public class MainActivity extends AppCompatActivity {
 
 Όταν πατηθεί το κουμπί, το κείμενο που έχει εισαχθεί στο πεδίο εισαγωγής θα εμφανίζεται σε ένα Toast μήνυμα.
 
-## Ένα παράδειγμα κώδικα για το πως παίρνω την εισαγωγή του χρήστη από ένα πεδίο και μετά το υψώνω στην 3 και το εμφανίζω στην οθόνη (με πάτημα κουμπιού).
+## Ένα παράδειγμα κώδικα για το πως παίρνω την εισαγωγή του χρήστη από ένα πεδίο και μετά το υψώνω στην 3 (κάνω κάποια ενέργεια έστω) και το εμφανίζω στην οθόνη (με πάτημα κουμπιού).
 
 Εδώ έχετε ένα παράδειγμα κώδικα που δείχνει πώς να πάρετε την είσοδο του χρήστη από ένα πεδίο, να την υψώσετε στην τρίτη δύναμη και να την εμφανίσετε στην οθόνη:
 
@@ -439,6 +551,123 @@ dependencies {
 
 Δεν ξεχνάμε να επιλέξουμε Sync Now.
 
+## Παράδειγμα επιλογής από ένα Radio Button
+
+Έστω το activity_main.xml
+
+```
+
+
+    <RadioGroup
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:layout_below="@+id/button"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/rg_animals">
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Dog"
+            android:id="@+id/radioButton_dog"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cat"
+            android:id="@+id/radioButton_cat"
+            android:checked="false" />
+
+        <RadioButton
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Cow"
+            android:id="@+id/radioButton_cow"
+            android:checked="false" />
+
+    </RadioGroup>
+
+    <Button
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Submit"
+        android:id="@+id/button"
+        android:layout_marginTop="25dp"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
+</RelativeLayout>
+```
+Τώρα πρέπει να φτιάξουμε το MainActivity.java
+
+```
+import android.support.v7.app.ActionBarActivity;
+import android.os.Bundle;
+import android.view.Menu;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+public class MainActivity extends ActionBarActivity {
+     private static  RadioGroup radio_g;
+     private static  RadioButton radio_b;
+    private static Button button_sbm;
+    
+     @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+         onClickListenerButton();
+    }
+
+    public void onClickListenerButton() {
+        radio_g = (RadioGroup)findViewById(R.id.rg_animals); // Φτιάχνω το RadioGroup
+        button_sbm = (Button)findViewById(R.id.button); // Φτιάχνω και το πλήκτρο
+
+        button_sbm.setOnClickListener(
+                new View.OnClickListener() {
+                    @Override
+                    public void onClick(View v) {
+                        int selected_id = radio_g.getCheckedRadioButtonId(); // Παίρνει το id του επιλεγμένου radiobutton
+                        radio_b = (RadioButton)findViewById(selected_id); // Bρίσκει το αντικείμενο του επιλεγμένου radiobutton
+                        
+                        Toast.makeText(MainActivity.this,
+                                radio_b.getText().toString(),Toast.LENGTH_SHORT ).show(); // Την μετατρέπει σε string και την εμφανίζει στην οθόνη
+                    }
+                }
+        );
+    }
+
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        // Inflate the menu; this adds items to the action bar if it is present.
+        getMenuInflater().inflate(R.menu.menu_main, menu);
+        return true;
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        // Handle action bar item clicks here. The action bar will
+        // automatically handle clicks on the Home/Up button, so long
+        // as you specify a parent activity in AndroidManifest.xml.
+        int id = item.getItemId();
+
+        //noinspection SimplifiableIfStatement
+        if (id == R.id.action_settings) {
+            return true;
+        }
+
+        return super.onOptionsItemSelected(item);
+    }
+}
+```
+
 ## Ένα παράδειγμα ενός spinner το οποίο γεμίζει από μια απομακρυσμένη υπηρεσία (πχ http://IP/cities/getCities.php) η οποία επιστρέφει σε μορφή JSON αρχείο τα περιεχόμενα ενός πίνακα Cities (name, monument, country, image). Αφού γεμίσει, επιλέγω και πατάω ένα κουμπί. Μετά από αυτό εμφανίζει τι επέλεξα στην οθόνη.
 
 Παρακάτω είναι ένα παράδειγμα κώδικα που χρησιμοποιεί έναν Spinner για να γεμίσει επιλογές από μια απομακρυσμένη υπηρεσία που επιστρέφει δεδομένα σε μορφή JSON. Όταν επιλέγετε μια επιλογή και πατάτε το κουμπί, εμφανίζεται η επιλεγμένη επιλογή στην οθόνη:
@@ -474,7 +703,7 @@ dependencies {
 </LinearLayout>
 ```
 
-2. Java Code (MainActivity.java):   
+2. Java Code (MainActivity.java):   activity_main.xml
 Για αυτό το παράδειγμα, θα χρησιμοποιήσουμε τη βιβλιοθήκη OkHttp για να κάνουμε το αίτημα HTTP και τη βιβλιοθήκη Gson για να αναλύσουμε τα δεδομένα JSON.   
 
 ```
