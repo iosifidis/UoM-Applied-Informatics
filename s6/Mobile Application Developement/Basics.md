@@ -655,6 +655,106 @@ public class MainActivity extends AppCompatActivity {
 
 Σε αυτό το παράδειγμα, ο Spinner γεμίζει με επιλογές "Option 1", "Option 2" και "Option 3". Όταν επιλέγετε μια επιλογή από τον Spinner, εμφανίζεται ένα Toast μήνυμα που δείχνει την επιλεγμένη επιλογή.
 
+## Παράδειγμα κώδικα για χρήση βιβλιοθήκης Picasso σε μια εικόνα η οποία να αλλάζει με το πάτημα ενός κουμπιού.
+
+Η βιβλιοθήκη Picasso χρησιμοποιείται για τη φόρτωση και την προβολή εικόνων από διάφορες πηγές (όπως τοπικά αρχεία, διαδικτυακές διευθύνσεις URL κ.λπ.). Εδώ είναι ένα παράδειγμα κώδικα με σχόλια που δείχνει πώς μπορείτε να χρησιμοποιήσετε τη βιβλιοθήκη Picasso για να εμφανίσετε μια εικόνα που αλλάζει με το πάτημα ενός κουμπιού:
+
+1. Layout (activity_main.xml):   
+Προσθέστε ένα ImageView και ένα Button στο XML layout:
+
+```
+<LinearLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:padding="16dp">
+
+    <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:src="@drawable/placeholder_image" />
+
+    <Button
+        android:id="@+id/changeImageButton"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Change Image" />
+
+</LinearLayout>
+```
+
+2. Java Code (MainActivity.java):   
+
+```
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+import android.widget.ImageView;
+import com.squareup.picasso.Picasso;
+
+public class MainActivity extends AppCompatActivity {
+
+    private ImageView imageView;
+    private Button changeImageButton;
+
+    // Οι διαθέσιμες εικόνες
+    private String[] imageUrls = {
+            "https://example.com/image1.jpg",
+            "https://example.com/image2.jpg",
+            "https://example.com/image3.jpg"
+    };
+    private int currentImageIndex = 0;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        imageView = findViewById(R.id.imageView);
+        changeImageButton = findViewById(R.id.changeImageButton);
+
+        // Φόρτωση της πρώτης εικόνας
+        loadImage(imageUrls[currentImageIndex]);
+
+        changeImageButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // Εναλλαγή της εικόνας μεταξύ των διαθέσιμων
+                currentImageIndex = (currentImageIndex + 1) % imageUrls.length;
+                loadImage(imageUrls[currentImageIndex]);
+            }
+        });
+    }
+
+    // Μέθοδος για τη φόρτωση εικόνας με τη βοήθεια της Picasso
+    private void loadImage(String imageUrl) {
+        Picasso.get()
+            .load(imageUrl)
+            .placeholder(R.drawable.placeholder_image) // Ενδιάμεση εικόνα κατά τη φόρτωση
+            .error(R.drawable.error_image) // Εικόνα αν συμβεί λάθος
+            .into(imageView);
+    }
+}
+```
+
+Σε αυτό το παράδειγμα, το Picasso φορτώνει την επιλεγμένη εικόνα από την λίστα imageUrls και την εμφανίζει στο ImageView. Κάθε φορά που πατιέται το κουμπί "Change Image", η επιλεγμένη εικόνα αλλάζει. Επίσης, υπάρχουν προσδιορισμένες εικόνες "placeholder" και "error" που εμφανίζονται κατά τη φόρτωση και σε περίπτωση λάθους, αντίστοιχα. Αντικαταστήστε τα URLs με τις πραγματικές διαδικτυακές διευθύνσεις των εικόνων που θέλετε να να χρησιμοποιήσετε.
+
+3. Για να συμπεριλάβετε τη βιβλιοθήκη Picasso στην εφαρμογή, πρέπει να προσθέσετε την αντίστοιχη εξάρτηση (dependency) στο αρχείο **build.gradle** του project. 
+
+* Άνοιξε το αρχείο build.gradle που βρίσκεται στον κύριο φάκελο του project (όχι στο φάκελο app).   
+
+* Στην ενότητα dependencies, προσθέστε την ακόλουθη γραμμή για να προσθέσετε την εξάρτηση της βιβλιοθήκης Picasso:
+
+```
+implementation 'com.squareup.picasso:picasso:2.5.2'
+```
+
+Δεν ξεχνάμε να επιλέξουμε Sync Now.
+
 ## Βασικές αλλαγές-προσθήκες για να έχω λήψη στοιχείων από μια εξωτερική υπηρεσία - βάση δεδομένων.
 
 Για να κάνετε λήψη δεδομένων από μια εξωτερική υπηρεσία στο Android με χρήση τη βιβλιοθήκη OkHttp, πρέπει να ενημερώσετε το Android Manifest και να δημιουργήσετε ένα αρχείο network_security_config.xml. Εδώ είναι ένα βήμα προς βήμα παράδειγμα:
@@ -774,6 +874,128 @@ dependencies {
 ```
 
 Δεν ξεχνάμε να επιλέξουμε Sync Now.
+
+## Ποιες είναι οι απαραίτητες αλλαγές και βασικά αρχεία για σύνδεση σε μια απομακρυσμένη υπηρεσία βάσης δεδομένων πχ http://195.251.211.64/ για ανάγνωση και εισαγωγή σε ένα spinner;
+
+Για να συνδεθείτε σε μια απομακρυσμένη υπηρεσία βάσης δεδομένων και να ανακτήσετε δεδομένα για να τα εμφανίσετε σε ένα Spinner στην εφαρμογή σας, θα χρειαστείτε να κάνετε τις εξής βασικές αλλαγές και να προσθέσετε αρχεία:
+
+1. Προσθήκη Δικτυακής Άδειας (Network Permission):   
+Προσθέστε τη δικτυακή άδεια στο αρχείο AndroidManifest.xml, ώστε η εφαρμογή σας να έχει τη δυνατότητα να επικοινωνεί με το διακομιστή:
+
+```
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
+2. Εισαγωγή Βιβλιοθήκης OkHttp:   
+Για τις αιτήσεις δικτύου, μπορείτε να χρησιμοποιήσετε τη βιβλιοθήκη OkHttp. Προσθέστε την εξάρτηση του OkHttp στο αρχείο build.gradle:
+
+```
+implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+```
+
+3. Layout (activity_main.xml):   
+Εισάγετε τον κώδικα για το RadioGroup:
+
+```
+<RadioGroup
+    android:id="@+id/radioGroup"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical">
+</RadioGroup>
+```
+
+4. Java Code (MainActivity.java):   
+
+```
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.Bundle;
+import android.view.ViewGroup.LayoutParams;
+import android.widget.RadioButton;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+import com.squareup.okhttp.OkHttpClient;
+import com.squareup.okhttp.Request;
+import com.squareup.okhttp.Response;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.io.IOException;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    private RadioGroup radioGroup;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        radioGroup = findViewById(R.id.radioGroup);
+
+        OkHttpClientHandler okHttpClientHandler = new OkHttpClientHandler();
+        String response = okHttpClientHandler.execute("http://195.251.211.64/cities/getCities.php");
+
+        try {
+            List<String> cityNames = parseJSON(response);
+            populateRadioGroup(cityNames);
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    private List<String> parseJSON(String json) throws JSONException {
+        List<String> cityNames = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray(json);
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            String cityName = jsonObject.getString("name");
+            cityNames.add(cityName);
+        }
+        return cityNames;
+    }
+
+    private void populateRadioGroup(List<String> cityNames) {
+        for (String cityName : cityNames) {
+            RadioButton radioButton = new RadioButton(this);
+            radioButton.setText(cityName);
+            radioGroup.addView(radioButton);
+        }
+
+        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                RadioButton selectedRadioButton = findViewById(checkedId);
+                String selectedCity = selectedRadioButton.getText().toString();
+                Toast.makeText(MainActivity.this, "Selected City: " + selectedCity, Toast.LENGTH_SHORT).show();
+            }
+        });
+    }
+
+    private static class OkHttpClientHandler extends AsyncTask<String, Void, String> {
+        private final OkHttpClient client = new OkHttpClient();
+
+        @Override
+        protected String doInBackground(String... urls) {
+            String responseString = "";
+            try {
+                Request request = new Request.Builder()
+                        .url(urls[0])
+                        .build();
+
+                Response response = client.newCall(request).execute();
+                responseString = response.body().string();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return responseString;
+        }
+    }
+}
+
+```
+Σε αυτό το παράδειγμα, το RadioGroup γεμίζει με επιλογές από τα δεδομένα της υπηρεσίας. Όταν επιλέγεται ένας RadioButton, εμφανίζεται ένα Toast μήνυμα με την επιλογή της πόλης. Η κλάση OkHttpClientHandler χρησιμοποιείται για να αναλάβει την ασύγχρονη αίτηση HTTP με τη χρήση του OkHttp. Παρακαλώ, βεβαιωθείτε ότι έχετε προσθέσει την εξάρτηση του OkHttp στο αρχείο build.gradle.
 
 ## Ένα παράδειγμα ενός spinner το οποίο γεμίζει από μια απομακρυσμένη υπηρεσία (πχ http://IP/cities/getCities.php) η οποία επιστρέφει σε μορφή JSON αρχείο τα περιεχόμενα ενός πίνακα Cities (name, monument, country, image). Αφού γεμίσει, επιλέγω και πατάω ένα κουμπί. Μετά από αυτό εμφανίζει τι επέλεξα στην οθόνη.
 
