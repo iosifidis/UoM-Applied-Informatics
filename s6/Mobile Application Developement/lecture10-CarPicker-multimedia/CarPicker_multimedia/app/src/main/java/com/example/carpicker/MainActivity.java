@@ -123,20 +123,36 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        // Η γραμμή cbl = new CarBrandList(myIP);
+        // δημιουργεί μια νέα "CarBrandList" αντικείμενο και το αρχικοποιεί με την τιμή της μεταβλητής myIP.
         cbl = new CarBrandList(myIP);
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-        myImage = (ImageButton) findViewById(R.id.imageButton);
-        myImage.setVisibility(View.GONE);
 
+        // ορίζει το περιεχόμενο της δραστηριότητας, δηλαδή ποιο layout θα χρησιμοποιηθεί. Σε αυτήν την περίπτωση,
+        // το layout που ονομάζεται activity_main θα εμφανίζεται στην οθόνη.
+        setContentView(R.layout.activity_main);
+
+        // εντοπίζει το στοιχείο με το ID imageButton στο layout και το αποθηκεύει στη μεταβλητή myImage.
+        myImage = (ImageButton) findViewById(R.id.imageButton);
+        myImage.setVisibility(View.GONE); // κρύβει το imageButton, καθιστώντας το αόρατο.
+
+        // εντοπίζει το στοιχείο με το ID cars (πιθανώς ένα Spinner) στο layout και το αποθηκεύει στη μεταβλητή dropDown.
         Spinner dropDown = (Spinner) findViewById(R.id.cars);
+
+        // Η γραμμή με το ArrayAdapter δημιουργεί έναν προσαρμοστή (adapter) για το Spinner με τη λίστα των
+        // brands που παρέχονται από το cbl.getAllBrands().
         ArrayAdapter<String> arrayAdapter =
                 new ArrayAdapter<String>(this,
                         android.R.layout.simple_spinner_dropdown_item,
                         cbl.getAllBrands());
+        // ορίζει τον προσαρμοστή που δημιουργήθηκε στο πεδίο του Spinner.
         dropDown.setAdapter(arrayAdapter);
+
+        // εντοπίζει το RadioGroup με ID rg στο layout και το αποθηκεύει στη μεταβλητή rg.
         rg = (RadioGroup) findViewById(R.id.rg);
 
+        // Η επόμενη περιοχή του κώδικα ορίζει έναν click listener για το myImage,
+        // που όταν πατηθεί, θα εκτελεστεί η μέθοδος sendMessage.
         myImage.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -145,6 +161,8 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
+    // Η sendMessage μέθοδος δημιουργεί ένα Intent για να μεταβεί στη δραστηριότητα CarDetails,
+    // περνώντας δεδομένα όπως η imageUri και η full_name, και στη συνέχεια εκκινεί τη νέα δραστηριότητα.
     public void sendMessage(View view){
         Intent intent = new Intent(this, CarDetails.class);
         intent.putExtra("IMAGE", imageUri);
