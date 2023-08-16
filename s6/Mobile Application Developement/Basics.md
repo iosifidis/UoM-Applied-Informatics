@@ -143,7 +143,7 @@ public class MainActivity extends AppCompatActivity {
 
 Συνολικά, τόσο το Bundle όσο και το Intent είναι βασικά εργαλεία για την μεταφορά δεδομένων και τη διαχείριση της αλληλεπίδρασης μεταξύ διάφορων συνιστωσών μιας εφαρμογής Android.
 
-## Ένα μικρό παράδειγμα κώδικα Bundle
+## Ένα παράδειγμα κώδικα Bundle
 
 Εδώ έχετε ένα απλό παράδειγμα κώδικα που δείχνει πώς να χρησιμοποιήσετε ένα Bundle για να μεταφέρετε ένα ακέραιο αριθμό από ένα Activity σε ένα άλλο:
 
@@ -179,7 +179,7 @@ public class FirstActivity extends AppCompatActivity {
 
 Αυτό είναι ένα απλό παράδειγμα για να δείτε πώς λειτουργεί η χρήση ενός Bundle για τη μεταφορά δεδομένων μεταξύ διαφορετικών συνιστωσών ενός Android εφαρμογής.
 
-## Ένα μικρό παράδειγμα για Intenet (μεταφορά τιμής από πρώτο activity στο δεύτερο activity)
+## Ένα παράδειγμα με Intenet (μεταφορά τιμής από πρώτο activity στο δεύτερο activity)
 
 Εδώ έχετε ένα απλό παράδειγμα κώδικα που δείχνει πώς να χρησιμοποιήσετε ένα Intent για να μεταφέρετε δεδομένα από ένα Activity σε ένα άλλο:
 
@@ -260,6 +260,52 @@ public class SecondActivity extends AppCompatActivity {
 Το Intent χρησιμοποιείται για να εκκινήσετε διάφορες δραστηριότητες (Activities) ή να αλληλεπιδράσετε με άλλες εφαρμογές. Χρησιμοποιείται για την αποστολή εντολών ή τη μεταφορά δεδομένων προς άλλες εφαρμογές, ανοίγοντας π.χ. μια συγκεκριμένη σελίδα ιστού σε έναν προεπιλεγμένο περιηγητή.
 
 Συνοψίζοντας, χρησιμοποιήστε το Binding για να συνδέσετε τα στοιχεία του UI με τον κώδικα, το Bundle για να περνάτε δεδομένα μεταξύ διαφορετικών components της εφαρμογής και το Intent για να επικοινωνείτε με διάφορες δραστηριότητες και εφαρμογές.
+
+## Τι είναι τα layouts και πως χρησιμοποιούνται; Ένα μικρό παράδειγμα.
+
+Τα layouts στο Android αναφέρονται στην οργάνωση και διάταξη των διαφόρων οπτικών στοιχείων (Views) σε μια οθόνη. Τα layouts καθορίζουν πώς τα διάφορα στοιχεία θα τοποθετηθούν και θα αλληλεπιδρούν μεταξύ τους στο γραφικό περιβάλλον της εφαρμογής σας.
+
+Τα διάσημα layouts που μπορείτε να χρησιμοποιήσετε είναι:
+
+* LinearLayout: Τα στοιχεία τοποθετούνται μία πάνω στο άλλο ή δίπλα στο άλλο, στον ίδιο άξονα (οριζόντιο ή κατακόρυφο).
+
+* RelativeLayout: Τα στοιχεία ορίζονται σε σχέση με τα άλλα, χρησιμοποιώντας κανόνες θέσης, όπως "από πάνω του", "δίπλα από", κ.λπ.
+
+* ConstraintLayout: Τα στοιχεία τοποθετούνται με βάση περιορισμούς (constraints) που καθορίζουν τη θέση και τις σχέσεις τους με άλλα στοιχεία.
+
+* FrameLayout: Τα στοιχεία επικαλύπτονται ένα πάνω στο άλλο, και το πάνω στοιχείο είναι το πιο ορατό.
+
+Εδώ έχουμε ένα παράδειγμα χρήσης του LinearLayout:
+
+**Layout (activity_main.xml):**
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" <!-- Οριζόντιο ή κατακόρυφο -->
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello, this is a TextView!"
+        android:layout_gravity="center" /> <!-- Κείμενο στο κέντρο του γονικού στοιχείου -->
+
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Click Me!"
+        android:layout_gravity="center" /> <!-- Κουμπί στο κέντρο του γονικού στοιχείου -->
+
+</LinearLayout>
+```
+Στο παραπάνω παράδειγμα, χρησιμοποιούμε το LinearLayout με κατακόρυφη διάταξη (vertical orientation) για να τοποθετήσουμε ένα `TextView
 
 ## Απλό παράδειγμα κώδικα πως μεταφέρομαι από το MainActivity στο SecondActivity
 
@@ -875,6 +921,159 @@ dependencies {
 
 Δεν ξεχνάμε να επιλέξουμε Sync Now.
 
+## Παράδειγμα για να γεμίσει ένα RadioGroup με RadioButtons τα οποία παίρνει από μια βάση δεδομένων μέσω webservices από τον http://195.251.511.64 (κλάση OkHttpHandler) και JSON parsing
+
+Για να συνδεθείτε σε μια απομακρυσμένη υπηρεσία βάσης δεδομένων και να ανακτήσετε δεδομένα για να τα εμφανίσετε σε ένα RadioGroup στην εφαρμογή σας, θα χρειαστείτε να κάνετε τις εξής βασικές αλλαγές και να προσθέσετε αρχεία:
+
+1. Προσθήκη Δικτυακής Άδειας (Network Permission):   
+Προσθέστε τη δικτυακή άδεια στο αρχείο AndroidManifest.xml, ώστε η εφαρμογή σας να έχει τη δυνατότητα να επικοινωνεί με το διακομιστή:
+
+```
+<uses-permission android:name="android.permission.INTERNET" />
+```
+
+2. Εισαγωγή Βιβλιοθήκης OkHttp:   
+Για τις αιτήσεις δικτύου, μπορείτε να χρησιμοποιήσετε τη βιβλιοθήκη OkHttp. Προσθέστε την εξάρτηση του OkHttp στο αρχείο build.gradle:
+
+```
+implementation 'com.squareup.okhttp3:okhttp:4.9.1'
+```
+
+Για να επιτύχετε το επιθυμητό αποτέλεσμα, πρέπει να δημιουργήσετε τα παρακάτω αρχεία:
+
+1. activity_main.xml: Το layout αρχείο που θα περιέχει το RadioGroup.
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <RadioGroup
+        android:id="@+id/radioGroup"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:orientation="vertical">
+    </RadioGroup>
+
+</RelativeLayout>
+```
+
+2. MainActivity.java: Το κύριο αρχείο Java που θα υλοποιεί τη λειτουργία της εφαρμογής. Βεβαιωθείτε ότι έχετε προσθέσει τη βιβλιοθήκη OkHttp στο αρχείο build.gradle πριν χρησιμοποιήσετε τον παρακάτω κώδικα:
+
+```
+import androidx.appcompat.app.AppCompatActivity;
+import android.os.AsyncTask;
+import android.os.Bundle;
+import android.widget.RadioGroup;
+import android.widget.RadioButton;
+import android.widget.Toast;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
+import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
+
+public class MainActivity extends AppCompatActivity {
+
+    private RadioGroup radioGroup;
+    private OkHttpClientHandler okHttpClientHandler;
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        radioGroup = findViewById(R.id.radioGroup);
+        okHttpClientHandler = new OkHttpClientHandler();
+        
+        // Κάνε την ασύγχρονη αίτηση για τα δεδομένα JSON
+        okHttpClientHandler.execute("http://195.251.511.64");
+    }
+
+    private class OkHttpClientHandler extends AsyncTask<String, Void, String> {
+        private final OkHttpClient client = new OkHttpClient();
+
+        @Override
+        protected String doInBackground(String... urls) {
+            String responseString = "";
+            try {
+                okhttp3.Request request = new okhttp3.Request.Builder()
+                        .url(urls[0])
+                        .build();
+
+                okhttp3.Response response = client.newCall(request).execute();
+                responseString = response.body().string();
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+            return responseString;
+        }
+
+        @Override
+        protected void onPostExecute(String response) {
+            super.onPostExecute(response);
+            
+            try {
+                List<String> radioButtonLabels = parseJSON(response);
+                createRadioButtons(radioGroup, radioButtonLabels);
+            } catch (JSONException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+
+    private List<String> parseJSON(String json) throws JSONException {
+        List<String> radioButtonLabels = new ArrayList<>();
+        JSONArray jsonArray = new JSONArray(json);
+
+        // Λήψη των ετικετών "label" από το JSON και προσθήκη τους στη λίστα
+        for (int i = 0; i < jsonArray.length(); i++) {
+            JSONObject jsonObject = jsonArray.getJSONObject(i);
+            String label = jsonObject.optString("label");
+            radioButtonLabels.add(label);
+        }
+
+        return radioButtonLabels;
+    }
+
+    private void createRadioButtons(RadioGroup rg, List<String> mList) {
+        int count = mList.size();
+        RadioButton rb[] = new RadioButton[count];
+
+        // Δημιουργία RadioButtons με τα λεκτικά από τη λίστα
+        for (int i = 0; i < mList.size(); i++) {
+            rb[i] = new RadioButton(this);
+            rb[i].setText(mList.get(i));
+            rb[i].setId(i + 100);
+            rg.addView(rb[i]);
+        }
+
+        // Ορισμός του ακροατή για την αλλαγή επιλεγμένου RadioButton
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                RadioButton rb = findViewById(checkedId);
+                // Εμφάνιση Toast με το επιλεγμένο κείμενο του RadioButton
+                Toast myToast = Toast.makeText(
+                        getApplicationContext(),
+                        "Selected: " + rb.getText(),
+                        Toast.LENGTH_LONG
+                );
+                myToast.show();
+            }
+        });
+    }
+}
+```
+
+Αυτό το παράδειγμα υλοποιεί την επιθυμητή λειτουργία, συνδέοντας το RadioGroup με το διακομιστή μέσω του OkHttpClientHandler για την ασύγχρονη ανάκτηση των δεδομένων JSON. Έπειτα, χρησιμοποιεί τη μέθοδο createRadioButtons για τη δημιουργία των RadioButtons με τα κατάλληλα λεκτικά. Το επιλεγμένο RadioButton εμφανίζεται σε ένα Toast όταν γίνει επιλογή. Φυσικά, προσαρμόστε το JSON parsing σύμφωνα με το πραγματικό δομή των δεδομένων που θα λαμβάνετε από τον διακομιστή σας.   
+
 ## Ποιες είναι οι απαραίτητες αλλαγές και βασικά αρχεία για σύνδεση σε μια απομακρυσμένη υπηρεσία βάσης δεδομένων πχ http://195.251.211.64/ για ανάγνωση και εισαγωγή σε ένα spinner;
 
 Για να συνδεθείτε σε μια απομακρυσμένη υπηρεσία βάσης δεδομένων και να ανακτήσετε δεδομένα για να τα εμφανίσετε σε ένα Spinner στην εφαρμογή σας, θα χρειαστείτε να κάνετε τις εξής βασικές αλλαγές και να προσθέσετε αρχεία:
@@ -1137,3 +1336,349 @@ public class MainActivity extends AppCompatActivity {
 Σε αυτό το παράδειγμα, η μέθοδος **fetchDataFromRemoteService()** καλείται για να ανακτήσει τα δεδομένα JSON από την απομακρυσμένη υπηρεσία. Τα δεδομένα JSON αναλύονται με τη βοήθεια της βιβλιοθήκης Gson, και η λίστα των ονομάτων των πόλεων γεμίζει στον Spinner.
 
 Θυμηθείτε ότι πρέπει να προσθέσετε τις απαραίτητες εξαρτήσεις στο αρχείο build.gradle για τη χρήση του OkHttp και του Gson.
+
+## Κώδικες που πρέπει να γνωρίζω
+
+### Δημιουργία ενός RadioGroup με RadioButtons. Η μέθοδος δέχεται το RadioGroup και μια λίστα και παίρνει στοιχεία της λίστας και τα προσθέτει στο RadioGroup ως RadioButton.
+
+```
+        // Μέθοδος που θα χρησιμοποιήσω παραπάνω. Δέχεται το radiobutton και την λίστα που θέλουμε να προσθέσουμε
+    private void createRadioButtons(RadioGroup rg, List<String> mList) {
+        int count = mList.size(); // Παίρνω το μέγεθος της λίστας. Αυτό μπορεί να μπει και κατευθείαν στην κάτω σειρά στις αγγύλες.
+        RadioButton rb[] = new RadioButton[count]; // Δημιουργώ ένα radio button (μέσα στην αγγύλη μπορώ να βάλω κατευθείαν το μέγεθος
+
+        // Κατασκευή του radiobutton-radiogroup
+        for (int i=0 ; i<mList.size(); i++){
+            rb[i] = new RadioButton(this); // Φτιάχνω ένα radio button ανάλογα με τι μέγεθος θα έχει η λίστα
+            rb[i].setText(mList.get(i)); // Προσθέτων το κείμενο που πήρα από την λίστα ως κείμενο σε radiobutton
+            rb[i].setId(i+100); // Βάζω ένα id γιατί πιθανό να το ψάξω με το id
+            rg.addView(rb[i]); // Το προσθέτω στο radiogroup
+        }
+    }
+```
+
+### Κώδικας δημιουργίας spinner
+
+Παρακάτω ο κώδικας αρχικοποιεί μια CarBrandList, ορίζει την προβολή περιεχομένου της δραστηριότητας, δημιουργεί ένα Spinner, το συμπληρώνει με επωνυμίες χρησιμοποιώντας έναν ArrayAdapter και προετοιμάζει μια RadioGroup. Αυτό ρυθμίζει τα στοιχεία διεπαφής χρήστη για τη δραστηριότητα, επιτρέποντας στον χρήστη να επιλέξει μια μάρκα αυτοκινήτου από το Spinner και να αλληλεπιδράσει με το RadioGroup.
+
+```
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // Στο αντικείμενο cbl περνάω το αρχείο με τα brands με την getAssets()
+        cbl = new CarBrandList(myIP);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //Δημιουργούμε το Spinner και το γεμίζουμε με τα brands
+        Spinner dropDown = (Spinner) findViewById(R.id.cars);
+        // Δημιουργεί έναν ArrayAdapter που θα χρησιμοποιηθεί για τη συμπλήρωση του Spinner με δεδομένα.
+        // Ο ArrayAdapter αρχικοποιείται με την τρέχουσα δραστηριότητα (this), τον πόρο διάταξης
+        // για κάθε στοιχείο Spinner και τη λίστα των brands που ελήφθησαν
+        // από το CarBrandList cbl χρησιμοποιώντας τη μέθοδο getAllBrands.
+        ArrayAdapter<String> arrayAdapter =
+                new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        cbl.getAllBrands());
+        dropDown.setAdapter(arrayAdapter);
+
+        // Αρχικοποιεί ένα γραφικό στοιχείο RadioGroup που ονομάζεται rg
+        // βρίσκοντας την προβολή με το αναγνωριστικό rg από τη διάταξη της δραστηριότητας
+        rg = (RadioGroup) findViewById(R.id.rg);
+    }
+```
+
+### Μια μέθοδος που κάνει μια ενέργεια όταν πατηθεί το κουμπί μετά την επιλογή του RadioButton.
+
+Στον παρακάτω κώδικα δημιουργείται το RadioGroup με τα RadioButtons και με το που επιλέγεται κάποιο και πατιέται ένα κουμπί, το εμφανίζει στην οθόνη.
+
+```
+    // Γράφουμε την μέθοδο για το τι θα κάνει το κουμπί όταν πατηθεί.
+    public void PickCarOnClick(View v) {
+        // Φτιάχνω ένα αντικείμενο spinner. Επιλεγμένο αντικείμενο από την λίστα
+        Spinner dropDown = (Spinner) findViewById(R.id.cars);
+
+        // Από το spinner παίρνω το επιλεγμένο αντικείμενο και το αποθηκεύω στο brand
+        String brand = String.valueOf(dropDown.getSelectedItem());
+
+        // Σύνδεση του GUI με την κλάση πρέπει να γίνει μέσα στην παρένθεση
+        List<String> allModels = cbl.getAllModels(brand);
+
+        // Πρέπει να περάσουμε τα μοντέλα στο GUI στο radiogroup
+        rg.removeAllViews(); // το αδειάζουμε
+
+        // Κατασκευή του radiobutton (όπως ο παραπάνω κώδικας).
+        for(int i=0;i<allModels.size();i++) {
+            RadioButton rb = new RadioButton(this); // Φτιάχνω ένα radio button ανάλογα με τι μέγεθος θα έχει η λίστα
+            rb.setText(allModels.get(i)); // Προσθέτων το κείμενο που πήρα από την λίστα ως κείμενο σε radiobutton
+            rb.setId(100+i); // Βάζω ένα id γιατί πιθανό να το ψάξω με το id
+            rg.addView(rb); // Το προσθέτω στο radiogroup
+        }
+```
+
+Αμέσως παρακάτω, μπορώ να λάβω την επιλογή από το RadioGroup και να το εμφανίσω στην οθόνη.
+
+```
+        // Φτιάχνω έναν Listener που θα τον υλοποιήσω εδώ μέσα
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                // Φτιάχνω ένα αντικείμενο Radio button για να βρεί τι επέλεξα
+                RadioButton rb = (RadioButton) findViewById(checkedId);
+                //  εμφανίζει ένα toast με το μοντέλο που επιλέχθηκε
+                Toast.makeText(getApplicationContext(),
+                        "The selected model is " + brand + ": " + rb.getText()
+                        , Toast.LENGTH_SHORT).show();
+            }
+        });  // Εδώ κλείνει ο Listener
+    }    // Εδώ κλείνει η μεθοδος 
+```
+
+### Όταν έχω να λάβω δεδομένα από μια υπηρεσία, κάνω τις αλλαγές που αναφέρθηκαν παραπάνω. Δηλαδή: 
+
+* Ενημέρωση του Android Manifest:  
+Προσθέστε την άδεια INTERNET στο αρχείο AndroidManifest.xml στο σημείο πριν το **application**:
+
+```
+  <uses-permission android:name="android.permission.INTERNET" />
+
+<application
+        android:allowBackup="true"
+```
+
+ενώ τελευταία γραμμή πριν το activity να εμφανίζονται οι γραμμές:
+
+```
+        android:networkSecurityConfig="@xml/network_security_config"
+        android:usesCleartextTraffic="true">
+
+        <meta-data
+            android:name="com.google.android.actions"
+            android:resource="@xml/network_security_config" />
+            
+        <activity            
+```
+
+* Δημιουργία του αρχείου **network_security_config.xml**:
+
+Δημιουργήστε ένα νέο φάκελο με όνομα res/xml στον φάκελο του προγράμματος (New-→ Folder → XML Resources Folder). Εν συνεχεία, δημιουργήστε ένα αρχείο network_security_config.xml μέσα σε αυτόν τον φάκελο. Το περιεχόμενο του αρχείου θα είναι κάτι παρόμοιο με αυτό (η IP θα είναι αυτή που έχετε στον υπολογιστή σας):
+
+```
+<?xml version="1.0" encoding="utf-8"?>
+<network-security-config>
+    <domain-config cleartextTrafficPermitted="true">
+        <domain includeSubdomains="true">192.168.1.104</domain>
+    </domain-config>
+</network-security-config>
+```
+
+Αυτό το αρχείο ρυθμίζει την πολιτική ασφαλείας του δικτύου για την εφαρμογή σας.
+
+* Βεβαιωθείτε ότι έχετε προσθέσει τις απαραίτητες εξαρτήσεις στο αρχείο **build.gradle ((Module App))** για να χρησιμοποιήσετε τη βιβλιοθήκη **OkHttp**.
+
+```
+dependencies {
+    implementation 'com.squareup.okhttp3:okhttp:4.9.0'
+    implementation 'androidx.appcompat:appcompat:1.4.1'
+    ...
+}
+```
+
+* Και για εικόνες για να συμπεριλάβετε τη βιβλιοθήκη Picasso στην εφαρμογή, πρέπει να προσθέσετε την αντίστοιχη εξάρτηση (dependency) στο αρχείο **build.gradle ((Module App))** του project. 
+
+-. Άνοιξε το αρχείο build.gradle που βρίσκεται στον κύριο φάκελο του project (όχι στο φάκελο app).   
+
+-. Στην ενότητα dependencies, προσθέστε την ακόλουθη γραμμή για να προσθέσετε την εξάρτηση της βιβλιοθήκης Picasso:
+
+```
+implementation 'com.squareup.picasso:picasso:2.5.2'
+```
+
+Δεν ξεχνάμε να επιλέξουμε Sync Now.
+
+1. Αρχεία που πρέπει να έχω:
+
+* Πρέπει να δημιουργήσουμε μια κλάση **OkHttpHandler**(OkHttpHandler.java).   
+
+Εδώ είναι ένα παράδειγμα κώδικα που χρησιμοποιεί τη βιβλιοθήκη OkHttp για να κάνει ένα απλό GET αίτημα:
+
+```
+package com.example.carpicker;
+
+import android.os.*;
+import org.json.*;
+import java.util.*;
+import okhttp3.*;
+
+public class OkHttpHandler {
+
+    public OkHttpHandler() {
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.setThreadPolicy(policy);
+    }
+
+    ArrayList<CarBrand> populateDropDown(String url) throws Exception {
+        ArrayList<CarBrand> cbList = new ArrayList<>();
+
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url(url).method("POST", body).build();
+        Response response = client.newCall(request).execute();
+
+        String data = response.body().string();
+        try {
+            // Δημιουργεί ένα JSONObject αναλύοντας τα δεδομένα απόκρισης που ανακτήθηκαν.
+            JSONObject json = new JSONObject(data);
+
+            // Ανακτά έναν επαναλήπτη πάνω από τα κλειδιά του JSONObject.
+            Iterator<String> keys = json.keys();
+
+            // Επαναλαμβάνεται πάνω από κάθε κλειδί στο JSONObject.
+            while(keys.hasNext()) {
+                // Ανακτά το επόμενο κλειδί από τον επαναλήπτη, που αντιπροσωπεύει την επωνυμία.
+                String brand = keys.next();
+
+                // Ανακτά την αντίστοιχη τιμή για το κλειδί επωνυμίας από το JSONObject και τη μετατρέπει σε συμβολοσειρά.
+                String models = json.get(brand).toString();
+
+                // Δημιουργεί ένα νέο αντικείμενο CarBrand χρησιμοποιώντας την επωνυμία και μοντελοποιεί τιμές και το προσθέτει στη cbList.
+                cbList.add(new CarBrand(brand, models));
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+
+        // Επιστρέφει τη συμπληρωμένη ArrayList<CarBrand> που περιέχει τα δεδομένα επωνυμίας και μοντέλων που ανακτήθηκαν.
+        return cbList;
+    }
+
+
+    public void logHistory(String url) throws Exception {
+        OkHttpClient client = new OkHttpClient().newBuilder().build();
+        RequestBody body = RequestBody.create("", MediaType.parse("text/plain"));
+        Request request = new Request.Builder().url(url).method("POST", body).build();
+
+        Response response = client.newCall(request).execute();
+
+    }
+}
+```
+
+* Ακολουθεί το αρχείο MainActivity.java από το παραπάνω OkHttpHandler.java.
+
+```
+package com.example.carpicker;
+
+import androidx.appcompat.app.*;
+import android.os.*;
+import android.view.*;
+import android.widget.*;
+import java.util.*;
+
+public class MainActivity extends AppCompatActivity {
+    // Δημιουργώ αντικείμενο CarBrandList που θα το χρησιμοποιήσω σε κάποια μέθοδο
+    private CarBrandList cbl;
+
+    // ορίζουμε το RadioGroup εδώ για να το δούν όλες οι μέθοδοι.
+    private RadioGroup rg;
+
+    // Ορίζω την IP μου για να μην την γράφω σε κάθε μέθοδο
+    private final String myIP = "192.168.1.104";
+
+    // Γράφουμε την μέθοδο για το τι θα κάνει το κουμπί όταν πατηθεί.
+    public void PickCarOnClick(View v) {
+        // Φτιάχνω ένα αντικείμενο spinner. Επιλεγμένο αντικείμενο από την λίστα
+        Spinner dropDown = (Spinner) findViewById(R.id.cars);
+
+        // Από το spinner παίρνω το επιλεγμένο αντικείμενο και το αποθηκεύω στο brand
+        String brand = String.valueOf(dropDown.getSelectedItem());
+
+        // Σύνδεση του GUI με την κλάση πρέπει να γίνει μέσα στην παρένθεση
+        List<String> allModels = cbl.getAllModels(brand);
+
+        // Πρέπει να περάσουμε τα μοντέλα στο GUI στο radiogroup
+        rg.removeAllViews(); // το αδειάζουμε
+
+        // Κατασκευή του radiobutton-radiogroup
+        for(int i=0;i<allModels.size();i++) {
+            RadioButton rb = new RadioButton(this);// Φτιάχνω ένα radio button ανάλογα με τι μέγεθος θα έχει η λίστα
+            rb.setText(allModels.get(i)); // Προσθέτων το κείμενο που πήρα από την λίστα ως κείμενο σε radiobutton
+            rb.setId(100+i); // Βάζω ένα id γιατί πιθανό να το ψάξω με το id
+            rg.addView(rb); // Το προσθέτω στο radiogroup
+        }
+
+        // Φτιάχνω έναν Listener που θα τον υλοποιήσω εδώ μέσα
+        rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            /*
+            αυτός ο κώδικα χειρίζεται το συμβάν όταν επιλέγεται ένα κουμπί επιλογής σε ένα radiogroup.
+            Ανακτά το επιλεγμένο κουμπί επιλογής, κατασκευάζει μια συμβολοσειρά URL με την επιλεγμένη επωνυμία,
+            μοντέλο και χρονική σήμανση, καλεί ένα αίτημα HTTP για να καταγράψει την επιλογή χρησιμοποιώντας
+            το OkHttp και εμφανίζει ένα μήνυμα toast για να ειδοποιήσει τον χρήστη για την επιτυχή καταγραφή.
+             */
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
+                // Ανακτά το επιλεγμένο RadioButton από το RadioGroup με βάση την παράμετρο checkedId,
+                // η οποία αντιπροσωπεύει το αναγνωριστικό του επιλεγμένου κουμπιού επιλογής.
+                RadioButton rb = (RadioButton) findViewById(checkedId);
+
+                // κατασκευάζει μια συμβολοσειρά URL για ένα τελικό σημείο υπηρεσίας ιστού,
+                // το οποίο περιλαμβάνει παραμέτρους για την επωνυμία, το μοντέλο και τη χρονική σήμανση.
+                // Η τιμή της επωνυμίας θεωρείται ότι ορίζεται αλλού και η rb.getText().toString() ανακτά το κείμενο
+                // του επιλεγμένου κουμπιού επιλογής, που αντιπροσωπεύει το μοντέλο.
+                // Η χρονική σήμανση δημιουργείται χρησιμοποιώντας τη νέα Date(System.currentTimeMillis())
+                // και μετατρέπεται σε συμβολοσειρά.
+                String url= "http://"+myIP+"/carsDBServices/logHistory.php?brand=" + brand + "&model=" + rb.getText().toString() + "&timestamp=" + new Date(System.currentTimeMillis()).toString();
+                try {
+                    // Δημιουργεί αντικείμενο μιας προσαρμοσμένης κλάσης OkHttpHandler,
+                    // η οποία φαίνεται να χειρίζεται αιτήματα HTTP χρησιμοποιώντας τη βιβλιοθήκη OkHttp.
+                    OkHttpHandler okHttpHandler = new OkHttpHandler();
+
+                    // Επικαλείται τη μέθοδο logHistory του αντικειμένου OkHttpHandler,
+                    // περνώντας τη συμβολοσειρά URL που δημιουργήθηκε ως παράμετρο.
+                    // Αυτό υποδηλώνει ότι η μέθοδος logHistory είναι υπεύθυνη για την αποστολή ενός αιτήματος
+                    // HTTP στην καθορισμένη διεύθυνση URL, πιθανόν για την καταγραφή της επιλεγμένης
+                    // επωνυμίας, μοντέλου και χρονικής σφραγίδας.
+                    okHttpHandler.logHistory(url);
+
+                    // Εμφανίζει ένα μήνυμα toast μικρής διάρκειας που υποδεικνύει ότι η επιλογή καταγράφηκε
+                    // με επιτυχία.
+                    Toast.makeText(getApplicationContext(), "Selection Logged", Toast.LENGTH_SHORT).show();
+                } catch (Exception e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
+
+    /*
+   Παρακάτω ο κώδικας αρχικοποιεί μια CarBrandList, ορίζει την προβολή περιεχομένου της δραστηριότητας,
+   δημιουργεί ένα Spinner, το συμπληρώνει με επωνυμίες χρησιμοποιώντας έναν ArrayAdapter και προετοιμάζει
+   μια RadioGroup. Αυτό ρυθμίζει τα στοιχεία διεπαφής χρήστη για τη δραστηριότητα, επιτρέποντας στον χρήστη
+   να επιλέξει μια μάρκα αυτοκινήτου από το Spinner και να αλληλεπιδράσει με το RadioGroup.
+    */
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        // Στο αντικείμενο cbl περνάω το αρχείο με τα brands με την getAssets()
+        cbl = new CarBrandList(myIP);
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+
+        //Δημιουργούμε το Spinner και το γεμίζουμε με τα brands
+        Spinner dropDown = (Spinner) findViewById(R.id.cars);
+        // Δημιουργεί έναν ArrayAdapter που θα χρησιμοποιηθεί για τη συμπλήρωση του Spinner με δεδομένα.
+        // Ο ArrayAdapter αρχικοποιείται με την τρέχουσα δραστηριότητα (this), τον πόρο διάταξης
+        // για κάθε στοιχείο Spinner και τη λίστα των brands που ελήφθησαν
+        // από το CarBrandList cbl χρησιμοποιώντας τη μέθοδο getAllBrands.
+        ArrayAdapter<String> arrayAdapter =
+                new ArrayAdapter<String>(this,
+                        android.R.layout.simple_spinner_dropdown_item,
+                        cbl.getAllBrands());
+        dropDown.setAdapter(arrayAdapter);
+
+        // Αρχικοποιεί ένα γραφικό στοιχείο RadioGroup που ονομάζεται rg
+        // βρίσκοντας την προβολή με το αναγνωριστικό rg από τη διάταξη της δραστηριότητας
+        rg = (RadioGroup) findViewById(R.id.rg);
+    }
+}
+```
+
