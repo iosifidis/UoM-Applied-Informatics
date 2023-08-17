@@ -1093,106 +1093,106 @@ implementation 'com.squareup.okhttp3:okhttp:4.9.1'
 ```
 
 3. Layout (activity_main.xml):   
-Εισάγετε τον κώδικα για το RadioGroup:
 
 ```
-<RadioGroup
-    android:id="@+id/radioGroup"
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:orientation="vertical">
-</RadioGroup>
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <Spinner
+        android:id="@+id/spinner"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp" />
+
+</LinearLayout>
+
 ```
 
 4. Java Code (MainActivity.java):   
 
 ```
-import androidx.appcompat.app.AppCompatActivity;
 import android.os.Bundle;
-import android.view.ViewGroup.LayoutParams;
-import android.widget.RadioButton;
-import android.widget.RadioGroup;
-import android.widget.Toast;
-import com.squareup.okhttp.OkHttpClient;
-import com.squareup.okhttp.Request;
-import com.squareup.okhttp.Response;
+import android.widget.ArrayAdapter;
+import android.widget.Spinner;
+import androidx.appcompat.app.AppCompatActivity;
+import com.squareup.okhttp3.OkHttpClient;
+import com.squareup.okhttp3.Request;
+import com.squareup.okhttp3.Response;
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
 
-    private RadioGroup radioGroup;
+    private Spinner spinner;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        radioGroup = findViewById(R.id.radioGroup);
+        spinner = findViewById(R.id.spinner);
 
-        OkHttpClientHandler okHttpClientHandler = new OkHttpClientHandler();
-        String response = okHttpClientHandler.execute("http://195.251.211.64/cities/getCities.php");
-
-        try {
-            List<String> cityNames = parseJSON(response);
-            populateRadioGroup(cityNames);
-        } catch (JSONException e) {
-            e.printStackTrace();
-        }
+        // Καλέστε τη μέθοδο OkHttpHandler για να ανακτήσετε τα δεδομένα από την υπηρεσία
+        OkHttpHandler okHttpHandler = new OkHttpHandler();
+        okHttpHandler.execute("http://195.251.211.64/cities/getCities.php");
     }
 
-    private List<String> parseJSON(String json) throws JSONException {
-        List<String> cityNames = new ArrayList<>();
-        JSONArray jsonArray = new JSONArray(json);
-        for (int i = 0; i < jsonArray.length(); i++) {
-            JSONObject jsonObject = jsonArray.getJSONObject(i);
-            String cityName = jsonObject.getString("name");
-            cityNames.add(cityName);
-        }
-        return cityNames;
-    }
-
-    private void populateRadioGroup(List<String> cityNames) {
-        for (String cityName : cityNames) {
-            RadioButton radioButton = new RadioButton(this);
-            radioButton.setText(cityName);
-            radioGroup.addView(radioButton);
-        }
-
-        radioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            @Override
-            public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                RadioButton selectedRadioButton = findViewById(checkedId);
-                String selectedCity = selectedRadioButton.getText().toString();
-                Toast.makeText(MainActivity.this, "Selected City: " + selectedCity, Toast.LENGTH_SHORT).show();
-            }
-        });
-    }
-
-    private static class OkHttpClientHandler extends AsyncTask<String, Void, String> {
-        private final OkHttpClient client = new OkHttpClient();
+    private class OkHttpHandler extends AsyncTask<String, Void, String> {
+        private OkHttpClient client = new OkHttpClient();
 
         @Override
-        protected String doInBackground(String... urls) {
-            String responseString = "";
-            try {
-                Request request = new Request.Builder()
-                        .url(urls[0])
-                        .build();
+        protected String doInBackground(String... params) {
+            Request.Builder builder = new Request.Builder();
+            builder.url(params[0]);
+            Request request = builder.build();
 
+            try {
                 Response response = client.newCall(request).execute();
-                responseString = response.body().string();
+                return response.body().string();
             } catch (IOException e) {
                 e.printStackTrace();
             }
-            return responseString;
+            return null;
+        }
+
+        @Override
+        protected void onPostExecute(String response) {
+            super.onPostExecute(response);
+            
+            if (response != null) {
+                List<String> cityNames = parseJSON(response);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, cityNames);
+                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                spinner.setAdapter(adapter);
+            }
         }
     }
-}
 
+    private List<String> parseJSON(String json) {
+        List<String> cityNames = new ArrayList<>();
+        try {
+            JSONArray jsonArray = new JSONArray(json);
+            for (int i = 0; i < jsonArray.length(); i++) {
+                JSONObject jsonObject = jsonArray.getJSONObject(i);
+                String cityName = jsonObject.getString("name");
+                cityNames.add(cityName);
+            }
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+        return cityNames;
+    }
+}
 ```
 Σε αυτό το παράδειγμα, το RadioGroup γεμίζει με επιλογές από τα δεδομένα της υπηρεσίας. Όταν επιλέγεται ένας RadioButton, εμφανίζεται ένα Toast μήνυμα με την επιλογή της πόλης. Η κλάση OkHttpClientHandler χρησιμοποιείται για να αναλάβει την ασύγχρονη αίτηση HTTP με τη χρήση του OkHttp. Παρακαλώ, βεβαιωθείτε ότι έχετε προσθέσει την εξάρτηση του OkHttp στο αρχείο build.gradle.
 
