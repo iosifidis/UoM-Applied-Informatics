@@ -1,0 +1,59 @@
+-- phpMyAdmin SQL Dump
+-- version 5.2.1
+-- https://www.phpmyadmin.net/
+--
+-- Εξυπηρετητής: localhost
+-- Χρόνος δημιουργίας: 20 Αυγ 2023 στις 18:05:33
+-- Έκδοση διακομιστή: 10.4.28-MariaDB
+-- Έκδοση PHP: 8.2.4
+
+SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
+START TRANSACTION;
+SET time_zone = "+00:00";
+
+
+/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
+/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
+/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
+/*!40101 SET NAMES utf8mb4 */;
+
+--
+-- Βάση δεδομένων: `Animals`
+--
+
+-- --------------------------------------------------------
+
+--
+-- Δομή πίνακα για τον πίνακα `animals`
+--
+
+CREATE TABLE `animals` (
+  `name` varchar(32) NOT NULL,
+  `type` varchar(32) NOT NULL,
+  `voice` varchar(32) NOT NULL,
+  `image` varchar(1024) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+
+--
+-- Άδειασμα δεδομένων του πίνακα `animals`
+--
+
+INSERT INTO `animals` (`name`, `type`, `voice`, `image`) VALUES
+('Malco', 'cat', 'meow', 'https://media.istockphoto.com/id/1391912463/photo/photo-of-a-cat-sitting-in-the-garden-and-smelling-the-air.jpg?s=1024x1024&w=is&k=20&c=e6FfqNjhZ1sUfqnTAq8ESGNUtiuih7dVbZbwtf-Eim8='),
+('Mpoumpis', 'parrot', 'tsiou', 'https://media.istockphoto.com/id/1127685644/photo/blue-and-yellow-macaw-standing-in-a-tree-branch-with-a-blurred-background.jpg?s=1024x1024&w=is&k=20&c=oEzbI2VDKinl81aW8s__ua_dQz02VoXAwiYlT8dFnyQ='),
+('Rex', 'dog', 'bark', 'https://media.istockphoto.com/id/1482199015/photo/happy-puppy-welsh-corgi-14-weeks-old-dog-winking-panting-and-sitting-isolated-on-white.jpg?s=1024x1024&w=is&k=20&c=XCKHaoM9oG4ST-sLawqYyutywWXkx3DYWb4MKhLUBrI=');
+
+--
+-- Ευρετήρια για άχρηστους πίνακες
+--
+
+--
+-- Ευρετήρια για πίνακα `animals`
+--
+ALTER TABLE `animals`
+  ADD PRIMARY KEY (`name`,`type`);
+COMMIT;
+
+/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
+/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
+/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

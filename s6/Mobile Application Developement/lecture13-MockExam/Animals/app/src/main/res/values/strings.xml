@@ -1,8 +1,0 @@
-<resources>
-    <string name="app_name">Mock2</string>
-    <string name="next">NEXT</string>
-    <string name="previous">Previous</string>
-    <string name="the_name_is">The name is:</string>
-    <string name="i_am_a"> I am a </string>
-    <string name="and_i"> And i </string>
-</resources>
