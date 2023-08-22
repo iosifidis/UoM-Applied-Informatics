@@ -249,6 +249,23 @@ public class OkHttpHandler {
 }
 ```
 
+Αν συναντήσετε να επιστρέφει JSONArray αντί για JSONObject, μπορείτε να χρησιμοποιήσετε το παρακάτω.
+
+```
+JSONArray jsonArray = new JSONArray(data);
+for (int i = 0; i < jsonArray.length(); i++) {
+    JSONObject item = jsonArray.getJSONObject(i);
+    
+    String image1 = item.getString("image1");
+    String image2 = item.getString("image2");
+    String oper1 = item.getString("oper1");
+    String oper2 = item.getString("oper2");
+    String res = item.getString("res");
+    
+    aList.add(new Multi(image1, image2, oper1, oper2, res));
+}
+```
+
 3. Ξεκινάμε με το πρώτο ερώτημα. Θέλει να δημιουργήσουμε ένα Activity με 2 elements. Το ένα θα είναι είτε RadioGroup που θα δημιουργείται δυναμικά με RadioButtons είτε Spinner με τόσα στοιχεία όσα έχει ο πίνακας που λάβατε από το JSON αρχείο και σίγουρα ένα κουμπί που θα σε μεταφέρει στην επόμενη οθόνη (activity).   
 
 Στην περίπτωση που είναι RadioGroup ένας τυπικός κώδικας του activity_main.xml είναι:
