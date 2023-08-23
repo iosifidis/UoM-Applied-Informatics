@@ -26,7 +26,8 @@ public class CarBrandList {
             // περνώντας το InputStream με όνομα is.
             Document doc = dBuilder.parse(is);
 
-            // Αποθηκεύει τα αρχικά στοιχεία του αρχείου XML με το όνομα ετικέτας "carBrand" σε ένα NodeList που ονομάζεται nList.
+            // Αποθηκεύει τα αρχικά στοιχεία του αρχείου XML με το όνομα ετικέτας "carBrand" (περιλαμβάνει την μάρκα και τα μοντέλα) 
+            // σε ένα NodeList που ονομάζεται nList.
             NodeList nList = doc.getElementsByTagName("carBrand");
 
             // Επαναλαμβάνεται πάνω από κάθε στοιχείο στο NodeList nList.
