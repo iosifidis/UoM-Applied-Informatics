@@ -77,5 +77,5 @@ String name = text.getText().toString();
 
 Και θα τα εμφανίσει με μήνυμα Toast
 ```
-                Toast.makeText(MainActivity.this, "WELCOME " + name, Toast.LENGTH_LONG).show();
+Toast.makeText(MainActivity.this, "WELCOME " + name, Toast.LENGTH_LONG).show();
 ```
