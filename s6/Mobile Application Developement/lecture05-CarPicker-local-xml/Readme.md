@@ -1,4 +1,4 @@
-# Διαδικασία επίλυσης ανάγνωσης από xml αρχείο
+# Διαδικασία επίλυσης άσκησης ανάγνωσης από xml αρχείο
 
 Η άσκηση μπορεί να μετατραπεί σε κομμάτια. Θα λυθεί πρώτα σύμφωνα με την εκφώνηση και μετά θα δούμε τις παραλλαγές.
 
@@ -6,8 +6,8 @@
 
 Τοποθετούμε ένα Spinner, ένα RadioGroup και ένα Button.
 
-Δημιουργία αλυσίδων και ορισμός περιορισμών
-Από το component tree με το πλήκτρο shift πατημένο επιλέγουμε και το pick_car και το cars Στη συνέχεια κάνουμε δεξί κλικ στα επιλεγμένα και επιλέγουμε **Chains-→ Create Horizontal Chain**. Κάνουμε δεξί κλικ έχοντας επιλεγμένα και τα δύο Views και επιλέγουμε **Allign-→ Baselines** ώστε να τα ευθυγραμμίσουμε.   
+- Δημιουργία αλυσίδων και ορισμός περιορισμών:   
+Από το component tree με το πλήκτρο shift πατημένο επιλέγουμε και το pick_car και το cars Στη συνέχεια κάνουμε δεξί κλικ στα επιλεγμένα και επιλέγουμε **Chains → Create Horizontal Chain**. Κάνουμε δεξί κλικ έχοντας επιλεγμένα και τα δύο Views και επιλέγουμε **Allign → Baselines** ώστε να τα ευθυγραμμίσουμε.   
 
 Στο mainActivity.java (εντός της κλάσης) δημιουργούμε μία μέθοδο ως εξής:
 
@@ -16,7 +16,9 @@ public void myOnClickPickBrand(View v){
 }
 ```
 
-Είναι σημαντικό η μέθοδος να είναι public void και να έχει ως παράμετρο ένα view ώστε να μπορέσει να χρησιμοποιηθεί από το ide. Εδώ βλέπουμε έναν άλλον τρόπο να προσθέσουμε λειτουργικότητα σε ένα κουμπί. Φυσικά, μπορούμε να το υλοποιήσουμε και προγραμμτιστικά, χρησιμοποιώντας findViewByID και υλοποιώντας έναν listener. Eπιλέγουμε το κουμπί και αλλάζουμε το attribute onClick, το οποίο πλέον, όπως μπορούμε να παρατηρήσουμε έχει μία επιλογή. Τη μέθοδο myOnClickPickBrand, την οποία και υλοποιήσαμε πριν λίγο. Την ορίζουμε στο onClick.   
+Είναι σημαντικό η μέθοδος να είναι public void και να έχει ως παράμετρο ένα view ώστε να μπορέσει να χρησιμοποιηθεί από το ide. Εδώ βλέπουμε έναν άλλον τρόπο να προσθέσουμε λειτουργικότητα σε ένα κουμπί. Φυσικά, μπορούμε να το υλοποιήσουμε και προγραμμτιστικά, χρησιμοποιώντας findViewByID και υλοποιώντας έναν listener.
+
+Eπιλέγουμε το κουμπί και αλλάζουμε το attribute onClick, το οποίο πλέον, όπως μπορούμε να παρατηρήσουμε έχει μία επιλογή. Τη μέθοδο myOnClickPickBrand, την οποία και υλοποιήσαμε πριν λίγο. Την ορίζουμε στο onClick.   
 
 Ένας τυπικός κώδικας για το **activity_main.xml** είναι ο παρακάτω:
 ```
@@ -52,7 +54,7 @@ public void myOnClickPickBrand(View v){
         app:layout_constraintStart_toEndOf="@+id/cars" />
 
     <RadioGroup
-        android:id="@+id/car_radio"
+        android:id="@+id/rg"
         android:layout_width="68dp"
         android:layout_height="69dp"
         app:layout_constraintBottom_toTopOf="@+id/cars"
@@ -68,9 +70,9 @@ public void myOnClickPickBrand(View v){
 
 ```
 <string-array name="brands">
-    <item>Tomota</item>
-    <item>WW</item>
-    <item>Fissan</item>
+    <item>Toyota</item>
+    <item>VW</item>
+    <item>Nissan</item>
 </string-array>
 ```
 
@@ -79,14 +81,14 @@ public void myOnClickPickBrand(View v){
 List<String> getCars(String s){
     List<String> models = new ArrayList<String>();
     switch (s){
-        case "Tomota":
-            models.add("Kauris");
-            models.add("Yamis");
-            models.add("Gav14");
+        case "Toyota":
+            models.add("Auris");
+            models.add("Yaris");
+            models.add("Corolla");
             break;
-        case "WW":
-            models.add("Molf");
-            models.add("Solo");
+        case "VW":
+            models.add("Golf");
+            models.add("Polo");
         break;
         default:
             break;
@@ -96,7 +98,7 @@ List<String> getCars(String s){
 ```
 Στην περίπτωσή μας θα γίνει μέσω ενός εξωτερικού αρχείου xml που είτε θα μας το δώσουν είτε θα το δημιουργήσουμε μόνοι μας.   
 
-Δημιουργούμε τον φάκελο assets. **File > New > Folder > Assets Folder** και τον βάζουμε στον κατάλογο root (προεπιλογή). Έτσι οι φάκελοι που θα έχουμε θα είναι manifests, java, assets, res, Gradle Scripts.   
+Δημιουργούμε τον φάκελο assets. **File > New > Folder > Assets Folder** και τον βάζουμε στον κατάλογο root (προεπιλογή). Έτσι οι φάκελοι που θα έχουμε θα είναι οι **manifests, java, assets, res, Gradle Scripts**.   
 
 Στη συνέχεια πατώ δεξί πλήκτρο στον φάκελο **assets** και επιλέγω **New > File** και το ονομάζω records.xml. Το αρχείο θα είναι άδειο. Εκεί θα δημιουργήσω τις εγγραφές ως εξής (παράδειγμα).
 
@@ -240,7 +242,6 @@ List<String> getCars(String s){
     }
 ```
 
-
 Η μέθοδος getAllModelsAsString αναζητά μια συγκεκριμένη μάρκα αυτοκινήτου στη λίστα cbList και ανακτά τα μοντέλα που σχετίζονται με αυτήν τη μάρκα ως συμβολοσειρά. Δείτε τα σχόλια τι κάνει η κάθε εντολή.
 
 ```
@@ -294,7 +295,7 @@ H μέθοδος getAllModels αναζητά μια συγκεκριμένη μ�
 
 ## Αφού υλοποιήσαμε τις δυο κλάσεις, πάμε να ολοκληρώσουμε με την MainActivity.java.
 
-Στην αρχή δημιουργώ αντικείμενο CarBrandList που θα το χρησιμοποιήσω σε κάποια μέθοδο και ορίζουμε το RadioGroup εδώ για να το δούν όλες οι μέθοδοι.
+Στην αρχή δημιουργώ αντικείμενο CarBrandList που θα το χρησιμοποιήσω σε κάποια μέθοδο και ορίζουμε το RadioGroup εδώ για να το δουν όλες οι μέθοδοι.
 ```
     private CarBrandList cbl; 
     private RadioGroup rg;
@@ -326,7 +327,7 @@ H μέθοδος getAllModels αναζητά μια συγκεκριμένη μ�
 
         // Αρχικοποιεί ένα γραφικό στοιχείο RadioGroup που ονομάζεται car_radio
         // βρίσκοντας την προβολή με το αναγνωριστικό car_radio από τη διάταξη xml της δραστηριότητας
-        rg = (RadioGroup) findViewById(R.id.car_radio);
+        rg = (RadioGroup) findViewById(R.id.rg);
     }
 ```
 
