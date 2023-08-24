@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+
+<records>
+    <carBrand>
+        <name>Toyota</name>
+        <models> Yaris, Auris, Corolla </models>
+    </carBrand>
+
+    <carBrand>
+        <name>VW </name>
+        <models> Golf, Polo </models>
+    </carBrand>
+
+    <carBrand>
+        <name>Nissan</name>
+        <models> Sunny </models>
+    </carBrand>
+
+</records>
