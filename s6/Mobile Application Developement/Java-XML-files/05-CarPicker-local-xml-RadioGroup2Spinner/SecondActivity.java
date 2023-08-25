@@ -68,6 +68,7 @@ public class SecondActivity extends AppCompatActivity {
 //            }
 //        });
 
+	// Ένας listener στο Spinner. Με την επιλογή του, δείχνει στην οθόνη την επιλεγμένη τιμή.
         pickModel.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
