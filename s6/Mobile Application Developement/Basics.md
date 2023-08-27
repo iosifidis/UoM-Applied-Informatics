@@ -30,10 +30,20 @@
 3. Επιλέξτε τον τύπο του fragment που θέλετε να δημιουργήσετε (π.χ. Fragment (Blank), Fragment (List), etc.).  
 4. Δώστε ένα όνομα στο νέο fragment και πατήστε "Finish".  
 5. Θα δημιουργηθούν τα απαραίτητα αρχεία κώδικα και διεπαφής για το νέο fragment στο έργο σας.  
+6. Για να το εισάγετε πχ στο activity_main.xml, πρέπει να εισάγετε το **FragmentContainerView** όπου θα σας εμφανιστεί ένα παράθυρο. Εκεί συνδέετε το fragment σας.    
 
 ## Πως ενώνω το fragment στο activity;
 
 Για να ενώσετε ένα Fragment σε ένα Activity στο Android, πρέπει να ακολουθήσετε τα εξής βήματα:
+
+0. Βεβαιωθείτε ότι στο build.gradle (Module:App) να έχετε εισάγει την εξάρτηση (dependencies) και να πατήσετε το Sync Now. Θα μοιάζει κάπως έτσι το αρχείο σας.
+```
+    implementation 'androidx.appcompat:appcompat:1.6.1'
+    implementation 'com.google.android.material:material:1.9.0'
+    implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.appcompat:appcompat:1.3.1'
+    implementation 'androidx.fragment:fragment:1.3.6'
+```
 
 1. Δημιουργία Fragment:   
 Πρώτα, πρέπει να έχετε δημιουργήσει το Fragment στο Android Studio όπως περιγράφηκε στις προηγούμενες απαντήσεις.
