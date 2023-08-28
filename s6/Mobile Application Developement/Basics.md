@@ -66,7 +66,9 @@
 FragmentManager fragmentManager = getSupportFragmentManager();
 FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
 
-MyFragment myFragment = new MyFragment(); // Αντικαταστήστε το MyFragment με το όνομα της κλάσης του Fragment που δημιουργήσατε
+// Αντικαταστήστε το MyFragment με το όνομα της κλάσης του 
+// Fragment που δημιουργήσατε
+MyFragment myFragment = new MyFragment(); 
 fragmentTransaction.replace(R.id.fragment_container, myFragment);
 fragmentTransaction.commit();
 ```
@@ -84,14 +86,18 @@ pubic void ChangeFragment(View view){
         fragment = new FragmentOne();
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.FragmentManager();
-        ft.replace(R.id.fragment_place, fragment); // To id του fragment είναι fragment_place.
+        
+        // To id του fragment είναι fragment_place.
+        ft.replace(R.id.fragment_place, fragment); 
         ft.commit();
      }
      if(view == fragmentById(R.id.button2)){
         fragment = new FragmentTwo();
         FragmentManager fm = getFragmentManager();
         FragmentTransaction ft = fm.FragmentManager();
-        ft.replace(R.id.fragment_place, fragment); // To id του fragment είναι fragment_place.
+        
+        // To id του fragment είναι fragment_place.
+        ft.replace(R.id.fragment_place, fragment); 
         ft.commit();
 ```
 
@@ -304,14 +310,16 @@ public class SecondActivity extends AppCompatActivity {
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Hello, this is a TextView!"
-        android:layout_gravity="center" /> <!-- Κείμενο στο κέντρο του γονικού στοιχείου -->
+        android:layout_gravity="center" /> 
+        <!-- Κείμενο στο κέντρο του γονικού στοιχείου -->
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Click Me!"
-        android:layout_gravity="center" /> <!-- Κουμπί στο κέντρο του γονικού στοιχείου -->
+        android:layout_gravity="center" /> 
+        <!-- Κουμπί στο κέντρο του γονικού στοιχείου -->
 
 </LinearLayout>
 ```
@@ -346,14 +354,17 @@ public class MainActivity extends ActionBarActivity {
     }
 
     public void OnClickButtonListener() {
-        button_sbm = (Button)findViewById(R.id.button); // Φτιάχνω το αντικείμενο κουμπιού
+    	// Φτιάχνω το αντικείμενο κουμπιού
+        button_sbm = (Button)findViewById(R.id.button); 
         
         // Του ορίζω έναν Listener
         button_sbm.setOnClickListener(
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        Intent intent = new Intent("gr.uom.myApp.SecondActivity"); // Εδώ του ορίζω ποιο Activity να ξεκινήσει. Παραπάνω του περάσαμε και τιμές.
+                        // Εδώ του ορίζω ποιο Activity να ξεκινήσει. 
+                        // Παραπάνω του περάσαμε και τιμές.
+                        Intent intent = new Intent("gr.uom.myApp.SecondActivity"); 
                         startActivity(intent);
                     }
                 }
@@ -441,7 +452,8 @@ public class MainActivity extends AppCompatActivity {
                 String enteredText = editText.getText().toString();
 
                 // Εμφάνιση του μηνύματος με Toast
-                Toast.makeText(MainActivity.this, "Entered Text: " + enteredText, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Entered Text: " + enteredText, 
+                Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -583,11 +595,14 @@ public class MainActivity extends ActionBarActivity {
                 new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-                        int selected_id = radio_g.getCheckedRadioButtonId(); // Παίρνει το id του επιλεγμένου radiobutton
-                        radio_b = (RadioButton)findViewById(selected_id); // Bρίσκει το αντικείμενο του επιλεγμένου radiobutton
+                    	// Παίρνει το id του επιλεγμένου radiobutton
+                        int selected_id = radio_g.getCheckedRadioButtonId();
+                        // Bρίσκει το αντικείμενο του επιλεγμένου radiobutton 
+                        radio_b = (RadioButton)findViewById(selected_id);
                         
-                        Toast.makeText(MainActivity.this,
-                                radio_b.getText().toString(),Toast.LENGTH_SHORT ).show(); // Την μετατρέπει σε string και την εμφανίζει στην οθόνη
+                        Toast.makeText(MainActivity.this,radio_b.getText().
+                      toString(),Toast.LENGTH_SHORT ).show(); 
+                      // Την μετατρέπει σε string και την εμφανίζει στην οθόνη
                     }
                 }
         );
@@ -682,13 +697,15 @@ public class MainActivity extends AppCompatActivity {
         items.add("Option 3");
 
         // Δημιουργία του ArrayAdapter και σύνδεση του με τον Spinner
-        ArrayAdapter<String> adapter = new ArrayAdapter<>(this, android.R.layout.simple_spinner_dropdown_item, items);
+        ArrayAdapter<String> adapter = new ArrayAdapter<>(this,
+         android.R.layout.simple_spinner_dropdown_item, items);
         spinner.setAdapter(adapter);
 
         // Ενέργεια επιλογής αντικειμένου από τον Spinner
         spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> adapterView, View view, int position, long id) {
+            public void onItemSelected(AdapterView<?> adapterView, View view, 
+            int position, long id) {
                 // Τίποτα εδώ, η λειτουργία αυτή έχει μετακινηθεί στο κουμπί
             }
 
@@ -702,7 +719,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 String selectedOption = spinner.getSelectedItem().toString();
-                Toast.makeText(MainActivity.this, "Selected: " + selectedOption, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Selected: " + selectedOption, 
+                Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -790,7 +808,7 @@ public class MainActivity extends AppCompatActivity {
     private void loadImage(String imageUrl) {
         Picasso.get()
             .load(imageUrl)
-            .placeholder(R.drawable.placeholder_image) // Ενδιάμεση εικόνα κατά τη φόρτωση
+            .placeholder(R.drawable.placeholder_image) // Ενδιάμεση εικόνα
             .error(R.drawable.error_image) // Εικόνα αν συμβεί λάθος
             .into(imageView);
     }
@@ -868,7 +886,9 @@ import okhttp3.*;
 public class OkHttpHandler {
 
     public OkHttpHandler() {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().
+        permitAll().build();
+        
         StrictMode.setThreadPolicy(policy);
     }
 
@@ -882,7 +902,8 @@ public class OkHttpHandler {
 
         String data = response.body().string();
         try {
-            // Δημιουργεί ένα JSONObject αναλύοντας τα δεδομένα απόκρισης που ανακτήθηκαν.
+            // Δημιουργεί ένα JSONObject αναλύοντας τα δεδομένα απόκρισης
+            // που ανακτήθηκαν.
             JSONObject json = new JSONObject(data);
 
             // Ανακτά έναν επαναλήπτη πάνω από τα κλειδιά του JSONObject.
@@ -890,20 +911,24 @@ public class OkHttpHandler {
 
             // Επαναλαμβάνεται πάνω από κάθε κλειδί στο JSONObject.
             while(keys.hasNext()) {
-                // Ανακτά το επόμενο κλειδί από τον επαναλήπτη, που αντιπροσωπεύει την επωνυμία.
+                // Ανακτά το επόμενο κλειδί από τον επαναλήπτη, 
+                // που αντιπροσωπεύει την επωνυμία.
                 String brand = keys.next();
 
-                // Ανακτά την αντίστοιχη τιμή για το κλειδί επωνυμίας από το JSONObject και τη μετατρέπει σε συμβολοσειρά.
+                // Ανακτά την αντίστοιχη τιμή για το κλειδί επωνυμίας από το 
+                // JSONObject και τη μετατρέπει σε συμβολοσειρά.
                 String models = json.get(brand).toString();
 
-                // Δημιουργεί ένα νέο αντικείμενο CarBrand χρησιμοποιώντας την επωνυμία και μοντελοποιεί τιμές και το προσθέτει στη cbList.
+                // Δημιουργεί ένα νέο αντικείμενο CarBrand χρησιμοποιώντας την 
+                // επωνυμία και μοντελοποιεί τιμές και το προσθέτει στη cbList.
                 cbList.add(new CarBrand(brand, models));
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        // Επιστρέφει τη συμπληρωμένη ArrayList<CarBrand> που περιέχει τα δεδομένα επωνυμίας και μοντέλων που ανακτήθηκαν.
+        // Επιστρέφει τη συμπληρωμένη ArrayList<CarBrand> που περιέχει τα δεδομένα 
+        // επωνυμίας και μοντέλων που ανακτήθηκαν.
         return cbList;
     }
 
@@ -1152,7 +1177,8 @@ public class MainActivity extends AppCompatActivity {
 
         spinner = findViewById(R.id.spinner);
 
-        // Καλέστε τη μέθοδο OkHttpHandler για να ανακτήσετε τα δεδομένα από την υπηρεσία
+        // Καλέστε τη μέθοδο OkHttpHandler για να ανακτήσετε 
+        // τα δεδομένα από την υπηρεσία
         OkHttpHandler okHttpHandler = new OkHttpHandler();
         okHttpHandler.execute("http://195.251.211.64/cities/getCities.php");
     }
@@ -1181,8 +1207,11 @@ public class MainActivity extends AppCompatActivity {
             
             if (response != null) {
                 List<String> cityNames = parseJSON(response);
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_item, cityNames);
-                adapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, 
+                android.R.layout.simple_spinner_item, cityNames);
+                adapter.setDropDownViewResource(android.
+                R.layout.simple_spinner_dropdown_item);
+                
                 spinner.setAdapter(adapter);
             }
         }
@@ -1278,7 +1307,8 @@ public class MainActivity extends AppCompatActivity {
         showResultButton = findViewById(R.id.showResultButton);
         resultTextView = findViewById(R.id.resultTextView);
 
-        // Κάλεσε τη μέθοδο για να ανακτήσεις τα δεδομένα JSON από την απομακρυσμένη υπηρεσία
+        // Κάλεσε τη μέθοδο για να ανακτήσεις τα δεδομένα JSON 
+        // από την απομακρυσμένη υπηρεσία
         fetchDataFromRemoteService();
 
         // Ενέργεια κλικ κουμπιού
@@ -1327,7 +1357,8 @@ public class MainActivity extends AppCompatActivity {
         runOnUiThread(new Runnable() {
             @Override
             public void run() {
-                ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this, android.R.layout.simple_spinner_dropdown_item, cityNames);
+                ArrayAdapter<String> adapter = new ArrayAdapter<>(MainActivity.this,
+                 android.R.layout.simple_spinner_dropdown_item, cityNames);
                 spinner.setAdapter(adapter);
             }
         });
@@ -1352,15 +1383,25 @@ public class MainActivity extends AppCompatActivity {
 ### Δημιουργία ενός RadioGroup με RadioButtons. Η μέθοδος δέχεται το RadioGroup και μια λίστα και παίρνει στοιχεία της λίστας και τα προσθέτει στο RadioGroup ως RadioButton.
 
 ```
-        // Μέθοδος που θα χρησιμοποιήσω παραπάνω. Δέχεται το radiobutton και την λίστα που θέλουμε να προσθέσουμε
+        // Μέθοδος που θα χρησιμοποιήσω παραπάνω. 
+        // Δέχεται το radiobutton και την λίστα που θέλουμε να προσθέσουμε
     private void createRadioButtons(RadioGroup rg, List<String> mList) {
-        int count = mList.size(); // Παίρνω το μέγεθος της λίστας. Αυτό μπορεί να μπει και κατευθείαν στην κάτω σειρά στις αγγύλες.
-        RadioButton rb[] = new RadioButton[count]; // Δημιουργώ ένα radio button (μέσα στην αγγύλη μπορώ να βάλω κατευθείαν το μέγεθος
+        
+        // Παίρνω το μέγεθος της λίστας. Αυτό μπορεί να μπει και κατευθείαν στην κάτω σειρά στις αγγύλες.
+        int count = mList.size(); 
+        
+        // Δημιουργώ ένα radio button (μέσα στην αγγύλη μπορώ 
+        // να βάλω κατευθείαν το μέγεθος
+        RadioButton rb[] = new RadioButton[count]; 
 
         // Κατασκευή του radiobutton-radiogroup
         for (int i=0 ; i<mList.size(); i++){
-            rb[i] = new RadioButton(this); // Φτιάχνω ένα radio button ανάλογα με τι μέγεθος θα έχει η λίστα
-            rb[i].setText(mList.get(i)); // Προσθέτων το κείμενο που πήρα από την λίστα ως κείμενο σε radiobutton
+            // Φτιάχνω ένα radio button ανάλογα με τι μέγεθος θα έχει η λίστα
+            rb[i] = new RadioButton(this); 
+            
+            // Προσθέτων το κείμενο που πήρα από την λίστα ως κείμενο σε radiobutton
+            rb[i].setText(mList.get(i)); 
+            
             rb[i].setId(i+100); // Βάζω ένα id γιατί πιθανό να το ψάξω με το id
             rg.addView(rb[i]); // Το προσθέτω στο radiogroup
         }
@@ -1370,6 +1411,7 @@ public class MainActivity extends AppCompatActivity {
 ### Κώδικας δημιουργίας spinner
 
 Παρακάτω ο κώδικας αρχικοποιεί μια CarBrandList, ορίζει την προβολή περιεχομένου της δραστηριότητας, δημιουργεί ένα Spinner, το συμπληρώνει με επωνυμίες χρησιμοποιώντας έναν ArrayAdapter και προετοιμάζει μια RadioGroup. Αυτό ρυθμίζει τα στοιχεία διεπαφής χρήστη για τη δραστηριότητα, επιτρέποντας στον χρήστη να επιλέξει μια μάρκα αυτοκινήτου από το Spinner και να αλληλεπιδράσει με το RadioGroup.
+
 
 ```
     @Override
@@ -1381,10 +1423,11 @@ public class MainActivity extends AppCompatActivity {
 
         //Δημιουργούμε το Spinner και το γεμίζουμε με τα brands
         Spinner dropDown = (Spinner) findViewById(R.id.cars);
-        // Δημιουργεί έναν ArrayAdapter που θα χρησιμοποιηθεί για τη συμπλήρωση του Spinner με δεδομένα.
-        // Ο ArrayAdapter αρχικοποιείται με την τρέχουσα δραστηριότητα (this), τον πόρο διάταξης
-        // για κάθε στοιχείο Spinner και τη λίστα των brands που ελήφθησαν
-        // από το CarBrandList cbl χρησιμοποιώντας τη μέθοδο getAllBrands.
+        // Δημιουργεί έναν ArrayAdapter που θα χρησιμοποιηθεί για τη συμπλήρωση 
+        // του Spinner με δεδομένα. Ο ArrayAdapter αρχικοποιείται με την τρέχουσα 
+        // δραστηριότητα (this), τον πόρο διάταξης για κάθε στοιχείο Spinner
+        // και τη λίστα των brands που ελήφθησαν από το CarBrandList cbl 
+        // χρησιμοποιώντας τη μέθοδο getAllBrands.
         ArrayAdapter<String> arrayAdapter =
                 new ArrayAdapter<String>(this,
                         android.R.layout.simple_spinner_dropdown_item,
@@ -1392,7 +1435,8 @@ public class MainActivity extends AppCompatActivity {
         dropDown.setAdapter(arrayAdapter);
 
         // Αρχικοποιεί ένα γραφικό στοιχείο RadioGroup που ονομάζεται rg
-        // βρίσκοντας την προβολή με το αναγνωριστικό rg από τη διάταξη της δραστηριότητας
+        // βρίσκοντας την προβολή με το αναγνωριστικό rg από τη διάταξη 
+        // της δραστηριότητας
         rg = (RadioGroup) findViewById(R.id.rg);
     }
 ```
@@ -1418,8 +1462,13 @@ public class MainActivity extends AppCompatActivity {
 
         // Κατασκευή του radiobutton (όπως ο παραπάνω κώδικας).
         for(int i=0;i<allModels.size();i++) {
-            RadioButton rb = new RadioButton(this); // Φτιάχνω ένα radio button ανάλογα με τι μέγεθος θα έχει η λίστα
-            rb.setText(allModels.get(i)); // Προσθέτων το κείμενο που πήρα από την λίστα ως κείμενο σε radiobutton
+        
+            // Φτιάχνω ένα radio button ανάλογα με τι μέγεθος θα έχει η λίστα
+            RadioButton rb = new RadioButton(this); 
+            
+            // Προσθέτων το κείμενο που πήρα από την λίστα ως κείμενο σε radiobutton
+            rb.setText(allModels.get(i)); 
+            
             rb.setId(100+i); // Βάζω ένα id γιατί πιθανό να το ψάξω με το id
             rg.addView(rb); // Το προσθέτω στο radiogroup
         }
@@ -1436,8 +1485,8 @@ public class MainActivity extends AppCompatActivity {
                 RadioButton rb = (RadioButton) findViewById(checkedId);
                 //  εμφανίζει ένα toast με το μοντέλο που επιλέχθηκε
                 Toast.makeText(getApplicationContext(),
-                        "The selected model is " + brand + ": " + rb.getText()
-                        , Toast.LENGTH_SHORT).show();
+                        "The selected model is " + brand + ": " + rb.getText(), 
+                        Toast.LENGTH_SHORT).show();
             }
         });  // Εδώ κλείνει ο Listener
     }    // Εδώ κλείνει η μεθοδος 
@@ -1522,7 +1571,8 @@ import okhttp3.*;
 public class OkHttpHandler {
 
     public OkHttpHandler() {
-        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().permitAll().build();
+        StrictMode.ThreadPolicy policy = new StrictMode.ThreadPolicy.Builder().
+        permitAll().build();
         StrictMode.setThreadPolicy(policy);
     }
 
@@ -1536,7 +1586,8 @@ public class OkHttpHandler {
 
         String data = response.body().string();
         try {
-            // Δημιουργεί ένα JSONObject αναλύοντας τα δεδομένα απόκρισης που ανακτήθηκαν.
+            // Δημιουργεί ένα JSONObject αναλύοντας τα δεδομένα απόκρισης
+            // που ανακτήθηκαν.
             JSONObject json = new JSONObject(data);
 
             // Ανακτά έναν επαναλήπτη πάνω από τα κλειδιά του JSONObject.
@@ -1544,20 +1595,24 @@ public class OkHttpHandler {
 
             // Επαναλαμβάνεται πάνω από κάθε κλειδί στο JSONObject.
             while(keys.hasNext()) {
-                // Ανακτά το επόμενο κλειδί από τον επαναλήπτη, που αντιπροσωπεύει την επωνυμία.
+                // Ανακτά το επόμενο κλειδί από τον επαναλήπτη, 
+                // που αντιπροσωπεύει την επωνυμία.
                 String brand = keys.next();
 
-                // Ανακτά την αντίστοιχη τιμή για το κλειδί επωνυμίας από το JSONObject και τη μετατρέπει σε συμβολοσειρά.
+                // Ανακτά την αντίστοιχη τιμή για το κλειδί επωνυμίας από το
+                // JSONObject και τη μετατρέπει σε συμβολοσειρά.
                 String models = json.get(brand).toString();
 
-                // Δημιουργεί ένα νέο αντικείμενο CarBrand χρησιμοποιώντας την επωνυμία και μοντελοποιεί τιμές και το προσθέτει στη cbList.
+                // Δημιουργεί ένα νέο αντικείμενο CarBrand χρησιμοποιώντας την 
+                // επωνυμία και μοντελοποιεί τιμές και το προσθέτει στη cbList.
                 cbList.add(new CarBrand(brand, models));
             }
         } catch (JSONException e) {
             e.printStackTrace();
         }
 
-        // Επιστρέφει τη συμπληρωμένη ArrayList<CarBrand> που περιέχει τα δεδομένα επωνυμίας και μοντέλων που ανακτήθηκαν.
+        // Επιστρέφει τη συμπληρωμένη ArrayList<CarBrand> που περιέχει τα δεδομένα 
+        // επωνυμίας και μοντέλων που ανακτήθηκαν.
         return cbList;
     }
 
@@ -1618,40 +1673,50 @@ public class MainActivity extends AppCompatActivity {
 
         // Φτιάχνω έναν Listener που θα τον υλοποιήσω εδώ μέσα
         rg.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
-            /*
-            αυτός ο κώδικα χειρίζεται το συμβάν όταν επιλέγεται ένα κουμπί επιλογής σε ένα radiogroup.
-            Ανακτά το επιλεγμένο κουμπί επιλογής, κατασκευάζει μια συμβολοσειρά URL με την επιλεγμένη επωνυμία,
-            μοντέλο και χρονική σήμανση, καλεί ένα αίτημα HTTP για να καταγράψει την επιλογή χρησιμοποιώντας
-            το OkHttp και εμφανίζει ένα μήνυμα toast για να ειδοποιήσει τον χρήστη για την επιτυχή καταγραφή.
-             */
+            
+            // αυτός ο κώδικα χειρίζεται το συμβάν όταν επιλέγεται ένα κουμπί επιλογής
+            // σε ένα radiogroup. Ανακτά το επιλεγμένο κουμπί επιλογής, κατασκευάζει 
+            // μια συμβολοσειρά URL με την επιλεγμένη επωνυμία, μοντέλο και χρονική 
+            // σήμανση, καλεί ένα αίτημα HTTP για να καταγράψει την επιλογή
+            // χρησιμοποιώντας το OkHttp και εμφανίζει ένα μήνυμα toast για να 
+            // ειδοποιήσει τον χρήστη για την επιτυχή καταγραφή.
+             
             @Override
             public void onCheckedChanged(RadioGroup radioGroup, int checkedId) {
-                // Ανακτά το επιλεγμένο RadioButton από το RadioGroup με βάση την παράμετρο checkedId,
-                // η οποία αντιπροσωπεύει το αναγνωριστικό του επιλεγμένου κουμπιού επιλογής.
+                // Ανακτά το επιλεγμένο RadioButton από το RadioGroup με βάση 
+                // την παράμετρο checkedId, η οποία αντιπροσωπεύει το αναγνωριστικό 
+                // του επιλεγμένου κουμπιού επιλογής.
                 RadioButton rb = (RadioButton) findViewById(checkedId);
 
-                // κατασκευάζει μια συμβολοσειρά URL για ένα τελικό σημείο υπηρεσίας ιστού,
-                // το οποίο περιλαμβάνει παραμέτρους για την επωνυμία, το μοντέλο και τη χρονική σήμανση.
-                // Η τιμή της επωνυμίας θεωρείται ότι ορίζεται αλλού και η rb.getText().toString() ανακτά το κείμενο
+                // κατασκευάζει μια συμβολοσειρά URL για ένα τελικό σημείο υπηρεσίας 
+                // ιστού, το οποίο περιλαμβάνει παραμέτρους για την επωνυμία, 
+                // το μοντέλο και τη χρονική σήμανση. Η τιμή της επωνυμίας θεωρείται 
+                // ότι ορίζεται αλλού και η rb.getText().toString() ανακτά το κείμενο
                 // του επιλεγμένου κουμπιού επιλογής, που αντιπροσωπεύει το μοντέλο.
-                // Η χρονική σήμανση δημιουργείται χρησιμοποιώντας τη νέα Date(System.currentTimeMillis())
-                // και μετατρέπεται σε συμβολοσειρά.
-                String url= "http://"+myIP+"/carsDBServices/logHistory.php?brand=" + brand + "&model=" + rb.getText().toString() + "&timestamp=" + new Date(System.currentTimeMillis()).toString();
+                // Η χρονική σήμανση δημιουργείται χρησιμοποιώντας τη νέα 
+                // Date(System.currentTimeMillis()) και μετατρέπεται σε συμβολοσειρά.
+                String url= "http://"+myIP+"/carsDBServices/logHistory.php?brand=" 
+                + brand + "&model=" + rb.getText().toString() + "&timestamp=" 
+                + new Date(System.currentTimeMillis()).toString();
+                
                 try {
                     // Δημιουργεί αντικείμενο μιας προσαρμοσμένης κλάσης OkHttpHandler,
-                    // η οποία φαίνεται να χειρίζεται αιτήματα HTTP χρησιμοποιώντας τη βιβλιοθήκη OkHttp.
+                    // η οποία φαίνεται να χειρίζεται αιτήματα HTTP χρησιμοποιώντας 
+                    // τη βιβλιοθήκη OkHttp.
                     OkHttpHandler okHttpHandler = new OkHttpHandler();
 
                     // Επικαλείται τη μέθοδο logHistory του αντικειμένου OkHttpHandler,
                     // περνώντας τη συμβολοσειρά URL που δημιουργήθηκε ως παράμετρο.
-                    // Αυτό υποδηλώνει ότι η μέθοδος logHistory είναι υπεύθυνη για την αποστολή ενός αιτήματος
-                    // HTTP στην καθορισμένη διεύθυνση URL, πιθανόν για την καταγραφή της επιλεγμένης
-                    // επωνυμίας, μοντέλου και χρονικής σφραγίδας.
+                    // Αυτό υποδηλώνει ότι η μέθοδος logHistory είναι υπεύθυνη 
+                    // για την αποστολή ενός αιτήματος HTTP στην καθορισμένη διεύθυνση 
+                    // URL, πιθανόν για την καταγραφή της επιλεγμένης επωνυμίας, 
+                    // μοντέλου και χρονικής σφραγίδας.
                     okHttpHandler.logHistory(url);
 
-                    // Εμφανίζει ένα μήνυμα toast μικρής διάρκειας που υποδεικνύει ότι η επιλογή καταγράφηκε
-                    // με επιτυχία.
-                    Toast.makeText(getApplicationContext(), "Selection Logged", Toast.LENGTH_SHORT).show();
+                    // Εμφανίζει ένα μήνυμα toast μικρής διάρκειας που υποδεικνύει 
+                    // ότι η επιλογή καταγράφηκε με επιτυχία.
+                    Toast.makeText(getApplicationContext(), "Selection Logged", 
+                    Toast.LENGTH_SHORT).show();
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
@@ -1660,12 +1725,13 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
-    /*
-   Παρακάτω ο κώδικας αρχικοποιεί μια CarBrandList, ορίζει την προβολή περιεχομένου της δραστηριότητας,
-   δημιουργεί ένα Spinner, το συμπληρώνει με επωνυμίες χρησιμοποιώντας έναν ArrayAdapter και προετοιμάζει
-   μια RadioGroup. Αυτό ρυθμίζει τα στοιχεία διεπαφής χρήστη για τη δραστηριότητα, επιτρέποντας στον χρήστη
-   να επιλέξει μια μάρκα αυτοκινήτου από το Spinner και να αλληλεπιδράσει με το RadioGroup.
-    */
+    // Παρακάτω ο κώδικας αρχικοποιεί μια CarBrandList, ορίζει την προβολή περιεχομένου 
+    // της δραστηριότητας, δημιουργεί ένα Spinner, το συμπληρώνει με επωνυμίες 
+    // χρησιμοποιώντας έναν ArrayAdapter και προετοιμάζει μια RadioGroup. 
+    // Αυτό ρυθμίζει τα στοιχεία διεπαφής χρήστη για τη δραστηριότητα, επιτρέποντας 
+    // στον χρήστη να επιλέξει μια μάρκα αυτοκινήτου από το Spinner και να 
+    // αλληλεπιδράσει με το RadioGroup.
+  
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         // Στο αντικείμενο cbl περνάω το αρχείο με τα brands με την getAssets()
@@ -1675,10 +1741,12 @@ public class MainActivity extends AppCompatActivity {
 
         //Δημιουργούμε το Spinner και το γεμίζουμε με τα brands
         Spinner dropDown = (Spinner) findViewById(R.id.cars);
-        // Δημιουργεί έναν ArrayAdapter που θα χρησιμοποιηθεί για τη συμπλήρωση του Spinner με δεδομένα.
-        // Ο ArrayAdapter αρχικοποιείται με την τρέχουσα δραστηριότητα (this), τον πόρο διάταξης
-        // για κάθε στοιχείο Spinner και τη λίστα των brands που ελήφθησαν
-        // από το CarBrandList cbl χρησιμοποιώντας τη μέθοδο getAllBrands.
+        
+        // Δημιουργεί έναν ArrayAdapter που θα χρησιμοποιηθεί για τη συμπλήρωση 
+        // του Spinner με δεδομένα. Ο ArrayAdapter αρχικοποιείται με την τρέχουσα 
+        // δραστηριότητα (this), τον πόρο διάταξης για κάθε στοιχείο Spinner και 
+        // τη λίστα των brands που ελήφθησαν από το CarBrandList cbl 
+        // χρησιμοποιώντας τη μέθοδο getAllBrands.
         ArrayAdapter<String> arrayAdapter =
                 new ArrayAdapter<String>(this,
                         android.R.layout.simple_spinner_dropdown_item,
@@ -1686,7 +1754,8 @@ public class MainActivity extends AppCompatActivity {
         dropDown.setAdapter(arrayAdapter);
 
         // Αρχικοποιεί ένα γραφικό στοιχείο RadioGroup που ονομάζεται rg
-        // βρίσκοντας την προβολή με το αναγνωριστικό rg από τη διάταξη της δραστηριότητας
+        // βρίσκοντας την προβολή με το αναγνωριστικό rg από τη διάταξη της 
+        // δραστηριότητας
         rg = (RadioGroup) findViewById(R.id.rg);
     }
 }

@@ -181,9 +181,9 @@ protected void onCreate(Bundle savedInstanceState) {
     List<String> brands = getIntent().getStringArrayListExtra("BRANDS");
     cbl = new CarBrandList(getAssets());
 
-    // Τώρα μπορείτε να χρησιμοποιήσετε το αντικείμενο cbl και τη λίστα επωνυμιών όπως απαιτείται
-    // Για παράδειγμα:
-    List<String> models = cbl.getAllModels(brands.get(0)); // Αποκτήστε μοντέλα για την πρώτη μάρκα
+    // Τώρα μπορείτε να χρησιμοποιήσετε το αντικείμενο cbl και τη λίστα επωνυμιών 
+    //όπως απαιτείται. Για παράδειγμα: Αποκτήστε μοντέλα για την πρώτη μάρκα
+    List<String> models = cbl.getAllModels(brands.get(0)); 
     // ...
 }
 ```

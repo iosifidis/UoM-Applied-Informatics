@@ -52,7 +52,8 @@ button.setOnClickListener(new View.OnClickListener() {
                 String enteredText = editText.getText().toString();
 
                 // Εμφάνιση του μηνύματος με Toast
-                Toast.makeText(MainActivity.this, "Entered Text: " + enteredText, Toast.LENGTH_SHORT).show();
+                Toast.makeText(MainActivity.this, "Entered Text: " + enteredText, 
+                Toast.LENGTH_SHORT).show();
             }
         });
 ```
@@ -70,7 +71,8 @@ button.setOnClickListener(new View.OnClickListener() {
                     double num = Double.parseDouble(input);
                     double sqrt = (double) Math.sqrt(num);
 
-                    Toast.makeText(MainActivity.this, "SQRT(" + num + ") = " + sqrt, Toast.LENGTH_SHORT).show();
+                    Toast.makeText(MainActivity.this, "SQRT(" + num + ") = " + sqrt, 
+                    Toast.LENGTH_SHORT).show();
                 }
             }
         });
@@ -234,9 +236,15 @@ public class OkHttpHandler {
             // Φτιάχνουμε την λίστα από το αρχείο JSON
             while(keys.hasNext()) {
                 String name = keys.next();
-                String type = json.getJSONObject(name).getString("grouped_types").toString();
-                String voice = json.getJSONObject(name).getString("grouped_voices").toString();
-                String images = json.getJSONObject(name).getString("images").toString();
+                String type = json.getJSONObject(name).getString("grouped_types").
+                toString();
+                
+                String voice = json.getJSONObject(name).getString("grouped_voices").
+                toString();
+                
+                String images = json.getJSONObject(name).getString("images").
+                toString();
+                
                 aList.add(new Animal(name, type, voice, images));
 
             }
@@ -301,9 +309,9 @@ for (int i = 0; i < jsonArray.length(); i++) {
 </androidx.constraintlayout.widget.ConstraintLayout>
 ```
 
-4. Τώρα πάμε να γεμίσουμε το αρχείο **MainActivity.java**. Εδώ πρέπει να συνδέσουμε το RadioGroup και το κουμπί της διεπαφής με τον κώδικα και πρέπει να γεμίσουμε το RadioGroup με τα RadioButtons.
+4. Τώρα πάμε να γεμίσουμε το αρχείο **MainActivity.java**. Εδώ πρέπει να συνδέσουμε το RadioGroup και το κουμπί της διεπαφής με τον κώδικα και πρέπει να γεμίσουμε το RadioGroup με τα RadioButtons.   
 
-Δηλώνουμε πρώτα την διεύθυνση από την εκφώνηση (λογικά θα είναι η 195.251.211.64), το RadioGroup, την λίστα (το λέει και η εκφώνηση) με την οποία θα γεμίσω το RadioGroup και επίσης τις ιδιότητες που θα έχω βρει από το Postman.
+Δηλώνουμε πρώτα την διεύθυνση από την εκφώνηση (λογικά θα είναι η 195.251.211.64), το RadioGroup, την λίστα (το λέει και η εκφώνηση) με την οποία θα γεμίσω το RadioGroup και επίσης τις ιδιότητες που θα έχω βρει από το Postman.  
 
 ```
 private final String IP = "195.251.211.64";
@@ -384,7 +392,8 @@ public class AnimalList {
     // Δηλώνουμε την λίστα που θα χρησιμοποιήσουμε
     private ArrayList<Animal> aList;
 
-    // Κατασκευαστής. Δέχεται μια IP από την Main και την αποθηκεύει ως πλήρη διεύθυνση όπου θα λάβει απαντήσεις.
+    // Κατασκευαστής. Δέχεται μια IP από την Main και την αποθηκεύει ως πλήρη 
+    // διεύθυνση όπου θα λάβει απαντήσεις.
     public AnimalList(String ip){
         String url = "http://"+ip+"/animals/getMedia.php";
 
@@ -392,14 +401,16 @@ public class AnimalList {
             // Φτιάχνουμε ένα αντικείμενο OkHttpHandler (με το παραπάνω περιεχόμενο)
             OkHttpHandler okHttpHandler = new OkHttpHandler();
             
-            // Αποθηκεύουμε στην λίστα μας το αποτέλεσμα που θα λάβουμε από την δημιουργία από το OkHttpHandler και την μέθοδο που έχουμε υλοποιήσει.
+            // Αποθηκεύουμε στην λίστα μας το αποτέλεσμα που θα λάβουμε από 
+            // την δημιουργία από το OkHttpHandler και την μέθοδο που έχουμε υλοποιήσει.
             aList = okHttpHandler.populateDropDown(url);
         }catch (Exception e){
             e.printStackTrace();
         }
     }
 
-    // Μέθοδος για να πάρω μια λίστα με όλα τα ονόματα (με αυτήν θα συμπληρώσω το RadioGroup).
+    // Μέθοδος για να πάρω μια λίστα με όλα τα ονόματα (με αυτήν θα συμπληρώσω 
+    // το RadioGroup).
     public List<String> getAllNames(){
         List<String> temp = new ArrayList<>();
         for(int i=0;i<aList.size();i++){
@@ -452,7 +463,8 @@ Button nextButton = (Button) findViewById(R.id.nextButton);
 Στην συνέχεια θα γεμίσουμε το RadioGroup με RadioButtons δυναμικά.
 
 ```
-    // Πρέπει να πάρουμε σε μια λίστα όλα τα ονόματα των ζώων (έχουμε φτιάξει μια μέθοδο).
+    // Πρέπει να πάρουμε σε μια λίστα όλα τα ονόματα των ζώων (έχουμε φτιάξει 
+    // μια μέθοδο).
     List<String> allAnimals = animalList.getAllNames();
 
     // Ανάλογα με το μέγεθος της λίστας, φτιάχνουμε ένα ένα τα RadioButtons
@@ -576,7 +588,8 @@ String a_image = intent.getStringExtra("IMAGE");
 Φτιάχνω ένα προσωρινό μήνυμα, όπως το ζητάει η άσκηση.
 
 ```
-String tempMsg = "My Name is " + a_name +", I am a " + a_type + " and I " + a_voice +".";
+String tempMsg = "My Name is " + a_name +", I am a " + a_type + 
+" and I " + a_voice +".";
 ```
 
 Στην συνέχεια το βάζω στην γραφική διεπαφή μου.
@@ -588,7 +601,8 @@ message.setText(tempMsg);
 Εισάγω και την εικόνα:
 
 ```
-Picasso.with(getApplicationContext()).load(Uri.parse(a_image)).resize(300,0).into(eikona);
+Picasso.with(getApplicationContext()).load(Uri.parse(a_image)).resize(300,0).
+into(eikona);
 ```
 
 Τέλος, εισάγω τον Listener στο κουμπί για να γυρνάει στην προηγούμενη οθόνη.
@@ -674,7 +688,8 @@ spinner.setAdapter(arrayAdapter);
 ```
 spinner.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
             @Override
-            public void onItemSelected(AdapterView<?> parentView, View selectedItemView, int position, long id) {
+            public void onItemSelected(AdapterView<?> parentView, 
+            View selectedItemView, int position, long id) {
                 String animalName = allNames.get(position);
                 name = animalName;
                 type = animalList.getAnimalType(animalName);
