@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+
+<records>
+    <animal>
+        <species>Dog</species>
+        <name>Mpoympis, Azor, Stop, Ektoras</name>
+        <sound>Bark</sound>
+    </animal>
+
+    <animal>
+        <species>Cat</species>
+        <name>Garfield, Tom, Felix, Silvester</name>
+        <sound>Meow</sound>
+    </animal>
+
+    <animal>
+        <species>Mouse</species>
+        <name>Jerry, Mickey, Minnie, Speedy</name>
+        <sound>Squeak</sound>
+    </animal>
+
+    <animal>
+        <species>Elephant</species>
+        <name>Dumbo, Jumbo, Babar, Horton</name>
+        <sound>Trumpet</sound>
+    </animal>
+
+</records>
