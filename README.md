@@ -16,6 +16,9 @@
 
 **Αφού βρίσκετε χρήσιμο το παρόν αποθετήριο, πατήστε το αστεράκι. Ευχαριστώ**
 
+## Star History
+
+[![Star History Chart](https://api.star-history.com/svg?repos=iosifidis/UoM-Applied-Informatics&type=Date)](https://star-history.com/#iosifidis/UoM-Applied-Informatics&Date)
 
 ## GitHub Stats
 
